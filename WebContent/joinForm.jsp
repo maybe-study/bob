@@ -8,10 +8,11 @@
 </head>
 <body>
 <h1>회원가입 페이지</h1>
+<form>
 <tr>
 <td>
-아이디:<input id="id" type="text" placeholder="아이디" class="txt"/> <button id=check>중복확인</button> <br>
-</td>
+이름:<input id="name" type="text" placeholder="이름" class="txt"/>
+</td><br>
 </tr>
 <tr>
 생년월일:<td><select name="year" id="year" class="foot1">
@@ -115,12 +116,35 @@
                     <option value="29">29</option>
                     <option value="30">30</option>
                     <option value="31">31</option>
-                </select></td>
+                </select></td><br>
 </tr>
 <tr>
 <td>
-이메일:<input id="email" type="text" />
+이메일:<input id="email" type="text" class="txt"/></td><br>
+아이디:<input id="id" type="text" placeholder="아이디" class="txt"/> <button id=check>중복확인</button> <br>
+비밀번호:<input id="pw" type="password" placeholder="비밀번호" class="txt" /><br>
+비밀번호확인:<input id="pw" type="password" placeholder="비밀번호확인" class="txt" /><br>
+</tr>
+<div id="pwdiv"></div>
+<tr>
+<td>전화번호<select name="year" id="year" class="foot1">
+                    <option value="010">010</option>
+                    <option value="011">011</option>
+                    <option value="016">016</option>
+                    <option value="017">017</option>
+                    <option value="018">018</option>
+                    <option value="019">019</option>
+                    </select></td>
+<td>-<input type="text" class="txt"/>-<input type="txt" class="txt"> </td><br>
+</tr>
+<tr>
+<td>
+<button>회원가입하기</button>
+</td>
+<td>
+<button>회원가입취소</button>
 </td>
 </tr>
+</form>
 </body>
 </html>
