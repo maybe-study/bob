@@ -32,6 +32,7 @@ for(var i=0;i<10;i++){
 	for(var j=0;j<10;j++){
 		var $img=$("<img>").attr("src","img/buger01.jpg");
 		$("<td>").append($img).appendTo($tr);
+		$
 	}
 }
 console.log($table);
