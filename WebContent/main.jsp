@@ -18,6 +18,7 @@ color:white;
 </style>
 </head>
 <body>
+< HEAD
 <img alt="img"src="./img/img1.PNG" class=img1  align="middle">
 	<div class=main>
 		<table>
@@ -52,5 +53,6 @@ color:white;
 			</tr>
 		</table>
 	</div>
+
 </body>
 </html>
