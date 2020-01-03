@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+
+
+
+
+</style>
 </head>
 <body>
 <h1>회원가입 페이지</h1>
@@ -120,10 +127,20 @@
 </tr>
 <tr>
 <td>
-이메일:<input id="email" type="text" class="txt"/></td><br>
+이메일:<input id="email" type="text" placeholder="이메일" class="txt"/>@
+<input type="text" name="str_email02" id="str_email02" disabled value="선택하세요"  >
+<select name="email1"  id="email1">
+	<option value="0">선택하세요</option>
+	<option value="1">직접입력</option>
+	<option value="naver.com">naver.com</option>
+	<option value="nate.com">nate.com</option>
+	<option value="gmail.com">gmail.com</option>
+	<option value="daum.net">daum.net</option>
+</select>
+</td><br>
 아이디:<input id="id" type="text" placeholder="아이디" class="txt"/> <button id=check>중복확인</button> <br>
 비밀번호:<input id="pw" type="password" placeholder="비밀번호" class="txt" /><br>
-비밀번호확인:<input id="pw" type="password" placeholder="비밀번호확인" class="txt" /><br>
+비밀번호확인:<input id="pw1" type="password" placeholder="비밀번호확인" class="txt" /><br>
 </tr>
 <div id="pwdiv"></div>
 <tr>
@@ -146,5 +163,48 @@
 </td>
 </tr>
 </form>
+<script>
+$(document).ready(function(){
+	$("#str_email02").hide();
+		});
+$("#pw").keyup(function(){ 
+	var pw= $("#pw").val();
+	if(pw.length < 8) {
+		$("#pwdiv").text("비밀번호는 8자 이상이어야 합니다.").css("color","orangered");
+	}
+	if(pw.length > 20) {
+		$("#pwdiv").text("비밀번호는 20자 이하이어야 합니다.").css("color","orangered");
+	}
+});
+$("#pw1").keyup(function(){
+	var pw = $("#pw").val();
+    var pw1 = $("#pw1").val();
+    if (pw1.length < 8) {
+        $("#pwdiv").text("비밀번호는 8자 이상이어야 합니다.").css("color", "orangered");
+    }else if (pw1.length > 20) {
+        $("#pwdiv").text("비밀번호는 20자 이하이어야 합니다.").css("color", "orangered");
+    }
+    if (pw == pw1) {
+        $("#pwdiv").text("");
+    } else {
+        $("#pwdiv").text("비밀번호가 다릅니다.").css("color", "orangered");
+    }
+});
+$("#email1").change(function(){
+	$("#email1 option:selected").each(function () {
+		if($(this).val()=='1'){
+			$("#str_email02").show();
+			$("#str_email02").val('');
+			$("#str_email02").attr("disabled",false);
+		}else if($(this).val()=='0'){
+			$("#str_email02").hide();
+		}else {
+			$("#str_email02").show();
+			$("#str_email02").val($(this).text()); //선택값 입력 
+			$("#str_email02").attr("disabled",true); //비활성화
+		}
+		});
+});
+</script>
 </body>
 </html>
