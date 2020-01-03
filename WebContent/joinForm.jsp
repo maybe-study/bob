@@ -167,6 +167,9 @@
 $(document).ready(function(){
 	$("#str_email02").hide();
 		});
+$("#check").click(function(){
+	alert("사용가능합니다.")
+});
 $("#pw").keyup(function(){ 
 	var pw= $("#pw").val();
 	if(pw.length < 8) {
