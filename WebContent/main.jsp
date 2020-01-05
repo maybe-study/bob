@@ -6,10 +6,19 @@
 <meta charset="UTF-8">
 <title>봉구스밥버거</title>
 <style>
+html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
 #menu{
-height:100%;
-display:inline-block;
-fontsize:150px;
+
+
+
+	position: relative;
+	height:100%;
+	display:inline-block;
+
 }
 #mainmenu{
     float:left;
@@ -23,31 +32,24 @@ float:left;
 width:200px;
 height:100%;
 }	
-li{
-height:100%;
-
-}
 #mainmenu li a{
-
 color:black;
 text-decoration:none;
 }
 #mainmenu ul li{
 
 float:none;
-margin:0;
-padding:0;
+margin:10px 0px;
 
 }
-
-img {
+.bobbugers{
 	width: 1000px;
 	height: 800px;
+	position: absolute;
 }
 </style>
 </head>
 <body>
-
 	
 		
 	<div id="menu">
@@ -75,11 +77,10 @@ img {
 			<li><a href="#">지점안내</a>
 				<ul>
 					<li><a href="#">전국지점안내</a></li>
-				</ul></li>
+				</ul>
+			</li>
 		</ul>
 		</div>
-		
-		
 		
 		
 		
@@ -91,11 +92,33 @@ img {
 		</ul>
 		</div>
 		
-		<img alt="img" src="./img/img1.PNG" class=img1 align="right">
-		
+		<img alt="img" src="./img/img1.PNG" class="bobbugers"><br>
+		<img alt="img" src="./img/img1.PNG" class="bobbugers" style="top:800px"><br>
+		<img alt="img" src="./img/img1.PNG" class="bobbugers" style="top:1600px"><br>
+
 		
 		
 		</div>
 		
+		
+		
+		
+		
+		
+		
+<script type="text/javascript">
+        function div2Resize() {
+            var div2 = document.getElementById('mainmenu');
+            div2.style.height = document.body.scrollHeight+ 'px';
+        }
+        window.onload = function() {
+            div2Resize();
+ 
+            // 브라우저 크기가 변할 시 동적으로 사이즈를 조절해야 하는경우
+            window.addEventListener('resize', div2Resize);
+        }
+        
+        
+</script>		
 </body>
 </html>
