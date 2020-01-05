@@ -9,6 +9,7 @@
 #menu{
 height:100%;
 display:inline-block;
+fontsize:150px;
 }
 #mainmenu{
     float:left;
