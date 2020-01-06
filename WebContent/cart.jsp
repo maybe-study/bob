@@ -29,9 +29,14 @@ $table.attr("id", "list");	//아이디가 list인 테이블
 for(var i=0;i<10;i++){
 	//행을 붙임
 	var $tr=$("<tr>").appendTo($table);
-	for(var j=0;j<10;j++){
+	for(var j=0;j<2;j++){
 		var $img=$("<img>").attr("src","img/buger01.jpg");
+		var $select=$("input[type=number]");
+		
+		
 		$("<td>").append($img).appendTo($tr);
+		$("<td>").append($select).appendTo($tr);
+		
 	}
 }
 console.log($table);
