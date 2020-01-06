@@ -31,12 +31,13 @@
           font-weight:bold;
           font-family:system-ui;
           }
-         /*  #btndiv{
-            position: fixed;
-            right: 0;
+          #btndiv{
+            position: sticky;
+           display:right;
+           
           
-          } */
-        </style>
+          }
+                  </style>
       </head>
       <body>
         <h1>상품 담기</h1><br>
