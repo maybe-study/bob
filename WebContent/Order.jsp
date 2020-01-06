@@ -32,6 +32,7 @@
           font-family:system-ui;
           }
           #btndiv{
+
             position: fixed;
             right: 10px;
             top:50%
@@ -39,6 +40,7 @@
           
           }
         </style>
+
       </head>
       <body>
         <h1>상품 담기</h1><br>
