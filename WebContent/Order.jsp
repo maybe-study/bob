@@ -31,16 +31,26 @@
           font-weight:bold;
           font-family:system-ui;
           }
-         /*  #btndiv{
+          #btndiv{
             position: fixed;
-            right: 0;
+            right: 10px;
+            top:50%
+            
           
-          } */
+          }
         </style>
       </head>
       <body>
         <h1>상품 담기</h1><br>
         <div id="showList"></div>
+        <div id="btndiv"><button class="btn" id="btn" type="submit"><img class="btn-img" src="img/btn.png"></button></div>
+        
+        
+        
+        
+        
+        
+        
         <script>
           //functions---------------------------------------------------------
           
@@ -98,6 +108,6 @@
           
         </script>
         
-      <div id="btndiv"><button class="btn" id="btn" type="submit"><img class="btn-img" src="img/btn.png"></button></div>
+      
       </body>
     </html>
