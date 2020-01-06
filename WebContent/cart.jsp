@@ -28,49 +28,43 @@
         </style>
       </head>
       <body>
-        <h1>테스트입니다.</h1>
-        <div id="showList"></div>
+        <h1>장바구니</h1>
+        <div id="cartList"></div>
         <script>
           //functions---------------------------------------------------------
           
-          //개수 선택 버튼을 추가하는 함수
-          function selectButton(idx){
-        	var bCnt="bCnt"+idx;
-            var $div=$("<div>").attr("class","cntdiv");
-            $("<button>").text("◀").appendTo($div).click(function(){
-            	var c=$("#"+bCnt).val();
-       			if(c>0){
-       				$("#"+bCnt).val(--c);
-       			}
-            });
-            $("<input>").attr("value","0").attr("class","cnt").attr("id","bCnt"+idx).appendTo($div);
-            $("<button>").text("▶").appendTo($div).click(function(){
-            	var c=$("#"+bCnt).val()*1+1;
-            	$("#"+bCnt).val(c);
-            });
-            return $div;
-          }
-          
-          
+       
+              
           //장바구니 리스트를 추가하는 함수
           function cartList(){
-        	  var $table = $("<table>").appendTo($("#showList"));
+        	  var $table = $("<table>").appendTo($("#cartList"));
               $table.attr("id", "list"); //아이디가 list인 테이블
-
+              var $tr=$("<tr>").appendTo($('#list'));
+    		  $("<th>").text('상품').appendTo($tr);
+    		  $("<th>").text('수량').appendTo($tr);
+    		  $("<th>").text('총 가격').appendTo($tr);
+    		
+             
+             
+              
               for (var i = 0; i < 10; i++) {
                 //행을 붙임
                 var $tr = $("<tr>").appendTo($table);
-               
-                  var $img = $("<img>").attr("src", "img/buger01.jpg");
-                  $("<td>").append($img).appendTo($tr);
+                var $img = $("<img>").attr("src", "img/buger01.jpg");
+                $("<td>").append($img).appendTo($tr);
+                $("<td>").append("|   개").appendTo($tr);
+                $("<td>").append("총      원").appendTo($tr);
+                $("<td>").append($("<button>")).append($("<img>").attr("src","img/btn2.png").appendTo($tr);;
+                
+                  
                   console.log(selectButton(i));
-                  $("<td>").append(selectButton(i)).appendTo($tr);
+                 
               }
           }
           
           
           
-          
+         
           
           //functionEnd-------------------------------------------------------
 		  
@@ -86,6 +80,7 @@
           
           
         </script>
+        
+        <input type="button" value="btn" onClick="cart.jsp">
       </body>
     </html>
->>>>>>> 385665bf9afbac805ee84b060487bbc367610916
