@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
 <meta charset="UTF-8">
 <title>봉구스밥버거</title>
 <style>
@@ -10,10 +11,6 @@ html, body {
             margin: 0;
             width: 100%;
             height: 100%;
-}
-.bobbugers{
-width: 200px;
-height: 200px;
 }
 .menuimg{
 width : 100px;
@@ -23,7 +20,6 @@ height: 100px;
 	position: relative;
 	height:100%;
 	display:inline-block;
-
 }
 #mainmenu{
     float:left;
@@ -43,19 +39,21 @@ color:black;
 text-decoration:none;
 }
 #mainmenu ul li{
-
 float:none;
 margin:10px 0px;
 
 }
-.bobbugers{
-	width: 1000px;
-	height: 800px;
-	position: absolute;
+#main{
+	top:0px;
+	position:absolute;
+	display: inline-block;
+}
+#maindiv{
+	position:relative;
 }
 </style>
 </head>
-<body>	
+<body>
 	<div id="menu">
 		<div id="mainmenu">
 		<ul>
@@ -101,9 +99,7 @@ margin:10px 0px;
 		</div>
 		</div>
 		
-		<div id="main">
-			
-		</div>
+		<div id="main" w3-include-html="main.jsp"></div>
 		<!-- 
 		<img alt="img" src="./img/img1.PNG" class="bobbugers"><br>
 		<img alt="img" src="./img/img2.PNG" class="bobbugers" style="top:800px"><br>
@@ -117,6 +113,7 @@ margin:10px 0px;
 		
 		
 <script type="text/javascript">
+	
         function divResize() {
         	var div1=document.getElementById('submenu');
             var div2 = document.getElementById('mainmenu');
@@ -131,7 +128,38 @@ margin:10px 0px;
         }
         
         var main=document.getElementById('main');
-        main.innerHTML='main.jsp';
-</script>		
+        
+</script>	
+<script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /*loop through a collection of all HTML elements:*/
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /*make an HTTP request using the attribute value as the file name:*/
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /*remove the attribute, and call this function once more:*/
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          } 
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /*exit the function:*/
+          return;
+        }
+      }
+    }
+    includeHTML();
+</script>
+	
 </body>
 </html>
