@@ -10,11 +10,16 @@ html, body {
             margin: 0;
             width: 100%;
             height: 100%;
-        }
+}
+.bobbugers{
+width: 200px;
+height: 200px;
+}
+.menuimg{
+width : 100px;
+height: 100px;
+}
 #menu{
-
-
-
 	position: relative;
 	height:100%;
 	display:inline-block;
@@ -88,13 +93,17 @@ margin:10px 0px;
 		
 		<div id="submenu">
 		<ul>
-		<li><a href="#">로그인</a></li>
+		<a href="#"><img alt="img" src="./img/logingimg.PNG" class="menuimg"></a>
+		<a href="#"><img alt="img" src="./img/brlogimg.PNG" class="menuimg"></a>
+		<a href="#"><img alt="img" src="./img/joinimg.PNG" class="menuimg"></a>
+		<a href="#"><img alt="img" src="./img/faceimg.PNG" class="menuimg"></a>
+		<a href="#"><img alt="img" src="./img/blogimg.PNG" class="menuimg"></a>
 		</ul>
 		</div>
-		
+	
 		<img alt="img" src="./img/img1.PNG" class="bobbugers"><br>
-		<img alt="img" src="./img/img1.PNG" class="bobbugers" style="top:800px"><br>
-		<img alt="img" src="./img/img1.PNG" class="bobbugers" style="top:1600px"><br>
+		<img alt="img" src="./img/img2.PNG" class="bobbugers" style="top:800px"><br>
+		<img alt="img" src="./img/img3.PNG" class="bobbugers" style="top:1600px"><br>
 
 		
 		
