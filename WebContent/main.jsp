@@ -36,6 +36,7 @@ height: 100px;
 float:left;
 width:200px;
 height:100%;
+background-color: #fcfcfc;
 }	
 #mainmenu li a{
 color:black;
@@ -116,15 +117,17 @@ margin:10px 0px;
 		
 		
 <script type="text/javascript">
-        function div2Resize() {
+        function divResize() {
+        	var div1=document.getElementById('submenu');
             var div2 = document.getElementById('mainmenu');
+            div1.style.height = document.body.scrollHeight+ 'px';
             div2.style.height = document.body.scrollHeight+ 'px';
         }
         window.onload = function() {
-            div2Resize();
+            divResize();
  
             // 브라우저 크기가 변할 시 동적으로 사이즈를 조절해야 하는경우
-            window.addEventListener('resize', div2Resize);
+            window.addEventListener('resize', divResize);
         }
         
         
