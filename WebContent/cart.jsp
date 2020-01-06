@@ -10,7 +10,6 @@
         <script type="text/javascript" src="js/bootstrap.js"></script>
 
         <style>
-
           .cntdiv{
             text-align:center;
           	width:150px;
@@ -23,6 +22,8 @@
           td {
             border: 1px solid black;
             padding: 10px;
+          }
+          test{
           }
         </style>
       </head>
@@ -87,3 +88,4 @@
         </script>
       </body>
     </html>
+>>>>>>> 385665bf9afbac805ee84b060487bbc367610916
