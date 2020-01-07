@@ -67,17 +67,18 @@ display:inline-block;
 <h1>로그인 </h1>
 <div class="textdiv">
 <img src="./img/welcome.png" alt="welcome" id="img1"/>
+<form action="login" name="login" method="post">
 <table>
 <tr>
 <td><input type="text" placeholder="아이디" /> </td>
-<td rowspan="2"><button class='loginbtn'>로그인</button></td>
+<td rowspan="2"><button  class='loginbtn'>로그인</button></td>
 </tr>
 <tr>
 <td><input type="text" placeholder="비밀번호" /> </td>
 </tr>
 <img src="./img/delicious.PNG" alt="delicious" id="img2" />
 </table>
-
+</form>
 </div>
 <div class="joindiv">
 <table>
