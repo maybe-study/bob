@@ -33,7 +33,7 @@ float:left;
 width:200px;
 height:100%;
 background-color: #fcfcfc;
-}	
+}
 #mainmenu li a{
 color:black;
 text-decoration:none;
@@ -83,14 +83,14 @@ margin:10px 0px;
 			</li>
 		</ul>
 		</div>
-		
-		
-		
-		
-		
+
+
+
+
+
 		<div id="submenu">
 		<ul>
-		<a href="loginfrm"><img alt="img" src="./img/logingimg.PNG" class="menuimg"></a>
+		<a href="login.jsp"><img alt="img" src="./img/logingimg.PNG" class="menuimg"></a>
 		<a href="#"><img alt="img" src="./img/brlogimg.PNG" class="menuimg"></a>
 		<a href="#"><img alt="img" src="./img/joinimg.PNG" class="menuimg"></a>
 		<a href="#"><img alt="img" src="./img/faceimg.PNG" class="menuimg"></a>
@@ -98,22 +98,22 @@ margin:10px 0px;
 		</ul>
 		</div>
 		</div>
-		
+
 		<div id="main" w3-include-html="main.jsp"></div>
-		<!-- 
+		<!--
 		<img alt="img" src="./img/img1.PNG" class="bobbugers"><br>
 		<img alt="img" src="./img/img2.PNG" class="bobbugers" style="top:800px"><br>
 		<img alt="img" src="./img/img3.PNG" class="bobbugers" style="top:1600px"><br>
  		-->
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
 <script type="text/javascript">
-	
+
         function divResize() {
         	var div1=document.getElementById('submenu');
             var div2 = document.getElementById('mainmenu');
@@ -122,14 +122,14 @@ margin:10px 0px;
         }
         window.onload = function() {
             divResize();
- 
+
             // 브라우저 크기가 변할 시 동적으로 사이즈를 조절해야 하는경우
             window.addEventListener('resize', divResize);
         }
-        
+
         var main=document.getElementById('main');
-        
-</script>	
+
+</script>
 <script>
     function includeHTML() {
       var z, i, elmnt, file, xhttp;
@@ -162,6 +162,6 @@ margin:10px 0px;
     }
     includeHTML();
 </script>
-	
+
 </body>
 </html>

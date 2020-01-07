@@ -51,7 +51,7 @@ public class MemberMM {
 	  return fw;
   } //회원가입 끝
 
-public Forward login() {
+public Forward loginfrm() {
 	Forward fw=new Forward();
 	Member mb=new Member();
 	String id=request.getParameter("id");
