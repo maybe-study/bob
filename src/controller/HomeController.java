@@ -16,8 +16,6 @@ public class HomeController extends HttpServlet {
 		String cmd=request.getServletPath();
 		switch(cmd) {
 
-		
-
 
 		case "/admin":	//관리자 페이지
 			
@@ -39,7 +37,7 @@ public class HomeController extends HttpServlet {
 			
 			break;
 			
-		case "/addmenu":	//메뉴 추가 페이지
+		case "/addmenu"://메뉴 추가 페이지
 			
 
 			break;

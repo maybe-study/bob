@@ -19,9 +19,7 @@ public class MemberDao {
 		con=JdbcUtil.getConnection();
 	}
 	public void close() {
-		jdbcUtil.close(rs);
-		jdbcUtil.close(pstmt);
-		jdbcUtil.close(con);
+		JdbcUtil.close(rs, pstmt, con);
 	}
 	public boolean memberJoin(Member mb) {
 		String sql="INSERT INTO MEMBER VALUES(?,?,?,?)";
