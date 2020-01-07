@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet({"/joinfrm","/login","/main"})
+@WebServlet({"/joinfrm","/login","/main","/order"})
 public class HomeController extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
      

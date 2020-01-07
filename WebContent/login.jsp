@@ -29,7 +29,7 @@ height:300px;
 <table>
 <tr>
 <td>
-<button>회원가입</button>
+<a href="joinForm.jsp"><button>회원가입</button></a>
 </td>
 </tr>
 </table>
