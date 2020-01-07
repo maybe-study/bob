@@ -70,11 +70,11 @@ display:inline-block;
 <form action="loginfrm" name="loginfrm" method="post">
 <table>
 <tr>
-<td><input type="text" placeholder="아이디" /> </td>
+<td><input type="text" name="buyerid" placeholder="아이디" /> </td>
 <td rowspan="2"><button  class='loginbtn'>로그인</button></td>
 </tr>
 <tr>
-<td><input type="text" placeholder="비밀번호" /> </td>
+<td><input type="password" name="pw" placeholder="비밀번호" /> </td>
 </tr>
 <img src="./img/delicious.PNG" alt="delicious" id="img2" />
 </table>

@@ -44,7 +44,8 @@ public class MemberDao {
 		return false;
 	}
 	public int login(String id, String pw) {
-		String sql="SELECT * FROM BUYER WHERE ID=?";
+		String sql="SELECT * FROM \"buyer\" WHERE \"buyerid\"=?";
+		
 		int result=-1;
 		try {
 			pstmt=con.prepareStatement(sql);

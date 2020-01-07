@@ -78,7 +78,7 @@ public Forward loginfrm() {
 		HttpSession session=request.getSession();
 		session.setAttribute("id", id);
 	}
-	fw.setPath("main.jsp");
+	fw.setPath("index.jsp");
 	fw.setRedirect(false);
 	return fw;
 }
