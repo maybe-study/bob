@@ -12,7 +12,6 @@
 </head>
 <body>
 	<h1>회원가입 페이지</h1>
-	<form name="joinForm" action="joinfrm">
 		<tr>
 			<td>이름:<input id="name" type="text" placeholder="이름" class="txt" />
 			</td>
@@ -161,6 +160,7 @@
 			</td>
 			<br>
 		</tr>
+		<form name="joinForm" action="joinfrm">
 		<tr>
 		    <td>
 				<button>회원가입하기</button>
