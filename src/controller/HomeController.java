@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import bean.Forward;
 import bean.Member;
 import service.MemberMM;
+import service.MenuMM;
 
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/addmenufrm",
-	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm"})
+	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -22,6 +23,7 @@ public class HomeController extends HttpServlet {
 		String cmd=request.getServletPath();
 		Forward fw=null;
 		MemberMM mm=new MemberMM(request, response);
+		MenuMM menu=new MenuMM(request, response);
 		
 		switch(cmd) {
 		
@@ -70,8 +72,14 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/main":		  //메인 페이지
-
+			
 			break;
+			
+		case "/addmenu":
+			fw=menu.insertproduct();
+			
+			break;
+
 		}
 	}
 

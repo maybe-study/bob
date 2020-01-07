@@ -30,12 +30,12 @@ public class MemberMM {
 	  String phone=request.getParameter("phone");
 	  String phone1=request.getParameter("phone1");
 	  String phone2=request.getParameter("phone2");
-	  String p= String.valueOf(phone+phone1+phone2);
+	  String p= phone+phone1+phone2;
 	  mb.setPhone(p);
 	  //mb.setEmail(request.getParameter("email"));
 	  String email=request.getParameter("email");
 	  String email1=request.getParameter("email1");
-	  String e= String.valueOf(email+"@"+email1);
+	  String e= email+"@"+email1;
 	  mb.setEmail(e);
 	  mb.setName(request.getParameter("name"));
 	  String year=request.getParameter("year");
