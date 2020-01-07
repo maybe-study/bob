@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form>
-	<table border="1px">
+	<form action="addmenu" method="post" enctype="multipart/form-data">
+		<table>
 		<tr>
-			<td colspan="2">메뉴 추가</td>
+			<td colspan="2" align="center">메뉴 추가</td>
 		</tr>
 		<tr>
 			<td>메뉴명</td><td><input type="text" name="bobname"></td>
@@ -19,7 +19,7 @@
 			<td>가격</td><td><input type="text" name="cost"></td>
 		</tr>
 		<tr>
-			<td>메뉴설명</td><td><textarea cols="40" rows="5" name="deplanation"></textarea></td>
+			<td>메뉴설명</td><td><textarea cols="40" rows="5" name="explanation"></textarea></td>
 		</tr>
 		<tr>
 			<td>종류</td>
@@ -33,7 +33,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>사진</td><td><input type="text" name="pic"></td>
+			<td>사진</td><td><input type="file"name="p_file"></td>
 		</tr>
 		<tr>
 			<td colspan="2">
