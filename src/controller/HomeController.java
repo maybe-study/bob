@@ -62,11 +62,11 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/joinfrm":	   //회원가입
-			
+			fw=mm.joinfrm();
 			break;
 
 		case "/loginfrm":	   //로그인
-			fw=mm.login();
+			fw=mm.loginfrm();
 			break;
 
 		case "/main":		  //메인 페이지
