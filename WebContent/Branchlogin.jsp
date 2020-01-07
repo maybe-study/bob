@@ -4,20 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>지점 로그인</title>
 <style>
-#img2{
-width:250px;
-position: absolute;
-left: 340px;
-}
-.textdiv{
-margin:20px;
-padding-top:50px;
-background-color: #FAFAFA;
-width:600px;
-height:200px;
-}
 .loginbtn {
 	background-color:#FFAD07;
 	display:inline-block;
@@ -36,30 +24,24 @@ height:200px;
 	position:relative;
 	top:1px;
 }
+.textdiv{
+padding:50px;
+background-color: #E1E1E1;
+width:300px;
+height:60px;
+}
 </style>
 </head>
 <body>
-<h1>로그인 </h1>
+<h1>지점 로그인 </h1>
 <div class="textdiv">
-<img src="./img/welcome.png" alt="welcome" id="img1"/>
 <table>
 <tr>
 <td><input type="text" placeholder="아이디" /> </td>
-<td rowspan="2"><button class='loginbtn'>로그인</button></td>
+<td rowspan="2"><button class="loginbtn">로그인</button></td>
 </tr>
 <tr>
 <td><input type="text" placeholder="비밀번호" /> </td>
-</tr>
-<img src="./img/delicious.PNG" alt="delicious" id="img2" />
-</table>
-
-</div>
-<div>
-<table>
-<tr>
-<td>
-<a href="joinForm.jsp"><button>회원가입</button></a>
-</td>
 </tr>
 </table>
 </div>
