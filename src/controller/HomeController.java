@@ -15,10 +15,10 @@ public class HomeController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String cmd=request.getServletPath();
 		switch(cmd) {
-<<<<<<< HEAD
+
 		
-		case "/joinfrm":	//회원가입
-=======
+
+
 		case "/admin":	//관리자 페이지
 			
 			break;
@@ -41,7 +41,7 @@ public class HomeController extends HttpServlet {
 			
 		case "/addmenu":	//메뉴 추가 페이지
 			
->>>>>>> b5c4567b459d82a31d4a97f141447048b9d86256
+
 			break;
 			
 		case "/branchlogin"://지사 로그인 페이지

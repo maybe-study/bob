@@ -16,7 +16,7 @@ public class MemberDao {
 	ResultSet rs;
 	
 	public MemberDao() {
-		con=jdbcUtil.getConnection();
+		con=JdbcUtil.getConnection();
 	}
 	public void close() {
 		jdbcUtil.close(rs);
