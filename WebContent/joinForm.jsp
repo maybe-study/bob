@@ -162,9 +162,11 @@
 			<br>
 		</tr>
 		<tr>
+		<form action="joinfrm" name="joinfrm" method="post">
 			<td>
 				<button>회원가입하기</button>
 			</td>
+			</form>
 			<td>
 				<button>회원가입취소</button>
 			</td>

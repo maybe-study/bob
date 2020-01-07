@@ -86,7 +86,7 @@ display:inline-block;
 <tr>
 <td><h3>회원이 아니신가요?</h3> </td>
 <td>
-<button class="joinbtn">회원가입</button>
+<a href="joinForm.jsp"></a><button class="joinbtn">회원가입</button>
 </td>
 </tr>
 </table>
