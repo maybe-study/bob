@@ -87,6 +87,7 @@ public class HomeController extends HttpServlet {
 			if(fw.isRedirect()) {
 				response.sendRedirect(fw.getPath());
 			}
+		
 			else {
 				RequestDispatcher dis=request.getRequestDispatcher(fw.getPath());
 				dis.forward(request, response);

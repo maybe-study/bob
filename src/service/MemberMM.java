@@ -62,6 +62,8 @@ public class MemberMM {
 
 public Forward loginfrm() {
 	Forward fw=new Forward();
+	fw.setPath("login.jsp");
+	fw.setRedirect(false);
 	Member mb=new Member();
 	String id=request.getParameter("buyerid");
 	String pw=request.getParameter("pw");
@@ -69,17 +71,20 @@ public Forward loginfrm() {
 	int result=mDao.login(id,pw);
 	mDao.close();
 	if(result==-1) {
-		request.setAttribute("msgAccess", "id존재하지 않아요!");
+		System.out.println("아이디 존재x");
 	}
 	else if(result==0){
-		request.setAttribute("msgAccess", "pw가 틀립니다.");
+		System.out.println("비번 틀림");
 	}
 	else {//로그인 성공시 
 		HttpSession session=request.getSession();
 		session.setAttribute("id", id);
+		fw.setPath("index.jsp");
+		fw.setRedirect(false);
+		System.out.println("로그인 성공");
 	}
-	fw.setPath("index.jsp");
-	fw.setRedirect(false);
+	
+	
 	return fw;
 }
 }

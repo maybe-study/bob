@@ -27,9 +27,6 @@ public class MenuDao {
 			pstmt.setNString(4, bob.getExplanation());
 			pstmt.setNString(5, bob.getKind());
 			
-			
-			
-			
 			int result = pstmt.executeUpdate();
 			if(result!=0) { //작업 성공
 				System.out.println("상품등록 성공");
