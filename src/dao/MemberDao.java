@@ -22,7 +22,7 @@ public class MemberDao {
 		JdbcUtil.close(rs, pstmt, con);
 	}
 	public boolean memberJoin(Member mb) {
-		String sql="INSERT INTO buyer VALUES(?,?,?,?,?,?)";
+		String sql="INSERT INTO \"buyer\" VALUES(?,?,?,?,?,?)";
 		int result=0;
 		try {
 			pstmt=con.prepareStatement(sql);//1번만 파싱

@@ -24,15 +24,23 @@ public class MemberMM {
   
   public Forward joinfrm() {
 	  Member mb=new Member();
-	  mb.setId(request.getParameter("id"));
+	  mb.setId(request.getParameter("buyerid"));
 	  mb.setPw(request.getParameter("pw"));
-	  mb.setPhone(request.getParameter("phone"));
-	  mb.setEmail(request.getParameter("email"));
+	  //mb.setPhone(request.getParameter("phone"));
+	  String phone=request.getParameter("phone");
+	  String phone1=request.getParameter("phone1");
+	  String phone2=request.getParameter("phone2");
+	  String p= String.valueOf(phone+phone1+phone2);
+	  mb.setPhone(p);
+	  //mb.setEmail(request.getParameter("email"));
+	  String email=request.getParameter("email");
+	  String email1=request.getParameter("email1");
+	  String e= String.valueOf(email+"@"+email1);
+	  mb.setEmail(e);
 	  mb.setName(request.getParameter("name"));
 	  String year=request.getParameter("year");
 	  String birth=request.getParameter("birth");
 	  String day=request.getParameter("day");
-	  System.out.println(year+birth+day);
 	  Date d = Date.valueOf(year+"-"+birth+"-"+day);
 	  mb.setBuybirth(d);
 	  
@@ -55,7 +63,7 @@ public class MemberMM {
 public Forward loginfrm() {
 	Forward fw=new Forward();
 	Member mb=new Member();
-	String id=request.getParameter("id");
+	String id=request.getParameter("buyerid");
 	String pw=request.getParameter("pw");
 	MemberDao mDao=new MemberDao();
 	int result=mDao.login(id,pw);

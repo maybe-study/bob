@@ -78,6 +78,9 @@ display:inline-block;
 </tr>
 <img src="./img/delicious.PNG" alt="delicious" id="img2" />
 </table>
+<div>
+<span>${msgAccess }</span>
+</div>
 </form>
 </div>
 <div class="joindiv">

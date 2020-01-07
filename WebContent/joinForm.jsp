@@ -12,8 +12,9 @@
 </head>
 <body>
 	<h1>회원가입 페이지</h1>
+	<form name="joinForm" action="joinfrm">
 		<tr>
-			<td>이름:<input id="name" type="text" placeholder="이름" class="txt" />
+			<td>이름:<input id="name" name="name" type="text" placeholder="이름" class="txt" />
 			</td>
 			<br>
 		</tr>
@@ -124,8 +125,8 @@
 			<br>
 		</tr>
 		<tr>
-			<td>이메일:<input id="email" type="text" placeholder="이메일"
-				class="txt" />@ <input type="text" name="str_email02"
+			<td>이메일:<input id="email" name="email" type="text" placeholder="이메일"
+				class="txt" />@ <input type="text" name="email1"
 				id="str_email02" disabled value="선택하세요"> <select
 				name="email1" id="email1">
 					<option value="0">선택하세요</option>
@@ -137,12 +138,12 @@
 			</select>
 			</td>
 			<br> 아이디:
-			<input id="id" type="text" placeholder="아이디" class="txt" />
-			<button id=check>중복확인</button>
+			<input id="id" name="buyerid" type="text" placeholder="아이디" class="txt" />
+			<input type="button" onclick="checkbtn" value="중복확인" />
 			<br> 비밀번호:
-			<input id="pw" type="password" placeholder="비밀번호" class="txt" />
+			<input id="pw" name="pw" type="password" placeholder="비밀번호" class="txt" />
 			<br> 비밀번호확인:
-			<input id="pw1" type="password" placeholder="비밀번호확인" class="txt" />
+			<input id="pw1" name="pw1" type="password" placeholder="비밀번호확인" class="txt" />
 			<br>
 		</tr>
 		<div id="pwdiv"></div>
@@ -155,19 +156,18 @@
 					<option value="018">018</option>
 					<option value="019">019</option>
 			</select></td>
-			<td>-<input type="text" class="txt" />-<input type="txt"
-				class="txt">
+			<td>-<input type="text" name="phone1" class="txt" />-<input type="txt"
+				 name="phone2" class="txt">
 			</td>
 			<br>
 		</tr>
-		<form name="joinForm" action="joinfrm">
 		<tr>
 		    <td>
 				<button>회원가입하기</button>
 			</td>
 			
 			<td>
-				<input type="button" value="회원가입취소"></button>
+				<input type="button" onclick="cancel" value="회원가입취소"></button>
 			</td>
 		</tr>
 	</form>
