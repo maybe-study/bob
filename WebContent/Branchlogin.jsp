@@ -26,7 +26,7 @@
 }
 .textdiv{
 padding:50px;
-background-color: #E1E1E1;
+background-color: #FAFAFA;
 width:300px;
 height:60px;
 }

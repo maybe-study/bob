@@ -18,6 +18,31 @@ background-color: #FAFAFA;
 width:600px;
 height:200px;
 }
+.joindiv{
+margin:20px;
+background-color: #FAFAFA;
+width:600px;
+height:70px;
+}
+#joinbtn{
+position:relative;
+left: 340px;
+background-color:#FFAD07;
+display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+}
+.joinbtn:hover {
+	background-color:#ffcb0e;
+}
+.joinbtn:active {
+	position:relative;
+	top:1px;
+}
 .loginbtn {
 	background-color:#FFAD07;
 	display:inline-block;
@@ -54,11 +79,13 @@ height:200px;
 </table>
 
 </div>
-<div>
+<div class="joindiv">
 <table>
 <tr>
+<td><h3>회원이 아니신가요?</h3> </td>
+
 <td>
-<a href="joinForm.jsp"><button>회원가입</button></a>
+<a href="joinForm.jsp"><button id="joinbtn" class="joinbtn">회원가입</button></a>
 </td>
 </tr>
 </table>
