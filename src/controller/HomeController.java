@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
-import survice.MemberMM;
+import service.MemberMM;
 
 @WebServlet({ "/admin", "/delbranch", "/addbranch", "/allrevenue", "/delmenu", "/addmenu", "/branchlogin", "/menu",
 		"/joinfrm", "/login", "/main", "/order" })
