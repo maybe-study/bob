@@ -26,7 +26,7 @@ public class MemberDao {
 		int result=0;
 		try {
 			pstmt=con.prepareStatement(sql);//1번만 파싱
-			pstmt.setNString(1, mb.getId());
+			pstmt.setNString(1, mb.getId()); //1234
 			pstmt.setNString(2, mb.getPw());
 			pstmt.setNString(3, mb.getPhone());
 			pstmt.setNString(4, mb.getEmail());
