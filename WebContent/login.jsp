@@ -84,16 +84,14 @@ display:inline-block;
 </form>
 </div>
 <div class="joindiv">
-<form action="joinfrm" name="joinfrm" method="post">
 <table>
 <tr>
 <td><h3>회원이 아니신가요?</h3> </td>
 <td>
-<a href="joinForm.jsp"></a><button class="joinbtn">회원가입</button>
+<a href="joinForm.jsp"><button class="joinbtn">회원가입</button></a>
 </td>
 </tr>
 </table>
-</form>
 </div>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -73,7 +75,17 @@ public class HomeController extends HttpServlet {
 
 			break;
 		}
+		if(fw!=null) {
+			if(fw.isRedirect()) {
+				response.sendRedirect(fw.getPath());
+			}
+			else {
+				RequestDispatcher dis=request.getRequestDispatcher(fw.getPath());
+				dis.forward(request, response);
+			}
+		}
 	}
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
