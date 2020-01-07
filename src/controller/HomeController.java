@@ -14,7 +14,8 @@ public class HomeController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String cmd=request.getServletPath();
 		switch(cmd) {
-		case "/joinfrm":
+		
+		case "/joinfrm":	//회원가입
 			break;
 		case "/login":
 			break;

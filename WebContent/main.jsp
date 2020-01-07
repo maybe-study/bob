@@ -15,8 +15,6 @@
 		<img alt="img" src="./img/img1.PNG" class="bobbugers" style="top:0"><br>
 		<img alt="img" src="./img/img2.PNG" class="bobbugers" style="top:800px"><br>
 		<img alt="img" src="./img/img3.PNG" class="bobbugers" style="top:1600px"><br>
-
-		
 		
 </body>
 </html>
