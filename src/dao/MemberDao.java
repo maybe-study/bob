@@ -43,40 +43,25 @@ public class MemberDao {
 		} 
 		return false;
 	}
-	public boolean access(HashMap<String, String> hMap) {
-		String sql="SELECT * FROM MEMBER WHERE ID=?";
+	public int login(String id, String pw) {
+		String sql="SELECT * FROM BUYER WHERE ID=?";
+		int result=-1;
 		try {
 			pstmt=con.prepareStatement(sql);
-			pstmt.setNString(1, hMap.get("id"));
+			pstmt.setNString(1, id);
 			rs=pstmt.executeQuery();
-			if(rs.next()) { //아이디가 존재하면
-				if(rs.getNString("PW").equals(hMap.get("pw"))){
-					//비번 일치
-					return true; //성공
-				}
+			if(rs.next()) {
+				if(rs.getNString("PW").equals(pw))
+					result=1; //모두일치
+				else
+					result=0;//id는 일치하지만 pw가 불일치
+			}else
+				result=-1;//id 불일치
+			}catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("로그인 실패");
 			}
-		} catch (SQLException e) {
-			System.out.println("로그인 예외");
-			e.printStackTrace();
-		}
-		return false; //실패
-	}
-	public List<String> memberList() {
-		List<String> mList=null;
-		String sql="SELECT ID FROM MEMBER"; //
-		try {
-			pstmt=con.prepareStatement(sql);
-			rs=pstmt.executeQuery();
-			mList=new ArrayList<String>();
-			while(rs.next()) {
-				mList.add(rs.getNString("ID"));
-			}
-			return mList;  //성공
-		} catch (SQLException e) {
-			System.out.println("list 예외");
-			e.printStackTrace();
-		}
-		return null;  //실패
+		return result;
 	}
 }//Dao End
 
