@@ -50,5 +50,28 @@ public class MemberMM {
 	  }
 	  return fw;
   } //회원가입 끝
+
+public Forward login() {
+	Forward fw=new Forward();
+	Member mb=new Member();
+	String id=request.getParameter("id");
+	String pw=request.getParameter("pw");
+	MemberDao mDao=new MemberDao();
+	int result=mDao.login(id,pw);
+	mDao.close();
+	if(result==-1) {
+		request.setAttribute("msgAccess", "id존재하지 않아요!");
+	}
+	else if(result==0){
+		request.setAttribute("msgAccess", "pw가 틀립니다.");
+	}
+	else {//로그인 성공시 
+		HttpSession session=request.getSession();
+		session.setAttribute("id", id);
+	}
+	fw.setPath("main.jsp");
+	fw.setRedirect(false);
+	return fw;
+}
 }
 
