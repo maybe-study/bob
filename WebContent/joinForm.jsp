@@ -148,7 +148,7 @@
 		</tr>
 		<div id="pwdiv"></div>
 		<tr>
-			<td>전화번호<select name="year" id="year" class="foot1">
+			<td>전화번호<select name="phone" id="phone" class="foot1">
 					<option value="010">010</option>
 					<option value="011">011</option>
 					<option value="016">016</option>
@@ -162,13 +162,12 @@
 			<br>
 		</tr>
 		<tr>
-		<form action="joinfrm" name="joinfrm" method="post">
-			<td>
+		    <td>
 				<button>회원가입하기</button>
 			</td>
-			</form>
+			
 			<td>
-				<button>회원가입취소</button>
+				<input type="button" value="회원가입취소"></button>
 			</td>
 		</tr>
 	</form>

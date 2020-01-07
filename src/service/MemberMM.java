@@ -29,10 +29,11 @@ public class MemberMM {
 	  mb.setPhone(request.getParameter("phone"));
 	  mb.setEmail(request.getParameter("email"));
 	  mb.setName(request.getParameter("name"));
-	  String year=request.getParameter("year"+"-");
-	  String birth=request.getParameter("birth"+"-");
+	  String year=request.getParameter("year");
+	  String birth=request.getParameter("birth");
 	  String day=request.getParameter("day");
-	  Date d = Date.valueOf(year+birth+day);
+	  System.out.println(year+birth+day);
+	  Date d = Date.valueOf(year+"-"+birth+"-"+day);
 	  mb.setBuybirth(d);
 	  
 	  MemberDao mDao=new MemberDao();
