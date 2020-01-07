@@ -1,10 +1,15 @@
 package survice;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Forward;
+import bean.Member;
+import dao.MemberDao;
 
 public class MemberMM {
   HttpServletRequest request;
@@ -18,7 +23,32 @@ public class MemberMM {
   }
   
   public Forward joinfrm() {
-	  String id=(request.getParameter("id"));
-  }
+	  Member mb=new Member();
+	  mb.setId(request.getParameter("id"));
+	  mb.setPw(request.getParameter("pw"));
+	  mb.setPhone(request.getParameter("phone"));
+	  mb.setEmail(request.getParameter("email"));
+	  mb.setName(request.getParameter("name"));
+	  String year=request.getParameter("year"+"-");
+	  String birth=request.getParameter("birth"+"-");
+	  String day=request.getParameter("day");
+	  Date d = Date.valueOf(year+birth+day);
+	  mb.setBuybirth(d);
+	  
+	  MemberDao mDao=new MemberDao();
+	  boolean result=mDao.memberJoin(mb);
+	  mDao.close();
+	  
+	  Forward fw=new Forward();
+	  if(result) {
+		  fw.setPath("login.jsp");
+		  fw.setRedirect(true);
+	  }else {
+		  request.setAttribute("msg","회원가입실패");
+		  fw.setPath("joinForm.jsp");
+		  fw.setRedirect(false);
+	  }
+	  return fw;
+  } //회원가입 끝
 }
 

@@ -29,6 +29,9 @@ public class MemberDao {
 			pstmt.setNString(1, mb.getId());
 			pstmt.setNString(2, mb.getPw());
 			pstmt.setNString(3, mb.getPhone());
+			pstmt.setNString(4, mb.getEmail());
+			pstmt.setNString(5, mb.getName());
+			pstmt.setDate(6, mb.getBuybirth());
 			
 			result=pstmt.executeUpdate();
 			if(result!=0)
