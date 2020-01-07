@@ -24,7 +24,7 @@ background-color: #FAFAFA;
 width:600px;
 height:70px;
 }
-#joinbtn{
+.joinbtn{
 position:relative;
 left: 340px;
 background-color:#FFAD07;
@@ -67,7 +67,7 @@ display:inline-block;
 <h1>로그인 </h1>
 <div class="textdiv">
 <img src="./img/welcome.png" alt="welcome" id="img1"/>
-<form action="login" name="login" method="post">
+<form action="loginfrm" name="loginfrm" method="post">
 <table>
 <tr>
 <td><input type="text" placeholder="아이디" /> </td>
@@ -81,15 +81,16 @@ display:inline-block;
 </form>
 </div>
 <div class="joindiv">
+<form action="joinfrm" name="joinfrm" method="post">
 <table>
 <tr>
 <td><h3>회원이 아니신가요?</h3> </td>
-
 <td>
-<a href="joinForm.jsp"><button id="joinbtn" class="joinbtn">회원가입</button></a>
+<button class="joinbtn">회원가입</button>
 </td>
 </tr>
 </table>
+</form>
 </div>
 </body>
 </html>

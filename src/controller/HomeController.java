@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Forward;
+import bean.Member;
+import service.MemberMM;
+
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/addmenufrm",
 	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm"})
 public class HomeController extends HttpServlet {
@@ -16,7 +20,11 @@ public class HomeController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String cmd=request.getServletPath();
+		Forward fw=null;
+		MemberMM mm=new MemberMM(request, response);
+		
 		switch(cmd) {
+		
 		case "/admin":	//관리자 페이지
 
 			break;
@@ -54,11 +62,11 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/joinfrm":	   //회원가입
-
+			
 			break;
 
 		case "/loginfrm":	   //로그인
-
+			fw=mm.login();
 			break;
 
 		case "/main":		  //메인 페이지
