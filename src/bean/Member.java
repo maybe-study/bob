@@ -1,6 +1,6 @@
 package bean;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Member {
 	private String buyerid;
@@ -40,6 +40,13 @@ public class Member {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public Date getBuybirth() {
+		return buybirth;
+	}
+	public void setBuybirth(Date buybirth) {
+		this.buybirth = buybirth;
+	}
+
 	
 
 }
