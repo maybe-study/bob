@@ -100,7 +100,7 @@
             $("<input>").attr("value","0").attr("class","cnt").attr("id","bCnt"+idx).appendTo($div);
             $("<button>").text("▶").appendTo($div).click(function(){
             	var c=$("#"+bCnt).val()*1+1;
-            	$("#"+bCnt).val(++c);
+            	$("#"+bCnt).val(c);
             });
             return $div;
           }
