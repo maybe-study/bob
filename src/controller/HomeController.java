@@ -9,8 +9,19 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet({"/joinfrm","/login","/main","/order"})
 public class HomeController extends HttpServlet {
-	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
-     
+	private static final long serialVersionUID = 1L;
+	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String cmd=request.getServletPath();
+		switch(cmd) {
+		case "/joinfrm":
+			break;
+		case "/login":
+			break;
+		case "/main":
+			break;
+			
+		}
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
