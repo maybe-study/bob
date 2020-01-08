@@ -2,6 +2,7 @@ package service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -96,6 +97,33 @@ public class MenuMM {
 		}
 		return fw;
 
+	}
+
+	public Forward getMenuList(String kind) {
+		Forward fw=new Forward();
+		MenuDao mnDao=new MenuDao();
+		List<Bobburger> mnList=null;
+		mnList=mnDao.getMenuList(kind);
+		
+		if(mnList!=null&&mnList.size()!=0) {
+			String mnListHtml=makeHtml_mnList(mnList);
+			request.setAttribute("mnList", mnListHtml);
+		}
+		fw.setPath("./delMenu.jsp");
+		fw.setRedirect(false);
+		return fw;
+	}
+
+	private String makeHtml_mnList(List<Bobburger> mnList) {
+		StringBuilder sb=new StringBuilder();
+		for(int i=0;i<mnList.size();i++) {
+			Bobburger bob=mnList.get(i);
+			sb.append("<div class='menu'>");
+			sb.append("<img src='upload/"+bob.getPic()'>");
+			sb.append("</div>");
+			
+		}
+		return sb.toString();
 	}
 	
 }
