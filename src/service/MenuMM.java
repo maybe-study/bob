@@ -23,7 +23,7 @@ public class MenuMM {
 		  this.request=request;
 		  this.response=response;
 	}
-	
+
 	public Forward insertproduct() {
 		Forward fw = new Forward();
 //		if(request.getSession().getAttribute("id")==null) {
@@ -57,7 +57,7 @@ public class MenuMM {
 			bob.setExplanation(explanation);
 			bob.setKind(kind);
 			bob.setPic(pic);
-			
+
 			if(bobDao.insertProduct(bob)) {
 				System.out.println("상품등록 성공");
 			}else{
@@ -69,7 +69,7 @@ public class MenuMM {
 			//page속성을 session영역세 저장하고 true로 설정
 			fw.setRedirect(true);
 			bobDao.close();
-			
+
 			/*
 			if (pDao.insertProduct(product)) {
 
@@ -102,12 +102,12 @@ public class MenuMM {
 	public Forward getItemList(String kind) {
 		Forward fw = new Forward();
 		//session에서 id 넘어오는지 체크  나중에 추가
-		
+
 		MenuDao pDao = new MenuDao();
 		List<Bobburger> pList=null;
 		pList=pDao.getItemList(kind);
 		pDao.close();
-		
+
 		if(pList!=null && pList.size()!=0) {
 			String pListHtml = makeHtml_pList(pList);
 			request.setAttribute("pListHtml", pListHtml);
@@ -126,11 +126,35 @@ public class MenuMM {
 			sb.append(p.getBobname()+"<br>");
 			sb.append(p.getCost()+"원");
 			sb.append("</div>");
-			
-			
+
+
 		}
 		System.out.println(sb);
+	public Forward getMenuList(String kind) {
+		Forward fw=new Forward();
+		MenuDao mnDao=new MenuDao();
+		List<Bobburger> mnList=null;
+		mnList=mnDao.getMenuList(kind);
+
+		if(mnList!=null&&mnList.size()!=0) {
+			String mnListHtml=makeHtml_mnList(mnList);
+			request.setAttribute("mnList", mnListHtml);
+		}
+		fw.setPath("./delMenu.jsp");
+		fw.setRedirect(false);
+		return fw;
+	}
+
+	private String makeHtml_mnList(List<Bobburger> mnList) {
+		StringBuilder sb=new StringBuilder();
+		for(int i=0;i<mnList.size();i++) {
+			Bobburger bob=mnList.get(i);
+			sb.append("<div class='menu'>");
+			sb.append("<img src='upload/"+bob.getPic()'>");
+			sb.append("</div>");
+
+		}
 		return sb.toString();
 	}
-	
+
 }

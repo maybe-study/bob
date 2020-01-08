@@ -14,7 +14,7 @@ import bean.Member;
 import service.MemberMM;
 import service.MenuMM;
 
-@WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/addmenufrm",
+@WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/basic","/meat","/fri","/duck","/allrevenue","/delmenufrm","/addmenufrm",
 	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -45,16 +45,29 @@ public class HomeController extends HttpServlet {
 
 			break;
 
-		case "/delmenufrm":	//메뉴 삭제 페이지
-
+		case "/basic":	//메뉴 삭제 페이지
+			fw=menu.getMenuList("basic");
 			break;
+		
+		case "/meat":	//메뉴 삭제 페이지
+			fw=menu.getMenuList("meat");
+			break;
+			
+		case "/fri":	//메뉴 삭제 페이지
+			fw=menu.getMenuList("fri");
+			break;
+			
+		case "/duck":	//메뉴 삭제 페이지
+			fw=menu.getMenuList("duck");
+			break;
+			
 
 		case "/addmenufrm": //메뉴 추가 페이지
 
 			break;
 
 		case "/branchloginfrm": //지사 로그인 페이지
-
+            fw=mm.branchloginfrm();
 			break;
 
 		case "/orderfrm":		//주문 페이지
