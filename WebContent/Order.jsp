@@ -51,17 +51,41 @@
 
       </head>
       <body>
-      <!-- Dropdown Button -->
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </div>
+      <!-- Nav Tabs -->
+         <ul class="nav nav-tabs">
+             <li class="nav-item">
+                 <a class="nav-link active" href="#tab1" data-toggle="tab">일반</a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="#tab2" data-toggle="tab">고기</a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="#tab3" data-toggle="tab">튀김</a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="#tab4" data-toggle="tab">떡갈비</a>
+             </li>
+             <!-- 
+             <li class="nav-item">
+                 <a class="nav-link disabled" href="#tab4" data-toggle="tab">Disabled</a>
+             </li>
+              -->
+         </ul>
+         <div class="tab-content px-1 pt-2">
+             <div class="tab-pane active" id="tab1">
+                 ${pListHtmln}
+             </div>
+             <div class="tab-pane" id="tab2">
+             	${pListHtmlm}
+             </div>
+             <div class="tab-pane" id="tab3">
+             	${pListHtmlt}
+             </div>
+             <div class="tab-pane" id="tab4">
+             	${pListHtmltt}
+             </div>
+         </div>
+                                    
 	     
         <h1>상품 담기</h1><br>
         <div id="showList"></div>
