@@ -86,6 +86,11 @@ public class MenuDao {
 			while(rs.next()) {
 				Bobburger bob=new Bobburger();
 				bob.setPic(rs.getNString("pic"));
+				bob.setBobid(rs.getInt("bobid"));
+				bob.setBobname(rs.getNString("bobname"));
+				bob.setCost(rs.getInt("cost"));
+				bob.setKind(rs.getNString("kind"));
+				bob.setExplanation(rs.getNString("explanation"));
 				
 				mnList.add(bob);		
 				}

@@ -2,6 +2,8 @@ package service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -164,19 +166,30 @@ public class MenuMM {
 		 fw.setRedirect(false);
 		 return fw;
 	}
-
+	
+	//삭제 메뉴 리스트를 만드는 함수
 	private String makeHtml_mnList(List<Bobburger> mnList) {
 		StringBuilder sb=new StringBuilder();
 		sb.append("<table>");
 		for(int i=0;i<mnList.size();i++) {
 			Bobburger bob=mnList.get(i);
 			sb.append("<tr>");
-			sb.append("<td><input type='checkbox'></td>");
+			sb.append("<td><input type='checkbox' name='checkedMenu' value='"+bob.getBobid()+"'></td>");
 			sb.append("<td><img src='upload/" + bob.getPic() + "' width='40%'></td>");
 			sb.append("</tr>");
 		}
 		sb.append("</table>");
 		return sb.toString();
+	}
+
+	public Forward delmenu() {
+		//체크된 메뉴 리스트
+		//ArrayList delList = new ArrayList(Arrays.asList(request.getParameterValues("checkedMenu")));
+		String[] checkedMenu=request.getParameterValues("checkedMenu");
+		System.out.println("내가 태스트하낟다아아앙라아아앙ㄴㄹ머ㅣ마널;ㅣㅓ댜ㅓ;미ㅏㅓㅏㄹ");
+		System.out.println(Arrays.toString(checkedMenu));
+		
+		return null;
 	}
 
 }

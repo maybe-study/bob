@@ -30,7 +30,7 @@ public class HomeController extends HttpServlet {
 		switch(cmd) {
 
 		case "/admin":	//관리자 페이지
-
+			
 			break;
 
 		case "/delbranchfrm":	//브런치삭제 페이지
@@ -44,13 +44,11 @@ public class HomeController extends HttpServlet {
 		case "/allrevenue": // 매출 페이지
 
 			break;
-
-
 		case "/delmenufrm":
 			fw=menu.delmenuList();
 			break;
 		case "/delmenu":
-//			fw=menu.delenu();
+			fw=menu.delmenu();
 			break;
 		case "/addmenufrm": //메뉴 추가 페이지
 

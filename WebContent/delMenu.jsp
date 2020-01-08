@@ -15,6 +15,7 @@
 </style>
 <body>
 <h1>메뉴 삭제</h1>
+<form action="delmenu" method="post">
 <ul class="nav nav-tabs">
              <li class="menu-kind">
                  <a class="nav-link active" href="#tab1" data-toggle="tab">일반</a>
@@ -46,7 +47,8 @@
              </div>
          </div>
                    
-    <button><a href="delmenu" ">삭제하기</a></button>
+    <button>삭제하기</button>
+    </form>
 </body>
 
 
