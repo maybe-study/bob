@@ -42,7 +42,7 @@ height:60px;
 <td rowspan="2"><button class="loginbtn">로그인</button></td>
 </tr>
 <tr>
-<td><input type="text"  name="branchpw" placeholder="비밀번호" /> </td>
+<td><input type="password"  name="branchpw" placeholder="비밀번호" /> </td>
 </tr>
 </table>
 </form>
