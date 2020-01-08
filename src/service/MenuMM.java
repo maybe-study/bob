@@ -90,20 +90,33 @@ public class MenuMM {
 
 	}
 
-	public Forward getItemList(String kind) {
+	public Forward getItemList() {
 		Forward fw = new Forward();
 		// session에서 id 넘어오는지 체크 나중에 추가
 
 		MenuDao pDao = new MenuDao();
-		List<Bobburger> pList = null;
-		pList = pDao.getItemList(kind);
+		
+		List<Bobburger> pListn = pDao.getItemList("일반");
+		List<Bobburger> pListm = pDao.getItemList("고기");
+		List<Bobburger> pListt = pDao.getItemList("튀김");
+		List<Bobburger> pListtt = pDao.getItemList("떡갈비");
+		
 		pDao.close();
 
-		if (pList != null && pList.size() != 0) {
-			String pListHtml = makeHtml_pList(pList);
-			request.setAttribute("pListHtml", pListHtml);
-		}
-		fw.setPath("order.jsp");
+		
+		String pListHtmln = makeHtml_pList(pListn);
+		String pListHtmlm = makeHtml_pList(pListm);
+		String pListHtmlt = makeHtml_pList(pListt);
+		String pListHtmlntt = makeHtml_pList(pListtt);
+		
+		
+		
+		request.setAttribute("pListHtmln", pListHtmln);
+		request.setAttribute("pListHtmlm", pListHtmlm);
+		request.setAttribute("pListHtmlt", pListHtmlt);
+		request.setAttribute("pListHtmltt", pListHtmlntt);
+		
+		fw.setPath("Order.jsp");
 		fw.setRedirect(false);
 		return fw;
 	}

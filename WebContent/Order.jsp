@@ -54,26 +54,36 @@
       <!-- Nav Tabs -->
          <ul class="nav nav-tabs">
              <li class="nav-item">
-                 <a class="nav-link active" href="#tab1" data-toggle="tab">Tab</a>
+                 <a class="nav-link active" href="#tab1" data-toggle="tab">일반</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="#tab2" data-toggle="tab">Tab</a>
+                 <a class="nav-link" href="#tab2" data-toggle="tab">고기</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="#tab3" data-toggle="tab">Tab</a>
+                 <a class="nav-link" href="#tab3" data-toggle="tab">튀김</a>
              </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="#tab4" data-toggle="tab">떡갈비</a>
+             </li>
+             <!-- 
              <li class="nav-item">
                  <a class="nav-link disabled" href="#tab4" data-toggle="tab">Disabled</a>
              </li>
+              -->
          </ul>
          <div class="tab-content px-1 pt-2">
              <div class="tab-pane active" id="tab1">
-                 <p>
-                     Welcome to my custom Bootstrap 4 test page that is a simple way to see various Bootstrap component examples. Customize Bootstrap with <a href="https://themestr.app">Themestr.app</a>.
-                 </p>
+                 ${pListHtmln}
              </div>
-             <div class="tab-pane" id="tab2">2. Put a little content in your pane.</div>
-             <div class="tab-pane" id="tab3">3. Put some more content in your pane here.</div>
+             <div class="tab-pane" id="tab2">
+             	${pListHtmlm}
+             </div>
+             <div class="tab-pane" id="tab3">
+             	${pListHtmlt}
+             </div>
+             <div class="tab-pane" id="tab4">
+             	${pListHtmltt}
+             </div>
          </div>
                                     
 	     

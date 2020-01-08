@@ -46,11 +46,12 @@ public class MenuDao {
 
 	public List<Bobburger> getItemList(String kind) {
 		String sql = "SELECT * FROM \"bobburger\" WHERE \"kind\"=?";
+		List<Bobburger> pList=null;
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setNString(1, kind);
 			rs = pstmt.executeQuery();
-			List<Bobburger> pList = new ArrayList<Bobburger>();
+			pList = new ArrayList<Bobburger>();
 			while(rs.next()) {
 				Bobburger product = new Bobburger();
 				product.setBobid(rs.getInt("bobid"));

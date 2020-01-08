@@ -45,21 +45,21 @@ public class HomeController extends HttpServlet {
 
 			break;
 
-		case "/basic":	//메뉴 삭제 페이지
-			fw=menu.getMenuList("basic");
-			break;
-		
-		case "/meat":	//메뉴 삭제 페이지
-			fw=menu.getMenuList("meat");
-			break;
-			
-		case "/fri":	//메뉴 삭제 페이지
-			fw=menu.getMenuList("fri");
-			break;
-			
-		case "/duck":	//메뉴 삭제 페이지
-			fw=menu.getMenuList("duck");
-			break;
+//		case "/basic":	//메뉴 삭제 페이지
+//			fw=menu.getMenuList("basic");
+//			break;
+//		
+//		case "/meat":	//메뉴 삭제 페이지
+//			fw=menu.getMenuList("meat");
+//			break;
+//			
+//		case "/fri":	//메뉴 삭제 페이지
+//			fw=menu.getMenuList("fri");
+//			break;
+//			
+//		case "/duck":	//메뉴 삭제 페이지
+//			fw=menu.getMenuList("duck");
+//			break;
 			
 
 		case "/addmenufrm": //메뉴 추가 페이지
@@ -71,7 +71,7 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/orderfrm":		//주문 페이지
-			fw=menu.getItemList("일반");
+			fw=menu.getItemList();
 			break;
 
 		case "/menu":		   //메뉴 페이지
