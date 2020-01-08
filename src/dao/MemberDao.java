@@ -73,8 +73,10 @@ public class MemberDao {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setNString(1, id);
 			rs=pstmt.executeQuery();//db에게 물어보기
+			System.out.println("행 개수:"+rs.getRow());
 			if(rs.next()){
-				if(rs.getNString("PW").equals(pw))
+				System.out.println("아이디 확인");
+				if(rs.getNString("branchpw").equals(pw))
 				   result=1;
 				else
 				   result=0;
