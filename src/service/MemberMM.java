@@ -86,6 +86,41 @@ public Forward loginfrm() {
 	
 	
 	return fw;
+}//일반 회원
+
+
+
+public Forward branchloginfrm() {
+	Forward fw=new Forward();
+	fw.setPath("Branchlogin.jsp");
+	fw.setRedirect(false);
+	Member mb= new Member();
+	String id=request.getParameter("branchid");
+	String pw=request.getParameter("branchpw");
+	MemberDao mDao=new MemberDao();
+	int result=mDao.branchloginfrm(id, pw);
+	mDao.close();
+	if(result==-1) {
+		
+		System.out.println("아이디가 존재하지 않습니다.");
+	}
+	else if(result==0) {
+		System.out.println("비밀번호가 다릅니다.");
+	}
+	else {
+		HttpSession session=request.getSession();
+		session.setAttribute("id", id);
+		fw.setPath("index.jsp");
+		fw.setRedirect(false);
+		System.out.println("로그인 성공");
+	}
+	
+	
+	return fw;
 }
+	
 }
+
+
+
 

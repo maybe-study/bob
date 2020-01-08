@@ -64,6 +64,28 @@ public class MemberDao {
 			}
 		return result;
 	}
+	
+	public int branchloginfrm(String id, String pw) {
+		String sql="SELECT * FROM \"branch\" WHERE \"branchid\"=?";
+		System.out.println("id 확인: "+id+",pw 확인:"+pw);
+		int result=-1;
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, id);
+			rs=pstmt.executeQuery();//db에게 물어보기
+			if(rs.next()){
+				if(rs.getNString("PW").equals(pw))
+				   result=1;
+				else
+				   result=0;
+			}else
+				result=-1;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("로그인 실패");
+		}
+		return result;
+	}
 }//Dao End
 
 
