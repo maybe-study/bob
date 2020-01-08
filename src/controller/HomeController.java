@@ -46,19 +46,19 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/basic":	//메뉴 삭제 페이지
-			fw=menu.getMenuList("basic");
+			fw=menu.delMenuList("basic");
 			break;
 		
 		case "/meat":	//메뉴 삭제 페이지
-			fw=menu.getMenuList("meat");
+			fw=menu.delMenuList("meat");
 			break;
 			
 		case "/fri":	//메뉴 삭제 페이지
-			fw=menu.getMenuList("fri");
+			fw=menu.delMenuList("fri");
 			break;
 			
 		case "/duck":	//메뉴 삭제 페이지
-			fw=menu.getMenuList("duck");
+			fw=menu.delMenuList("duck");
 			break;
 			
 

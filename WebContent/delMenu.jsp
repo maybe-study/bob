@@ -34,7 +34,7 @@ if(${page==null}){
 }
 
 function Aj(url,position){
-	$.ajax({
+	$.ajax({ 
 		url:url,
 		tyle:"get",
 		dataTyle:"html",
