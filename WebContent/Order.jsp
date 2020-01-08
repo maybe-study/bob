@@ -51,17 +51,31 @@
 
       </head>
       <body>
-      <!-- Dropdown Button -->
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </div>
+      <!-- Nav Tabs -->
+         <ul class="nav nav-tabs">
+             <li class="nav-item">
+                 <a class="nav-link active" href="#tab1" data-toggle="tab">Tab</a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="#tab2" data-toggle="tab">Tab</a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="#tab3" data-toggle="tab">Tab</a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link disabled" href="#tab4" data-toggle="tab">Disabled</a>
+             </li>
+         </ul>
+         <div class="tab-content px-1 pt-2">
+             <div class="tab-pane active" id="tab1">
+                 <p>
+                     Welcome to my custom Bootstrap 4 test page that is a simple way to see various Bootstrap component examples. Customize Bootstrap with <a href="https://themestr.app">Themestr.app</a>.
+                 </p>
+             </div>
+             <div class="tab-pane" id="tab2">2. Put a little content in your pane.</div>
+             <div class="tab-pane" id="tab3">3. Put some more content in your pane here.</div>
+         </div>
+                                    
 	     
         <h1>상품 담기</h1><br>
         <div id="showList"></div>

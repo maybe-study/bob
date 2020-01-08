@@ -43,8 +43,15 @@ float:none;
 margin:10px 0px;
 
 }
-#main{
+#header{
 	top:0px;
+	left:400px;
+	position:absolute;
+	display: inline-block;
+}
+#main{
+	top:100px;
+	left:400px;
 	position:absolute;
 	display: inline-block;
 }
@@ -70,7 +77,7 @@ margin:10px 0px;
 				</ul></li>
 		</ul>
 		<ul>
-			<li><a href="#">주문하기</a>
+			<li><a href="orderfrm">주문하기</a>
 				<ul>
 					<li><a href="#">주문내역</a></li>
 				</ul></li>
@@ -98,7 +105,7 @@ margin:10px 0px;
 		</ul>
 		</div>
 		</div>
-
+		<div id="header">로그인 여부 출력하기</div>
 		<div id="main" w3-include-html="main.jsp"></div>
 		<!--
 		<img alt="img" src="./img/img1.PNG" class="bobbugers"><br>
