@@ -74,17 +74,19 @@ public class MenuDao {
 
 
 
-	public java.util.List<Bobburger> getMenuList(String kind) {
+	
+	public List<Bobburger> delmenuList(String kind) {
 		String sql="SELECT * FROM \"bobburger\" WHERE \"kind\"=?";
+		List<Bobburger> mnList=null;
 		try {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setNString(1, kind);
 			rs=pstmt.executeQuery();
-			java.util.List<Bobburger> mnList=new ArrayList<Bobburger>();
+			mnList=new ArrayList<Bobburger>();
 			while(rs.next()) {
 				Bobburger bob=new Bobburger();
 				bob.setPic(rs.getNString("pic"));
-				bob.setBobname(rs.getNString("bobname"));
+				
 				mnList.add(bob);		
 				}
 			return mnList;
@@ -94,7 +96,5 @@ public class MenuDao {
 		}
 		return null;
 	}
-
-
-
 }
+
