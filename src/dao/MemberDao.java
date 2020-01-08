@@ -71,12 +71,14 @@ public class MemberDao {
 		int result=-1;
 		try {
 			pstmt=con.prepareStatement(sql);
-			pstmt.setNString(1, id);
+			pstmt.setNString(1,id);
 			rs=pstmt.executeQuery();//db에게 물어보기
 			if(rs.next()){
 				System.out.println("아이디 확인");
-				if(rs.getNString("branchpw").equals(pw))
+				if(rs.getNString("branchpw").equals(pw)) {
 				   result=1;
+				   
+				}
 				else
 				   result=0;
 			}else
