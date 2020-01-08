@@ -115,6 +115,7 @@ public class MenuMM {
 			Bobburger bob=mnList.get(i);
 			sb.append("<div class='menu'>");
 			sb.append(bob.getBobname());
+		}
 
 	private String makeHtml_pList(List<Bobburger> pList) {
 		StringBuilder sb = new StringBuilder();
