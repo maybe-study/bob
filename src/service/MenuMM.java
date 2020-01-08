@@ -2,6 +2,8 @@ package service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -121,34 +123,6 @@ public class MenuMM {
 		return fw;
 	}
 	
-	public Forward delMenuList(String kind) {
-		Forward fw = new Forward();
-		// session에서 id 넘어오는지 체크 나중에 추가
-
-		MenuDao pDao = new MenuDao();
-		List<Bobburger> pList = null;
-		pList = pDao.getItemList(kind);
-		pDao.close();
-
-		if (pList != null && pList.size() != 0) {
-			String pListHtml = makeHtml_pList(pList);
-			request.setAttribute("pListHtml", pListHtml);
-		}
-		fw.setPath("delMenu.jsp");
-		fw.setRedirect(false);
-		return fw;
-	}
-
-
-	private String makeHtml_mnList(List<Bobburger> mnList) {
-		StringBuilder sb=new StringBuilder();
-		for(int i=0;i<mnList.size();i++) {
-			Bobburger bob=mnList.get(i);
-			sb.append("<div class='menu'>");
-			sb.append(bob.getBobname());
-		}
-		return null;
-	}
 
 	private String makeHtml_pList(List<Bobburger> pList) {
 		StringBuilder sb = new StringBuilder();
@@ -166,6 +140,56 @@ public class MenuMM {
 		}
 		System.out.println(sb);
 		return sb.toString();
+	}
+
+	public Forward delmenuList() {
+		 Forward fw=new Forward();
+		 MenuDao mnDao=new MenuDao();
+		 
+		 List<Bobburger> mnListn=mnDao.delmenuList("일반");
+		 List<Bobburger> mnListm=mnDao.delmenuList("고기");
+		 List<Bobburger> mnListt=mnDao.delmenuList("튀김");
+		 List<Bobburger> mnListtt=mnDao.delmenuList("떡갈비");
+		 mnDao.close();
+		 
+		 String mnListHtmln = makeHtml_mnList(mnListn);
+	     String mnListHtmlm = makeHtml_mnList(mnListm);
+		 String mnListHtmlt = makeHtml_mnList(mnListt);
+		 String mnListHtmlntt = makeHtml_mnList(mnListtt);
+		
+		 request.setAttribute("mnListHtmln", mnListHtmln);
+		 request.setAttribute("mnListHtmlm", mnListHtmlm);
+		 request.setAttribute("mnListHtmlt", mnListHtmlt);
+		 request.setAttribute("mnListHtmltt", mnListHtmlntt);
+
+		 fw.setPath("delMenu.jsp");
+		 fw.setRedirect(false);
+		 return fw;
+	}
+	
+	//삭제 메뉴 리스트를 만드는 함수
+	private String makeHtml_mnList(List<Bobburger> mnList) {
+		StringBuilder sb=new StringBuilder();
+		sb.append("<table>");
+		for(int i=0;i<mnList.size();i++) {
+			Bobburger bob=mnList.get(i);
+			sb.append("<tr>");
+			sb.append("<td><input type='checkbox' name='checkedMenu' value='"+bob.getBobid()+"'></td>");
+			sb.append("<td><img src='upload/" + bob.getPic() + "' width='40%'></td>");
+			sb.append("</tr>");
+		}
+		sb.append("</table>");
+		return sb.toString();
+	}
+
+	public Forward delmenu() {
+		//체크된 메뉴 리스트
+		//ArrayList delList = new ArrayList(Arrays.asList(request.getParameterValues("checkedMenu")));
+		String[] checkedMenu=request.getParameterValues("checkedMenu");
+		System.out.println("내가 태스트하낟다아아앙라아아앙ㄴㄹ머ㅣ마널;ㅣㅓ댜ㅓ;미ㅏㅓㅏㄹ");
+		System.out.println(Arrays.toString(checkedMenu));
+		
+		return null;
 	}
 
 }
