@@ -15,6 +15,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import bean.Bobburger;
 import bean.Forward;
+import dao.MemberDao;
 import dao.MenuDao;
 
 public class MenuMM {
@@ -188,8 +189,16 @@ public class MenuMM {
 		String[] checkedMenu=request.getParameterValues("checkedMenu");
 		System.out.println("내가 태스트하낟다아아앙라아아앙ㄴㄹ머ㅣ마널;ㅣㅓ댜ㅓ;미ㅏㅓㅏㄹ");
 		System.out.println(Arrays.toString(checkedMenu));
+		MenuDao mnDao=new MenuDao(); 
+		Bobburger bob=new Bobburger();
+		for(int i=0;i<checkedMenu.length;i++) {
+			mnDao.menuDelete(Integer.parseInt(checkedMenu[i]));
+		}
 		
-		return null;
+		
+		mnDao.close();
+		return delmenuList();
+	
 	}
 
 }

@@ -101,5 +101,22 @@ public class MenuDao {
 		}
 		return null;
 	}
+	
+	public void menuDelete(int bobid) {
+	String sql="DELETE FROM \"bobburger\" WHERE \"bobid\"=?";
+	  try {
+		  pstmt=con.prepareStatement(sql);
+	      pstmt.setInt(1, bobid);
+	  int result=pstmt.executeUpdate();
+	  if(result!=0) {
+			System.out.println("삭제 성공");
+		}else {
+			System.out.println("삭제 실패");
+		}
+	  } catch (SQLException e) {
+			System.out.println("상품 목록 불러오기 오류");
+			e.printStackTrace();
+		}
+	}
 }
 
