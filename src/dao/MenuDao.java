@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import bean.Bobburger;
 
@@ -38,5 +40,31 @@ public class MenuDao {
 			e.printStackTrace();
 		} 
 		return false;  //상품 등록 실패
+	}
+	public List<Bobburger> getItemList(String kind) {
+		String sql = "SELECT * FROM \"bobburger\" WHERE \"kind\"=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setNString(1, kind);
+			rs = pstmt.executeQuery();
+			List<Bobburger> pList = new ArrayList<Bobburger>();
+			while(rs.next()) {
+				Bobburger product = new Bobburger();
+				product.setBobid(rs.getInt("bobid"));
+				product.setPic(rs.getNString("pic"));
+				product.setBobname(rs.getNString("bobname"));
+				product.setCost(rs.getInt("cost"));
+				product.setExplanation(rs.getNString("explanation"));
+				product.setKind(kind);
+				pList.add(product);
+			}
+			System.out.println("겟 완료");
+			return pList;
+		} catch (SQLException e) {
+			System.out.println("list예외발생");
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 }

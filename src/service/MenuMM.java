@@ -2,6 +2,7 @@ package service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -96,6 +97,40 @@ public class MenuMM {
 		}
 		return fw;
 
+	}
+
+	public Forward getItemList(String kind) {
+		Forward fw = new Forward();
+		//session에서 id 넘어오는지 체크  나중에 추가
+		
+		MenuDao pDao = new MenuDao();
+		List<Bobburger> pList=null;
+		pList=pDao.getItemList(kind);
+		pDao.close();
+		
+		if(pList!=null && pList.size()!=0) {
+			String pListHtml = makeHtml_pList(pList);
+			request.setAttribute("pListHtml", pListHtml);
+		}
+		fw.setPath("order.jsp");
+		fw.setRedirect(false);
+		return fw;
+	}
+	private String makeHtml_pList(List<Bobburger> pList) {
+		StringBuilder sb = new StringBuilder();
+		for(int i=0; i<pList.size();i++) {
+			Bobburger p=pList.get(i);
+			sb.append("<div id='list' onclick=\"detail('"+p.getBobid()+"')\">");
+			sb.append("<img src='upload/"+p.getPic()+"' width='40%'><br>");
+			//sb.append("<input id='test' name='"+p.getP_code()+"' type='button' value='장바구니담기'>");
+			sb.append(p.getBobname()+"<br>");
+			sb.append(p.getCost()+"원");
+			sb.append("</div>");
+			
+			
+		}
+		System.out.println(sb);
+		return sb.toString();
 	}
 	
 }
