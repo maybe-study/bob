@@ -119,7 +119,7 @@ public class MenuMM {
 		for(int i=0;i<mnList.size();i++) {
 			Bobburger bob=mnList.get(i);
 			sb.append("<div class='menu'>");
-			sb.append("<img src='upload/"+bob.getPic()'>");
+			sb.append(bob.getBobname());
 			sb.append("</div>");
 			
 		}

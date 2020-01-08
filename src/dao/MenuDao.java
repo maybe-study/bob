@@ -44,7 +44,7 @@ public class MenuDao {
 
 	
 	public java.util.List<Bobburger> getMenuList(String kind) {
-		String sql="SELECT * FROM \"bobburger\" WHERE 'KIND'=?";
+		String sql="SELECT * FROM \"bobburger\" WHERE \"kind\"=?";
 		try {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setNString(1, kind);
@@ -53,6 +53,7 @@ public class MenuDao {
 			while(rs.next()) {
 				Bobburger bob=new Bobburger();
 				bob.setPic(rs.getNString("pic"));
+				bob.setBobname(rs.getNString("bobname"));
 				mnList.add(bob);		
 				}
 			return mnList;
