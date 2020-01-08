@@ -35,15 +35,17 @@ height:60px;
 <body>
 <h1>지점 로그인 </h1>
 <div class="textdiv">
+<form action="branchloginfrm">
 <table>
 <tr>
-<td><input type="text" placeholder="아이디" /> </td>
+<td><input type="text" name="branchid" placeholder="아이디" /> </td>
 <td rowspan="2"><button class="loginbtn">로그인</button></td>
 </tr>
 <tr>
-<td><input type="text" placeholder="비밀번호" /> </td>
+<td><input type="password"  name="branchpw" placeholder="비밀번호" /> </td>
 </tr>
 </table>
+</form>
 </div>
 </body>
 </html>

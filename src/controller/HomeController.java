@@ -67,7 +67,7 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/branchloginfrm": //지사 로그인 페이지
-
+            fw=mm.branchloginfrm();
 			break;
 
 		case "/orderfrm":		//주문 페이지
