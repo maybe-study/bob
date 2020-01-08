@@ -26,9 +26,9 @@ public class HomeController extends HttpServlet {
 		Forward fw=null;
 		MemberMM mm=new MemberMM(request, response);
 		MenuMM menu=new MenuMM(request, response);
-		
+
 		switch(cmd) {
-		
+
 		case "/admin":	//관리자 페이지
 
 			break;
@@ -48,19 +48,19 @@ public class HomeController extends HttpServlet {
 //		case "/basic":	//메뉴 삭제 페이지
 //			fw=menu.getMenuList("basic");
 //			break;
-//		
+//
 //		case "/meat":	//메뉴 삭제 페이지
 //			fw=menu.getMenuList("meat");
 //			break;
-//			
+//
 //		case "/fri":	//메뉴 삭제 페이지
 //			fw=menu.getMenuList("fri");
 //			break;
-//			
+//
 //		case "/duck":	//메뉴 삭제 페이지
 //			fw=menu.getMenuList("duck");
 //			break;
-			
+
 
 		case "/addmenufrm": //메뉴 추가 페이지
 
@@ -87,12 +87,12 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/main":		  //메인 페이지
-			
+
 			break;
-			
+
 		case "/addmenu":
 			fw=menu.insertproduct();
-			
+
 			break;
 
 		}
@@ -100,14 +100,14 @@ public class HomeController extends HttpServlet {
 			if(fw.isRedirect()) {
 				response.sendRedirect(fw.getPath());
 			}
-		
+
 			else {
 				RequestDispatcher dis=request.getRequestDispatcher(fw.getPath());
 				dis.forward(request, response);
 			}
 		}
 	}
-	
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

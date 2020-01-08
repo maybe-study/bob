@@ -120,6 +120,24 @@ public class MenuMM {
 		fw.setRedirect(false);
 		return fw;
 	}
+	
+	public Forward delMenuList(String kind) {
+		Forward fw = new Forward();
+		// session에서 id 넘어오는지 체크 나중에 추가
+
+		MenuDao pDao = new MenuDao();
+		List<Bobburger> pList = null;
+		pList = pDao.getItemList(kind);
+		pDao.close();
+
+		if (pList != null && pList.size() != 0) {
+			String pListHtml = makeHtml_pList(pList);
+			request.setAttribute("pListHtml", pListHtml);
+		}
+		fw.setPath("delMenu.jsp");
+		fw.setRedirect(false);
+		return fw;
+	}
 
 
 	private String makeHtml_mnList(List<Bobburger> mnList) {
