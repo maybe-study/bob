@@ -71,10 +71,10 @@ public Forward loginfrm() {
 	int result=mDao.login(id,pw);
 	mDao.close();
 	if(result==-1) {
-		System.out.println("아이디 존재x");
+		request.setAttribute("msgAccess", "id존재하지 않아요!");
 	}
 	else if(result==0){
-		System.out.println("비번 틀림");
+		request.setAttribute("msgAccess", "pw가 틀립니다.");
 	}
 	else {//로그인 성공시 
 		HttpSession session=request.getSession();
