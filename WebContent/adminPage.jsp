@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Bootstrap Example</title>
+<title>관리자페이지</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -50,11 +50,11 @@ footer {
 			<div class="col-sm-3 sidenav">
 				<h4>밥버거</h4>
 				<ul class="nav nav-pills nav-stacked">
-					<li class="active"><a href="#section1">메뉴 추가</a></li>
-					<li><a href="#section2">메뉴 삭제</a></li>
-					<li><a href="#section3">매출 현황</a></li>
-					<li><a href="#section3">지점 추가</a></li>
-					<li><a href="#section3">지점 삭제</a></li>
+					<li><a href="#">메뉴 추가</a></li>
+					<li><a href="#">메뉴 삭제</a></li>
+					<li><a href="#">매출 현황</a></li>
+					<li><a href="#">지점 추가</a></li>
+					<li><a href="#">지점 삭제</a></li>
 				</ul>
 				<br>
 				<div class="input-group">
@@ -69,7 +69,7 @@ footer {
 
 			<div class="col-sm-9">
 				<h4>
-					<small>RECENT POSTS</small>
+					<small>본점</small>
 				</h4>
 				<hr>
 				<h2>조진우</h2>
@@ -80,10 +80,6 @@ footer {
 				</h5>
 				<br>
 
-
-				<h4>
-					<small>RECENT POSTS</small>
-				</h4>
 				<hr>
 				<h2>살려줘...</h2>
 
@@ -94,7 +90,7 @@ footer {
 
 				<hr>
 
-				<h4>의견을 남겨주세요.</h4>
+				<h4>기록</h4>
 				<form role="form">
 					<div class="form-group">
 						<textarea class="form-control" rows="3" required></textarea>
