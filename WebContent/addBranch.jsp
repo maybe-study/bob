@@ -59,7 +59,7 @@
             </tr>
                <tr>
                <td>지점 설명</td><br>
-               <td><input type="text"></td>
+               <td><textarea rows="5" cols="30" name="contents"></textarea></td>
             </tr>
             <br>
             <a href="#"><button>상품등록</button></a>
