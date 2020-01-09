@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -92,7 +93,36 @@ public class MenuMM {
 		return fw;
 
 	}
+	
+	public Forward getMenuList() {
+		Forward fw = new Forward();
+		// session에서 id 넘어오는지 체크 나중에 추가
 
+		MenuDao pDao = new MenuDao();
+		
+		List<Bobburger> pListn = pDao.getItemList("일반");
+		List<Bobburger> pListm = pDao.getItemList("고기");
+		List<Bobburger> pListt = pDao.getItemList("튀김");
+		List<Bobburger> pListtt = pDao.getItemList("떡갈비");
+		
+		
+		
+		pDao.close();
+		
+		
+		
+		request.setAttribute("pListn", new Gson().toJson(pListn));
+		request.setAttribute("pListm", new Gson().toJson(pListm));
+		request.setAttribute("pListt", new Gson().toJson(pListt));
+		request.setAttribute("pListtt", new Gson().toJson(pListtt));
+		
+		fw.setPath("Order.jsp");
+		fw.setRedirect(false);
+		return fw;
+		
+	}
+	
+/*
 	public Forward getItemList() {
 		Forward fw = new Forward();
 		// session에서 id 넘어오는지 체크 나중에 추가
@@ -123,7 +153,7 @@ public class MenuMM {
 		fw.setRedirect(false);
 		return fw;
 	}
-	
+	*/
 
 	private String makeHtml_pList(List<Bobburger> pList) {
 		StringBuilder sb = new StringBuilder();

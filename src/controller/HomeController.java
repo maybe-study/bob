@@ -59,7 +59,7 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/orderfrm":		//주문 페이지
-			fw=menu.getItemList();
+			fw=menu.getMenuList();
 			break;
 
 		case "/menu":		   //메뉴 페이지
