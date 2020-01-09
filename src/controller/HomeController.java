@@ -63,7 +63,7 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/menu":		   //메뉴 페이지
-
+			fw=menu.menuList();
 			break;
 
 		case "/joinfrm":	   //회원가입

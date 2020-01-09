@@ -69,7 +69,7 @@ public class MenuMM {
 				System.out.println("상품등록 실패");
 			}
 			fw = new Forward();
-			fw.setPath("./index.jsp"); // ("index.jsp");
+			fw.setPath("adminPage.jsp"); // ("index.jsp");
 			// 새로고침시 파일재업로드를 방지하려면
 			// page속성을 session영역세 저장하고 true로 설정
 			fw.setRedirect(true);
@@ -229,6 +229,46 @@ public class MenuMM {
 		mnDao.close();
 		return delmenuList();
 	
+	}
+
+	public Forward menuList() {
+		Forward fw=new Forward();
+		MenuDao mnDao=new MenuDao();
+		List<Bobburger> mListn=mnDao.menuList("일반");
+		List<Bobburger> mListm=mnDao.menuList("고기");
+		List<Bobburger> mListt=mnDao.menuList("튀김");
+		List<Bobburger> mListtt=mnDao.menuList("떡갈비");
+		mnDao.close();
+		String mListHtmln = makeHtml_mList(mListn);
+		String mListHtmlm = makeHtml_mList(mListm);
+		String mListHtmlt = makeHtml_mList(mListt);
+		String mListHtmlntt = makeHtml_mList(mListtt);
+		 request.setAttribute("mListHtmln", mListHtmln);
+		 request.setAttribute("mListHtmlm", mListHtmlm);
+		 request.setAttribute("mListHtmlt", mListHtmlt);
+		 request.setAttribute("mListHtmltt", mListHtmlntt);
+		fw.setPath("menu.jsp");
+		 fw.setRedirect(false);
+		return fw;
+	}
+
+	private String makeHtml_mList(List<Bobburger> mList) {
+		StringBuilder sb=new StringBuilder();
+		for(int i=0;i<mList.size();i++) {
+			Bobburger bob=mList.get(i);
+			sb.append("<ul id=menubody>");
+			sb.append("<li><img src='upload/" + bob.getPic() + "' width='150px'>");
+			sb.append("</li>");
+			sb.append("<li>"+bob.getBobname());
+			sb.append("</li>");
+			sb.append("<li>"+bob.getCost()+"원");
+			sb.append("</li>");
+			sb.append("<li>"+bob.getExplanation());
+			sb.append("</li>");
+			sb.append("</ul>");
+			
+		}
+		return sb.toString();
 	}
 
 }

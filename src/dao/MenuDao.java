@@ -9,17 +9,19 @@ import java.util.List;
 
 import bean.Bobburger;
 
-
 public class MenuDao {
 	Connection con;
 	PreparedStatement pstmt;
 	ResultSet rs;
+
 	public void close() {
 		JdbcUtil.close(rs, pstmt, con);
 	}
+
 	public MenuDao() {
-		con=JdbcUtil.getConnection();
+		con = JdbcUtil.getConnection();
 	}
+
 	public boolean insertProduct(Bobburger bob) {
 		String sql = "insert into \"bobburger\" values(bobseq.NEXTVAL,?,?,?,?,?)";
 		try {
@@ -31,7 +33,7 @@ public class MenuDao {
 			pstmt.setNString(5, bob.getKind());
 
 			int result = pstmt.executeUpdate();
-			if(result!=0) { //작업 성공
+			if (result != 0) { // 작업 성공
 				System.out.println("상품등록 성공");
 				return true;
 			}
@@ -40,19 +42,18 @@ public class MenuDao {
 			System.out.println("상품등록 예외");
 			e.printStackTrace();
 		}
-		return false;  //상품 등록 실패
+		return false; // 상품 등록 실패
 	}
-
 
 	public List<Bobburger> getItemList(String kind) {
 		String sql = "SELECT * FROM \"bobburger\" WHERE \"kind\"=?";
-		List<Bobburger> pList=null;
+		List<Bobburger> pList = null;
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setNString(1, kind);
 			rs = pstmt.executeQuery();
 			pList = new ArrayList<Bobburger>();
-			while(rs.next()) {
+			while (rs.next()) {
 				Bobburger product = new Bobburger();
 				product.setBobid(rs.getInt("bobid"));
 				product.setPic(rs.getNString("pic"));
@@ -72,28 +73,25 @@ public class MenuDao {
 		return null;
 	}
 
-
-
-	
 	public List<Bobburger> delmenuList(String kind) {
-		String sql="SELECT * FROM \"bobburger\" WHERE \"kind\"=?";
-		List<Bobburger> mnList=null;
+		String sql = "SELECT * FROM \"bobburger\" WHERE \"kind\"=?";
+		List<Bobburger> mnList = null;
 		try {
-			pstmt=con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);
 			pstmt.setNString(1, kind);
-			rs=pstmt.executeQuery();
-			mnList=new ArrayList<Bobburger>();
-			while(rs.next()) {
-				Bobburger bob=new Bobburger();
+			rs = pstmt.executeQuery();
+			mnList = new ArrayList<Bobburger>();
+			while (rs.next()) {
+				Bobburger bob = new Bobburger();
 				bob.setPic(rs.getNString("pic"));
 				bob.setBobid(rs.getInt("bobid"));
 				bob.setBobname(rs.getNString("bobname"));
 				bob.setCost(rs.getInt("cost"));
 				bob.setKind(rs.getNString("kind"));
 				bob.setExplanation(rs.getNString("explanation"));
-				
-				mnList.add(bob);		
-				}
+
+				mnList.add(bob);
+			}
 			return mnList;
 		} catch (SQLException e) {
 			System.out.println("상품 목록 불러오기 오류");
@@ -101,22 +99,48 @@ public class MenuDao {
 		}
 		return null;
 	}
-	
+
 	public void menuDelete(int bobid) {
-	String sql="DELETE FROM \"bobburger\" WHERE \"bobid\"=?";
-	  try {
-		  pstmt=con.prepareStatement(sql);
-	      pstmt.setInt(1, bobid);
-	  int result=pstmt.executeUpdate();
-	  if(result!=0) {
-			System.out.println("삭제 성공");
-		}else {
-			System.out.println("삭제 실패");
-		}
-	  } catch (SQLException e) {
+		String sql = "DELETE FROM \"bobburger\" WHERE \"bobid\"=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, bobid);
+			int result = pstmt.executeUpdate();
+			if (result != 0) {
+				System.out.println("삭제 성공");
+			} else {
+				System.out.println("삭제 실패");
+			}
+		} catch (SQLException e) {
 			System.out.println("상품 목록 불러오기 오류");
 			e.printStackTrace();
 		}
 	}
-}
 
+	public List<Bobburger> menuList(String kind) {
+		String sql = "SELECT * FROM \"bobburger\" WHERE \"kind\"=?";
+		List<Bobburger> mList = null;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setNString(1, kind);
+			rs = pstmt.executeQuery();
+			mList = new ArrayList<Bobburger>();
+			while (rs.next()) {
+				Bobburger bob = new Bobburger();
+				bob.setPic(rs.getNString("pic"));
+				bob.setBobid(rs.getInt("bobid"));
+				bob.setBobname(rs.getNString("bobname"));
+				bob.setCost(rs.getInt("cost"));
+				bob.setKind(rs.getNString("kind"));
+				bob.setExplanation(rs.getNString("explanation"));
+
+				mList.add(bob);
+			}
+			return mList;
+		} catch (Exception e) {
+			System.out.println("상품 목록 불러오기 오류");
+			e.printStackTrace();
+		}
+		return null;
+	}
+}
