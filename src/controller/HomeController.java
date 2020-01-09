@@ -29,7 +29,7 @@ public class HomeController extends HttpServlet {
 
 		switch(cmd) {
 
-		case "/admin":	//관리자 페이지
+		case "/admin":
 			
 			break;
 

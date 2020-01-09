@@ -16,37 +16,27 @@
 
 <style>
  h1{
-       font-weight:bold;
-       font-family:system-ui;
-   }
+          font-weight:bold;
+          font-family:system-ui;
+          }
 
 </style>
 </head>
 <body>
-<body>
-
-   <div class="container">
-      <h2>지점추가</h2>
-      
-     
-         </thead>
-         <tbody>
-            <tr>
-               <td>지점명</td><br>
-               <td><input type="text"></td>
-            </tr>
-            <br>
-            <tr>
-               <td>지점 아이디</td><br>
-               <td><input type="text"></td>
-            </tr>
-            <br>
-            <tr>
-               <td>지점 비밀번호</td><br>
-               <td><input type="text"></td>
-            </tr>
-               <tr>
- <br>지점주소<br>
+<h1>지점추가</h1>
+<tr>
+<td>지점명</td><br>
+<td><input type="text" id="name" /></td><br>
+</tr>
+<tr>
+<td>지점 아이디</td><br>
+<td><input type="text" id="id" /></td><br>
+</tr>
+<tr>
+<td>지점 비밀번호</td><br>
+<td><input type="password" id="pw" /></td><br>
+</tr>
+지점주소<br>
 <input type="text" id="sample4_postcode" placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
@@ -54,21 +44,18 @@
 <span id="guide" style="color:#999;display:none"></span>
 <input type="text" id="sample4_detailAddress" placeholder="상세주소">
 <input type="text" id="sample4_extraAddress" placeholder="참고항목"><br>
-
-               
-            </tr>
-               <tr>
-               <td>지점 설명</td><br>
-               <td><textarea rows="5" cols="30" name="contents"></textarea></td>
-            </tr>
-            <br>
-            <a href="#"><button>상품등록</button></a>
-            <a href="#"><button>등록취소</button></a>
-         </tbody>
-      </table>
-   </div>
-
+<tr>
+<td>지점 설명</td><br>
+<td><textarea rows="5" cols="30" name="contents"></textarea></td><br>
+</tr>
+<tr>
+<td><button>지점 등록</button></td>
+<td><input type="button" id="cancel1" onclick="cancel1" value="지점등록 취소" /></td>
+<td></td>
+</tr>
 </body>
+
+
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
@@ -116,5 +103,8 @@
             }
         }).open();
     }
+    $("#cancel1").on('click',function(){
+    	location.href="adminPage.jsp"
+    });
 </script>
 </html>
