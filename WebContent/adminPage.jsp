@@ -53,7 +53,7 @@ footer {
 					<li><a href="addMenu.jsp">메뉴 추가</a></li>
 					<li><a href="#">메뉴 삭제</a></li>
 					<li><a href="#">매출 현황</a></li>
-					<li><a href="#">지점 추가</a></li>
+					<li><a href="addBranch.jsp">지점 추가</a></li>
 					<li><a href="#">지점 삭제</a></li>
 				</ul>
 				<br>

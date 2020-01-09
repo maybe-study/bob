@@ -25,7 +25,7 @@
 <body>
 <body>
 
-   <div class="container">
+   <div id="addbranch">
       <h2>지점추가</h2>
       
      
@@ -38,12 +38,12 @@
             <br>
             <tr>
                <td>지점 아이디</td><br>
-               <td><input type="text"></td>
+               <td><input type="id"></td>
             </tr>
             <br>
             <tr>
                <td>지점 비밀번호</td><br>
-               <td><input type="text"></td>
+               <td><input type="password"></td>
             </tr>
                <tr>
  <br>지점주소<br>
@@ -62,7 +62,7 @@
                <td><textarea rows="5" cols="30" name="contents"></textarea></td>
             </tr>
             <br>
-            <a href="#"><button>상품등록</button></a>
+            <a href="#"><button>지점등록</button></a>
             <a href="#"><button>등록취소</button></a>
          </tbody>
       </table>
@@ -107,7 +107,7 @@
 
                 } else if(data.autoJibunAddress) {
                     var expJibunAddr = data.autoJibunAddress;
-                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAdd r + ')';
                     guideTextBox.style.display = 'block';
                 } else {
                     guideTextBox.innerHTML = '';

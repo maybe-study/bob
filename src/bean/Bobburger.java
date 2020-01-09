@@ -3,7 +3,7 @@ package bean;
 public class Bobburger {
 	int bobid;
 	String bobname;
-	int cost;
+	int cost; 
 	String pic;
 	String explanation;
 	String kind;

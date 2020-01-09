@@ -24,6 +24,7 @@ public class MenuDao {
 
 	public boolean insertProduct(Bobburger bob) {
 		String sql = "insert into \"bobburger\" values(bobseq.NEXTVAL,?,?,?,?,?)";
+		//넣는거는 insert
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setNString(1, bob.getBobname());
@@ -47,6 +48,7 @@ public class MenuDao {
 
 	public List<Bobburger> getItemList(String kind) {
 		String sql = "SELECT * FROM \"bobburger\" WHERE \"kind\"=?";
+		//불러오는거는 select
 		List<Bobburger> pList = null;
 		try {
 			pstmt = con.prepareStatement(sql);
