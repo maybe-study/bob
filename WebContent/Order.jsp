@@ -114,11 +114,11 @@
         	  console.log(queryString);
         	  $.ajax({
       			type : 'post',
-      			url : '/cartchange',
+      			url : 'cartchange',
       			data : queryString,
       			dataType : 'json',
       			error: function(error){
-      				alert(error);
+      				
       			},
       			success : function(json){
       				console.log(json)
