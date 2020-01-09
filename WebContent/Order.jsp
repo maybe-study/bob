@@ -110,13 +110,14 @@
           //select 버튼에 들어갈 ajax 함수
           function aj(c){
         	  //장바구니의 개수를 수정한다.
-        	  
+        	  var queryString = $("form[name=bList]").serialize() ;
+        	  console.log(queryString);
           }
           
           
           
           //개수 선택 버튼을 추가하는 함수
-          function selectButton(idx){
+          function selectButton(idx,bobid){
         	var bCnt="bCnt"+idx;
             var $div=$("<div>").attr("class","cntdiv");
             $("<button>").text("◀").appendTo($div).click(function(){
@@ -124,15 +125,15 @@
        			if(c>0){
        				$("#"+bCnt).val(--c);
        				//c가 변경 되면 장바구니에 값을 변경 시킨다.
-       				aj(c);
+       				//aj(c);
        			}
             });
-            $("<input>").attr("value","0").attr("class","cnt").attr("id","bCnt"+idx).attr("name",+idx).appendTo($div);
+            $("<input>").attr("value","0").attr("class","cnt").attr("id","bCnt"+idx).attr("name",+bobid).appendTo($div);
             $("<button>").text("▶").appendTo($div).click(function(){
             	var c=$("#"+bCnt).val()*1+1;
             	$("#"+bCnt).val(c);
             	//c가 변경 되면 장바구니에 값을 변경 시킨다.
-            	aj(c);
+            	//aj(c);
             });
             return $div;
           }
@@ -141,7 +142,8 @@
           //장바구니 리스트를 추가하는 함수
           function cartList(tab,bList){
         	  console.log(tab);
-        	  var $table =$("<table>");
+        	  var $form=$("<form name='bList'>");
+        	  var $table =$("<table>").appendTo($form);
               $table.attr("id", "tab"+tab.attr("id")); //아이디가 list인 테이블
 	              $.each(bList,function(idx,item){
 	            	  console.log(item);
@@ -149,12 +151,12 @@
 	                  var $tr = $("<tr>").appendTo($table);
 	                  var $img = $("<img>").attr("src", 'upload/'+item.pic);
 	                  $("<td>").append($img).appendTo($tr);
-	                  $("<td>").append(selectButton("tab"+tab.attr("id")+idx)).appendTo($tr);
+	                  $("<td>").append(selectButton("tab"+tab.attr("id")+idx),item.bobid).appendTo($tr);
 	                  $("<td>").append(item.bobname).appendTo($tr);
 	                  
 	            	  
               	})
-              	$table.appendTo(tab);
+              	$form.appendTo(tab);
               	console.log($table);
               }
               
