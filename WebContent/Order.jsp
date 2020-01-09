@@ -112,6 +112,19 @@
         	  //장바구니의 개수를 수정한다.
         	  var queryString = $("form[name=bList]").serialize() ;
         	  console.log(queryString);
+        	  $.ajax({
+      			type : 'post',
+      			url : '/cartchange',
+      			data : queryString,
+      			dataType : 'json',
+      			error: function(error){
+      				alert(error);
+      			},
+      			success : function(json){
+      				console.log(json)
+      			},
+      		});
+       
           }
           
           
