@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class RestController
  */
-@WebServlet("/RestController")
+@WebServlet("/orderpage")
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
