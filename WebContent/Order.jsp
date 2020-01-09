@@ -73,22 +73,23 @@
               -->
          </ul>
          <div class="tab-content px-1 pt-2">
+         <h1>상품 담기</h1><br>
              <div class="tab-pane active" id="n">
-                 adfsdfsfdsasdfsdfsfsafasdfsdfasfsfd
+                 
              </div>
              <div class="tab-pane" id="m">
-             	원래 되던거
+             	
              </div>
              <div class="tab-pane" id="t">
-             	asdfsdfsadf
+             	
              </div>
              <div class="tab-pane" id="tt">
-             	sdafsadfsafsdf
+            
              </div>
          </div>
                                     
 	     
-        <h1>상품 담기</h1><br>
+        
         <div id="showList"></div>
         <div id="btndiv"><button class="btn" id="btn" type="submit"><img class="btn-img" src="img/btn.png"></button></div>
         
