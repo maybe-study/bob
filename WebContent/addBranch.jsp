@@ -32,17 +32,17 @@
          </thead>
          <tbody>
             <tr>
-               <td>지점명</td>
+               <td>지점명</td><br>
                <td><input type="text"></td>
             </tr>
             <br>
             <tr>
-               <td>지점 아이디</td>
+               <td>지점 아이디</td><br>
                <td><input type="text"></td>
             </tr>
             <br>
             <tr>
-               <td>지점 비밀번호</td>
+               <td>지점 비밀번호</td><br>
                <td><input type="text"></td>
             </tr>
                <tr>
@@ -58,7 +58,7 @@
                
             </tr>
                <tr>
-               <td>지점 설명</td>
+               <td>지점 설명</td><br>
                <td><input type="text"></td>
             </tr>
             <br>
