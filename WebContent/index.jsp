@@ -73,7 +73,7 @@ margin:10px 0px;
 		<ul>
 			<li><a href="#">메뉴안내</a>
 				<ul>
-					<li><a href="#">메뉴안내</a></li>
+					<li><a href="menu">메뉴안내</a></li>
 				</ul></li>
 		</ul>
 		<ul>

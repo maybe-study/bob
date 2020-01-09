@@ -50,7 +50,7 @@ footer {
 			<div class="col-sm-3 sidenav">
 				<h4>밥버거</h4>
 				<ul class="nav nav-pills nav-stacked">
-					<li><a href="#">메뉴 추가</a></li>
+					<li><a href="addMenu.jsp">메뉴 추가</a></li>
 					<li><a href="#">메뉴 삭제</a></li>
 					<li><a href="#">매출 현황</a></li>
 					<li><a href="#">지점 추가</a></li>
