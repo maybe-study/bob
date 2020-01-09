@@ -129,7 +129,7 @@
        				aj(c);
        			}
             });
-            $("<input>").attr("value","0").attr("class","cnt").attr("id","bCnt"+idx).attr("name",+bobid).appendTo($div);
+            $("<input>").attr("value","0").attr("class","cnt").attr("id","bCnt"+idx).attr("name",bobid).appendTo($div);
             $("<input type='button'>").val("▶").appendTo($div).click(function(){
             	var c=$("#"+bCnt).val()*1+1;
             	$("#"+bCnt).val(c);
