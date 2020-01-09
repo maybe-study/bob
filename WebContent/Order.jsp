@@ -53,6 +53,7 @@
       </head>
       <body>
       <!-- Nav Tabs -->
+      <form action="addcart">
          <ul class="nav nav-tabs">
              <li class="nav-item">
                  <a class="nav-link active" href="#n" data-toggle="tab">일반</a>
@@ -91,9 +92,9 @@
 	     
         
         <div id="showList"></div>
-        <div id="btndiv"><button class="btn" id="btn" type="submit"><img class="btn-img" src="img/btn.png"></button></div>
+        <div id="btndiv"><button class="btn" id="btn" type="submit" ><img class="btn-img" src="img/btn.png"></button></div>
         
-        
+        </form>
         
         
         
@@ -108,9 +109,10 @@
           
           
           //select 버튼에 들어갈 ajax 함수
+          /*
           function aj(c){
         	  //장바구니의 개수를 수정한다.
-        	  var queryString = $("form[name=bList]").serialize() ;
+        	  var queryString = $("form[name=bList]").serialize();
         	  console.log(queryString);
         	  $.ajax({
       			type : 'post',
@@ -126,6 +128,7 @@
       		});
        
           }
+          */
           
           
           
@@ -138,16 +141,14 @@
             	var c=$("#"+bCnt).val();
        			if(c>0){
        				$("#"+bCnt).val(--c);
-       				//c가 변경 되면 장바구니에 값을 변경 시킨다.
-       				aj(c);
+       				
        			}
             });
             $("<input>").attr("value","0").attr("class","cnt").attr("id","bCnt"+idx).attr("name",bobid).appendTo($div);
             $("<input type='button'>").val("▶").appendTo($div).click(function(){
             	var c=$("#"+bCnt).val()*1+1;
             	$("#"+bCnt).val(c);
-            	//c가 변경 되면 장바구니에 값을 변경 시킨다.
-            	aj(c);
+            	
             });
             return $div;
           }
@@ -167,12 +168,11 @@
 	                  $("<td>").append($img).appendTo($tr);
 	                  $("<td>").append(selectButton("tab"+tab.attr("id")+idx,item.bobid)).appendTo($tr);
 	                  $("<td>").append(item.bobname).appendTo($tr);
-	                  
-	            	  
               	})
-              	$form.appendTo(tab);
+              	$table.appendTo(tab);
+              	//$form.appendTo(tab);
               	console.log($table);
-              }
+          }
               
           
          

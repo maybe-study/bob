@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -269,6 +270,20 @@ public class MenuMM {
 			
 		}
 		return sb.toString();
+	}
+
+	public Forward addCart() {
+		// TODO Auto-generated method stub
+		System.out.println("addCart 옴");
+		Enumeration params = request.getParameterNames();
+		while (params.hasMoreElements()){
+			String name = (String)params.nextElement();
+			System.out.println(name + " : " +request.getParameter(name));
+		}
+		
+		
+		
+		return null;
 	}
 
 }
