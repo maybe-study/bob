@@ -17,7 +17,7 @@ public class BranchMM {
 		this.request = request;
 		this.response = response;
 	}
-
+   //지점추가하기
 	public Forward addbranchfrm() {
 		Branch ab= new Branch();
 		ab.setBranchid(request.getParameter("branchid"));
@@ -44,4 +44,5 @@ public class BranchMM {
 		return fw;
 
 	}
+	
 }
