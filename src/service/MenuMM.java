@@ -339,29 +339,37 @@ public class MenuMM {
 		System.out.println("addCart 옴");
 		request.getParameter("queryString");
 		CartDao cDao=new CartDao();
-		
+		String buyerid=(String) request.getSession().getAttribute("id");
 		Enumeration<String> params = request.getParameterNames();
+		
 		while (params.hasMoreElements()){
-			String name = (String)params.nextElement();
-			System.out.println(name + " : " +request.getParameter(name));
-		}
-		//카트에 밥버거 아이디 구매자 아이디로 insert 할라고 했는데 있으면?
-		Cart c= new Cart();
-		int result=cDao.insertCart(c);
-		if(result==1) {	//이미 디비에 등록되어 있는 경우
-			//카운트를 업데이트
-			System.out.println("등록된 카트의 개수를 업데이트");
+			String bobid = (String)params.nextElement();
+			int cnt=Integer.parseInt(request.getParameter(id));
+			System.out.println(id + " : " +cnt);
 			
-		}else if(result==0) {	//장바구니 등록 성공
-			//성공 메시지
-			System.out.println("카트 등록 성공");
-			
-		}else {	//장바구니 등록 실패
-			//실패 메시지
-			System.out.println("카트 등록 실패");
-		}
-		fw.setPath("cart.jsp");
-		fw.setRedirect(false);
+		
+			//카트에 밥버거 아이디 구매자 아이디로 insert 할라고 했는데 있으면?
+			Cart c= new Cart();
+			c.setB_bobid(bobid);
+			c.setB_buyerid(buyerid);
+			c.setC_cnt(cnt);
+			int result=cDao.insertCart(c);
+				if(result==1) {	//이미 디비에 등록되어 있는 경우
+					//카운트를 업데이트
+					System.out.println("등록된 카트의 개수를 업데이트");
+					
+					
+				}else if(result==0) {	//장바구니 등록 성공
+					//성공 메시지
+					System.out.println("카트 등록 성공");
+					
+				}else {	//장바구니 등록 실패
+					//실패 메시지
+					System.out.println("카트 등록 실패");
+				}
+			}
+			fw.setPath("cart.jsp");
+			fw.setRedirect(false);
 		
 		return null;
 	}
