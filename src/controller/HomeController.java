@@ -15,7 +15,7 @@ import service.MemberMM;
 import service.MenuMM;
 
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm",
-	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu"})
+	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/cartlist"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -82,6 +82,13 @@ public class HomeController extends HttpServlet {
 			fw=menu.insertproduct();
 
 			break;
+			
+		case "/cartlist":
+			fw=menu.cartList();
+
+			break;
+
+		
 
 		}
 		if(fw!=null) {

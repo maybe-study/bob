@@ -27,7 +27,7 @@
           	width:40px;
           }
           
-          td {
+          th,td {
             border: 1px solid black;
             padding: 10px;
           }
@@ -51,6 +51,7 @@
 
       </head>
       <body>
+      <h1>상품 담기</h1><br>
       <!-- Nav Tabs -->
          <ul class="nav nav-tabs">
              <li class="nav-item">
@@ -87,9 +88,9 @@
          </div>
                                     
 	     
-        <h1>상품 담기</h1><br>
+        
         <div id="showList"></div>
-        <div id="btndiv"><button class="btn" id="btn" type="submit"><img class="btn-img" src="img/btn.png"></button></div>
+        <div id="btndiv"><button class="btn" id="btn" type="submit"><img class="btn-img" src="img/btn.png"></button></div> -->
         
         
        
@@ -101,7 +102,7 @@
           //functions---------------------------------------------------------
           
           //개수 선택 버튼을 추가하는 함수
-          function selectButton(idx){
+         /*  function selectButton(idx){
         	var bCnt="bCnt"+idx;
             var $div=$("<div>").attr("class","cntdiv");
             $("<button>").text("◀").appendTo($div).click(function(){
@@ -132,7 +133,7 @@
                   console.log(selectButton(i));
                   $("<td>").append(selectButton(i)).appendTo($tr);
               }
-          }
+          } */
           
           
           

@@ -14,6 +14,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import bean.Bobburger;
+import bean.Cart;
 import bean.Forward;
 import dao.MemberDao;
 import dao.MenuDao;
@@ -127,16 +128,22 @@ public class MenuMM {
 
 	private String makeHtml_pList(List<Bobburger> pList) {
 		StringBuilder sb = new StringBuilder();
+		   sb.append("<table>");
+		   sb.append("<tr>");
+		   sb.append("<th>상품</th>");
+		   sb.append("<th>수량선택</th>");
+		   sb.append("</tr>");
 		for (int i = 0; i < pList.size(); i++) {
-			Bobburger p = pList.get(i);
-			sb.append("<div id='list' onclick=\"detail('" + p.getBobid() + "')\">");
-			sb.append("<img src='upload/" + p.getPic() + "' width='40%'><br>");
+			Bobburger bob = pList.get(i);
+			sb.append("<tr>");
+			sb.append("<td><img src='upload/" + bob.getPic() + "' width='40%'><br>");
+			sb.append("<td><input type='number' id='orderamt' name='orderamt' value=1 maxlength>");
+			sb.append("</tr>");
 			// sb.append("<input id='test' name='"+p.getP_code()+"' type='button'
 			// value='장바구니담기'>");
-			sb.append(p.getBobname() + "<br>");
-			sb.append(p.getCost() + "원");
+			
 
-			sb.append("</div>");
+			sb.append("</table>");
 
 		}
 		System.out.println(sb);
@@ -200,5 +207,56 @@ public class MenuMM {
 		return delmenuList();
 	
 	}
+
+	public Forward cartList() {
+		HttpSession session=request.getSession();
+		Forward fw=new Forward();
+		MenuDao mnDao=new MenuDao();
+		
+		String id=(String)session.getAttribute("id");
+		System.out.println("카트리스트2");
+		List<Cart> cList=null;
+		cList=mnDao.cartList(id);
+		
+		if(cList!=null&&cList.size()!=0) {
+			String cListHtml=makeHtml_cList(cList);
+			request.setAttribute("cList", cListHtml);
+		}
+		fw.setPath("cart.jsp");
+		fw.setRedirect(false);
+		return fw;
+	}
+
+	private String makeHtml_cList(List<Cart> cList) {
+		StringBuilder sb=new StringBuilder();
+		sb.append("<table>");
+		sb.append("<tr><th style='text-align:center'>메뉴이름</th>");
+		sb.append("<th style='text-align:center'>가격</th>");
+		sb.append("<th style='text-align:center'>수량</th>");
+		sb.append("<th style='text-align:center'>총값</th></tr>");
+		int sum=0;
+		for(int i=0;i<cList.size();i++) {
+			Cart c=cList.get(i);
+			sum+=c.getT_price();
+			sb.append("<tr>");
+			sb.append("<td>"+c.getB_bobname()+"</td>");
+			sb.append("<td>"+c.getB_cost()+"</td>");
+			sb.append("<td>"+c.getC_cnt()+"</td>");
+			sb.append("<td>"+c.getT_price()+"</td>");
+			sb.append("</tr>");
+			
+		}
+		
+		sb.append("<tr><td colspan='4'>총가격:"+sum+"</td></tr>");
+		sb.append("</table>");
+		sb.append("<button class=\"btn\" id=\"changebtn\" type=\"button\" onclick=\"location.href='orderfrm'\"><img class=\"btn-img\" src=\"img/change.png\"></button>"); 
+		sb.append("<button class=\"btn\" id=\"orderbtn\" type=\"button\" onclick=\"location.href='OrderSheet.jsp?sum="+sum+"'\"><img class=\"btn-img\" src=\"img/btn2.png\"></button>");
+		
+		
+		System.out.println(sb);
+		return sb.toString();
+	}
+
+	
 
 }
