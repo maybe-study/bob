@@ -22,7 +22,7 @@ public class BranchMM {
 		Branch ab= new Branch();
 		ab.setBranchid(request.getParameter("branchid"));
 		ab.setBranchpw(request.getParameter("branchpw"));
-		ab.setSales(Integer.parseInt(request.getParameter("sales")));
+		ab.setSales(0);
 		ab.setBranchname(request.getParameter("branchname"));
 		ab.setBranchaddress(request.getParameter("branchaddress"));
 		ab.setExplain(request.getParameter("explain"));

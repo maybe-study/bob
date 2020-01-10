@@ -14,7 +14,8 @@
 	<h1>회원가입 페이지</h1>
 	<form name="joinForm" action="joinfrm">
 		<tr>
-			<td>이름:<input id="name" name="name" type="text" placeholder="이름" class="txt" />
+			<td>이름:<input id="name" name="name" type="text" placeholder="이름"
+				class="txt" />
 			</td>
 			<br>
 		</tr>
@@ -125,8 +126,8 @@
 			<br>
 		</tr>
 		<tr>
-			<td>이메일:<input id="email" name="email" type="text" placeholder="이메일"
-				class="txt" />@ <input type="text" name="email1"
+			<td>이메일:<input id="email" name="email" type="text"
+				placeholder="이메일" class="txt" />@ <input type="text" name="email1"
 				id="str_email02" disabled value="선택하세요"> <select
 				name="email1" id="email1">
 					<option value="0">선택하세요</option>
@@ -138,12 +139,16 @@
 			</select>
 			</td>
 			<br> 아이디:
-			<input id="id" name="buyerid" type="text" placeholder="아이디" class="txt" />
-			<input type="button" onclick="checkbtn" value="중복확인" />
+			<input id="buyerid" name="buyerid" type="text" placeholder="아이디"
+				class="txt" />
+			<button type="button" id="checkbtn" onclick="checkbtn"
+				class="btn btn-default">중복확인</button>
 			<br> 비밀번호:
-			<input id="pw" name="pw" type="password" placeholder="비밀번호" class="txt" />
+			<input id="pw" name="pw" type="password" placeholder="비밀번호"
+				class="txt" />
 			<br> 비밀번호확인:
-			<input id="pw1" name="pw1" type="password" placeholder="비밀번호확인" class="txt" />
+			<input id="pw1" name="pw1" type="password" placeholder="비밀번호확인"
+				class="txt" />
 			<br>
 		</tr>
 		<div id="pwdiv"></div>
@@ -156,28 +161,57 @@
 					<option value="018">018</option>
 					<option value="019">019</option>
 			</select></td>
-			<td>-<input type="text" name="phone1" class="txt" />-<input type="txt"
-				 name="phone2" class="txt">
+			<td>-<input type="text" name="phone1" class="txt" />-<input
+				type="txt" name="phone2" class="txt">
 			</td>
 			<br>
 		</tr>
 		<tr>
-		    <td>
-				<button>회원가입하기</button>
-			</td>
-			
 			<td>
-				<input type="button" onclick="cancel" value="회원가입취소"></button>
+				<input type="button"  onclick="subbtn" id="subbtn1" value="회원가입" />
 			</td>
+
+			<td><a href="#"  onClick="history.back()"><input type="button" onclick="cancel" id="cancel1" value="회원가입취소">
+				</a></td>
 		</tr>
 	</form>
 	<script>
 		$(document).ready(function() {
 			$("#str_email02").hide();
+			
 		});
-		$("#check").click(function() {
-			alert("사용가능합니다.")
-		});
+		  $('#checkbtn').on('click', function(){
+			  var buyerid = $("#buyerid").val();
+	            $.ajax({
+	                type: 'POST',
+	                url: './joinchk',
+	                data: {buyerid : buyerid},
+	                success: function(result){
+	                    if(result == 1){
+	                       alert('사용가능합니다');
+	                    }
+	                    else if(result == 0){
+	                    	alert('아이디가 중복입니다.');
+	                    }else{
+	                    	alert('아이디가 입력되지 않았습니다');
+	                    }
+	                }
+	            });    //end ajax    
+	        });    //end on    
+	        $("#subbtn1").on('click',function(){
+	        	var joinForm = document.joinForm; //joinForm=form 태그의 name값
+	        	var pw = joinForm.pw.value;	//pw=비밀번호input태그의 name값 (응용해서 아이디도 사용가능)
+	        	var pw1 = joinForm.pw1.value;//위와같지만 pw1은 비밀번호 input태그의 name값임
+				if(!pw || !pw1){ //이건 그냥 유도리있게 써라 !에 var값 추가한거 쓰면 됨)
+					alert("비밀번호를 입력해주세요")
+				}else{
+					alert("회원가입이 완료되었습니다.")
+					joinForm.submit();
+				}
+	        });
+	        $("#cancel1").on('click',function(){
+	        	 location.href='history.back()';
+	        });
 		$("#pw").keyup(
 				function() {
 					var pw = $("#pw").val();
@@ -190,6 +224,7 @@
 								"orangered");
 					}
 				});
+	    
 		$("#pw1").keyup(
 				function() {
 					var pw = $("#pw").val();
@@ -201,11 +236,20 @@
 						$("#pwdiv").text("비밀번호는 20자 이하이어야 합니다.").css("color",
 								"orangered");
 					}
-					if (pw == pw1) {
+					else if (pw == pw1 && pw.length > 8 ) {
 						$("#pwdiv").text("");
-					} else {
+					} else if(pw == pw1 && pw.length<8 ){
+						$("#pwdiv").text("비밀번호는 8자 이상이어야 합니다.").css("color",
+						"orangered");
+					}else if(pw == pw1 && pw.length < 20){
+						$("#pwdiv").text("");
+					}else if(pw == pw1 && pw.length>20 ){
+						$("#pwdiv").text("비밀번호는 20자 이하이어야 합니다.").css("color",
+						"orangered");
+					}
+					else {
 						$("#pwdiv").text("비밀번호가 다릅니다.").css("color",
-								"orangered");
+						"orangered");
 					}
 				});
 		$("#email1").change(function() {

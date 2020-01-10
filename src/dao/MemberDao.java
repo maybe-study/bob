@@ -90,6 +90,31 @@ public class MemberDao {
 		}
 		return result;
 	}
+	public int registerCheck(String buyerid) {
+		String sql="SELECT * FROM \"buyer\" WHERE \"buyerid\"=?";
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, buyerid);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				return 0;
+			}else if(buyerid.equals("")){
+				return -1;
+			}else {
+				return 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return -1; //데이터 베이스 오류
+	}
 }//Dao End
 
 
