@@ -19,6 +19,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
         <style>
+          .bobimg{
+            width:100px;
+            height:100px;
+          }
           .cntdiv{
             text-align:center;
           	width:150px;
@@ -109,14 +113,14 @@
           
           
           //select 버튼에 들어갈 ajax 함수
-          /*
-          function aj(c){
+          
+          function aj(){
         	  //장바구니의 개수를 수정한다.
         	  var queryString = $("form[name=bList]").serialize();
         	  console.log(queryString);
         	  $.ajax({
       			type : 'post',
-      			url : 'cartchange',
+      			url : 'changecart',
       			data : queryString,
       			dataType : 'json',
       			error: function(error){
@@ -128,19 +132,20 @@
       		});
        
           }
-          */
+          
           
           
           
           //개수 선택 버튼을 추가하는 함수
           function selectButton(idx,bobid){
-        	  console.log("밥아이디:"+bobid)
+        	console.log("밥아이디:"+bobid)
         	var bCnt="bCnt"+idx;
             var $div=$("<div>").attr("class","cntdiv");
             $("<input type='button'>").val("◀").appendTo($div).click(function(){
             	var c=$("#"+bCnt).val();
        			if(c>0){
        				$("#"+bCnt).val(--c);
+       				aj();
        				
        			}
             });
@@ -148,6 +153,7 @@
             $("<input type='button'>").val("▶").appendTo($div).click(function(){
             	var c=$("#"+bCnt).val()*1+1;
             	$("#"+bCnt).val(c);
+            	aj();
             	
             });
             return $div;
@@ -164,13 +170,13 @@
 	            	  console.log(item);
 	            	//행을 붙임
 	                  var $tr = $("<tr>").appendTo($table);
-	                  var $img = $("<img>").attr("src", 'upload/'+item.pic);
+	                  var $img = $("<img class='bobimg'>").attr("src", 'upload/'+item.pic);
 	                  $("<td>").append($img).appendTo($tr);
 	                  $("<td>").append(selectButton("tab"+tab.attr("id")+idx,item.bobid)).appendTo($tr);
 	                  $("<td>").append(item.bobname).appendTo($tr);
               	})
-              	$table.appendTo(tab);
-              	//$form.appendTo(tab);
+              	//$table.appendTo(tab);
+              	$form.appendTo(tab);
               	console.log($table);
           }
               

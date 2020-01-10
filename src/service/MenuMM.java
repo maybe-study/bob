@@ -275,7 +275,7 @@ public class MenuMM {
 	public Forward addCart() {
 		// TODO Auto-generated method stub
 		System.out.println("addCart 옴");
-		Enumeration params = request.getParameterNames();
+		Enumeration<String> params = request.getParameterNames();
 		while (params.hasMoreElements()){
 			String name = (String)params.nextElement();
 			System.out.println(name + " : " +request.getParameter(name));
