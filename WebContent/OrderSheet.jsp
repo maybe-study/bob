@@ -25,7 +25,7 @@
 <body>
 <h1>주문 작성 페이지</h1>
 
-총 가격:<br>
+총 가격:<%=request.getParameter("sum") %><br>
 지점선택:<select name="branch">
 		<option value="">지점선택</option>
 		<option value="가산디폴리스">가산디폴리스점</option>

@@ -29,14 +29,14 @@ public class HomeController extends HttpServlet {
 		MenuMM menu=new MenuMM(request, response);
 
 		switch(cmd) {
-		
+
 		case "/joinchk":    //회원가입 중복확인
 			String buyerid = request.getParameter("buyerid");
 			response.getWriter().write(new MemberDao().registerCheck(buyerid)+"");
 			break;
 
 		case "/admin":
-			
+
 			break;
 
 		case "/delbranchfrm":	//브런치삭제 페이지

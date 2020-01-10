@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Bobburger;
+import bean.Cart;
 
 public class MenuDao {
 	Connection con;
@@ -145,4 +146,31 @@ public class MenuDao {
 		}
 		return null;
 	}
-}
+	public List<Cart> cartList(String id) {
+		String sql="SELECT b.\"bobname\",b.\"cost\",c.\"cnt\"" +
+				"FROM \"bobburger\" b INNER JOIN \"cart\" c ON b.\"bobid\"=c.\"bobid\"" +
+				"WHERE c.\"buyerid\"=?";
+	List<Cart> cList=new ArrayList<Cart>();
+	try {
+		pstmt=con.prepareStatement(sql);
+		pstmt.setNString(1, id);
+		rs=pstmt.executeQuery();
+		while(rs.next()) {
+			Cart cart=new Cart();
+			cart.setB_bobname(rs.getNString("bobname"));
+			cart.setB_cost(rs.getInt("cost"));
+			cart.setC_cnt(rs.getInt("cnt"));
+			cart.setT_price(rs.getInt("cost")*rs.getInt("cnt"));
+			cList.add(cart);
+
+		}
+
+
+		return cList;
+
+	} catch (SQLException e) {
+		System.out.println("db오류");
+		e.printStackTrace();
+	}
+	return null;
+	}}
