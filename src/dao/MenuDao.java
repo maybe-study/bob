@@ -121,6 +121,38 @@ public class MenuDao {
 			e.printStackTrace();
 		}
 	}
+	public List<Bobburger> getCartList(String kind,String id) {
+		String sql = "select * from \"bobburger\" b join \"cart\" c on b.\"bobid\"=c.\"bobid\" join \"buyer\" buy on c.\"buyerid\"=buy.\"buyerid\""
+				+ "where c.\"buyerid\"=? and b.\"kind\"=?";
+		List<Bobburger> mList = null;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setNString(2, kind);
+			pstmt.setNString(1, id);
+			rs = pstmt.executeQuery();
+			mList = new ArrayList<Bobburger>();
+			while (rs.next()) {
+				Bobburger bob = new Bobburger();
+				bob.setPic(rs.getNString("pic"));
+				bob.setBobid(rs.getInt("bobid"));
+				bob.setBobname(rs.getNString("bobname"));
+				bob.setCost(rs.getInt("cost"));
+				bob.setKind(rs.getNString("kind"));
+				bob.setExplanation(rs.getNString("explanation"));
+				bob.setCnt(Integer.parseInt(rs.getNString("cnt")));
+
+				mList.add(bob);
+			}
+			for(int i=0;i<mList.size();i++) {
+				System.out.println(mList.get(i).getBobname());
+			}
+			return mList;
+		} catch (Exception e) {
+			System.out.println("상품 목록 불러오기 오류");
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public List<Bobburger> menuList(String kind) {
 		String sql = "SELECT * FROM \"bobburger\" WHERE \"kind\"=?";
