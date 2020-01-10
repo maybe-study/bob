@@ -455,18 +455,6 @@ public class MenuMM {
 	    System.out.println("1:"+sb);
 		return sb.toString();
 	}
-    //총 합 가격
-	private String makeHtml_orderList(List<Order> orderList) {
-		StringBuilder sb=new StringBuilder();
-		int sum=0;
-		for(int i=0;i<orderList.size();i++) {
-			Order order=orderList.get(i);
-			sum+=order.getTotcost();
-		}
-		sb.append(sum);
-		System.out.println("2:"+sb);
-		return sb.toString();
-	}
 
 
 
