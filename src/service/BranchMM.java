@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.AddBranch;
+import bean.Branch;
 import bean.Forward;
 import dao.BranchDao;
 
@@ -19,10 +19,10 @@ public class BranchMM {
 	}
 
 	public Forward addbranchfrm() {
-		AddBranch ab= new AddBranch();
+		Branch ab= new Branch();
 		ab.setBranchid(request.getParameter("branchid"));
 		ab.setBranchpw(request.getParameter("branchpw"));
-		ab.setSales(Integer.parseInt(request.getParameter("sales")));
+		ab.setSales(0);
 		ab.setBranchname(request.getParameter("branchname"));
 		ab.setBranchaddress(request.getParameter("branchaddress"));
 		ab.setExplain(request.getParameter("explain"));
