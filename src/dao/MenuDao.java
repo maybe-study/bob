@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Bobburger;
+import bean.Branch;
 import bean.Cart;
+import bean.Order;
 
 public class MenuDao {
 	Connection con;
@@ -150,6 +152,7 @@ public class MenuDao {
 		String sql="SELECT b.\"bobname\",b.\"cost\",c.\"cnt\"" +
 				"FROM \"bobburger\" b INNER JOIN \"cart\" c ON b.\"bobid\"=c.\"bobid\"" +
 				"WHERE c.\"buyerid\"=?";
+		
 	List<Cart> cList=new ArrayList<Cart>();
 	try {
 		pstmt=con.prepareStatement(sql);
@@ -173,4 +176,47 @@ public class MenuDao {
 		e.printStackTrace();
 	}
 	return null;
-	}}
+	}
+
+	public List<Order> orderList(String id) {
+		String sql="SELECT b.\"cost\",c.\"cnt\"" +
+				"FROM \"bobburger\" b INNER JOIN \"cart\" c ON b.\"bobid\"=c.\"bobid\"" +
+				"WHERE c.\"buyerid\"=?" ;
+		List<Order> orderList=new ArrayList<Order>();
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, id);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				Order order=new Order();
+				order.setTotcost(rs.getInt("cost")*rs.getInt("cnt"));
+				orderList.add(order);				
+			}
+			return orderList;
+		} catch (SQLException e) {
+			System.out.println("db오류");
+			e.printStackTrace();
+		}	
+		return null;	
+	
+	}
+public List<Branch> getBranchList(String id) {
+	String sql="SELECT \"branchid\",\"branchname\" FROM \"branch\"" ;
+	List<Branch> brunchList=new ArrayList<Branch>();
+	try {
+		pstmt=con.prepareStatement(sql);
+		rs=pstmt.executeQuery();
+		while(rs.next()) {
+			Branch b=new Branch();
+			b.setBranchname(rs.getNString("branchname"));
+			b.setBranchid(rs.getNString("branchid"));
+			brunchList.add(b);				
+		}
+		return brunchList;
+	} catch (SQLException e) {
+		System.out.println("db오류");
+		e.printStackTrace();
+	}	
+	return null;	
+
+}}

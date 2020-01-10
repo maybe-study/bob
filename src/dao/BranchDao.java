@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import bean.AddBranch;
+import bean.Branch;
 
 public class BranchDao {
 	Connection con;
@@ -16,7 +16,7 @@ public class BranchDao {
 		con = JdbcUtil.getConnection();
 	}
 
-	public boolean branch(AddBranch ab) {
+	public boolean branch(Branch ab) {
 		String sql = "insert into \"branch\" VALUES(?,?,?,?,?,?)" ;
 		try {
 			pstmt = con.prepareStatement(sql);

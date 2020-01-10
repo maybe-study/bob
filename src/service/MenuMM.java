@@ -16,8 +16,10 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import bean.Bobburger;
+import bean.Branch;
 import bean.Cart;
 import bean.Forward;
+import bean.Order;
 import dao.MemberDao;
 import dao.MenuDao;
 
@@ -282,7 +284,7 @@ public class MenuMM {
 		sb.append("<tr><td colspan='4'>총가격:"+sum+"</td></tr>");
 		sb.append("</table>");
 		sb.append("<button class=\"btn\" id=\"changebtn\" type=\"button\" onclick=\"location.href='orderfrm'\"><img class=\"btn-img\" src=\"img/change.png\"></button>");
-		sb.append("<button class=\"btn\" id=\"orderbtn\" type=\"button\" onclick=\"location.href='OrderSheet.jsp?sum="+sum+"'\"><img class=\"btn-img\" src=\"img/btn2.png\"></button>");
+		sb.append("<button class=\"btn\" id=\"orderbtn\" type=\"button\" onclick=\"location.href='ordersheet?sum="+sum+"'\"><img class=\"btn-img\" src=\"img/btn2.png\"></button>");
 
 
 		System.out.println(sb);
@@ -345,6 +347,58 @@ public class MenuMM {
 
 		return null;
 	}
+
+	public Forward orderSheet() {
+		HttpSession session=request.getSession();
+		Forward fw=new Forward();
+		MenuDao mnDao=new MenuDao();
+		
+		String id=(String)session.getAttribute("id");
+		
+		List<Branch> branchList=null;
+		
+		int total=Integer.parseInt(request.getParameter("sum"));
+		
+		branchList=mnDao.getBranchList(id);
+		
+		System.out.println("토탈값:"+total);
+		request.setAttribute("total", total);
+		if(branchList!=null&&branchList.size()!=0) {
+			String orderListHtml1=makeHtml_branchList(branchList);
+			request.setAttribute("branchList", orderListHtml1);
+		}
+		
+		fw.setPath("OrderSheet.jsp");
+		fw.setRedirect(false);
+		return fw;
+	}
+    //지점select
+	private String makeHtml_branchList(List<Branch> branchList) {
+		StringBuilder sb=new StringBuilder();
+		sb.append("<select name='branch'>");
+		sb.append("<option value=''>지점선택</option>");
+		for(int i=0;i<branchList.size();i++) {
+			Branch b=branchList.get(i);
+			sb.append("<option value="+b.getBranchname()+">"+b.getBranchname()+"</option>");
+		}
+		sb.append("</select>");
+	    System.out.println("1:"+sb);
+		return sb.toString();
+	}
+    //총 합 가격
+	private String makeHtml_orderList(List<Order> orderList) {
+		StringBuilder sb=new StringBuilder();
+		int sum=0;
+		for(int i=0;i<orderList.size();i++) {
+			Order order=orderList.get(i);
+			sum+=order.getTotcost();
+		}
+		sb.append(sum);
+		System.out.println("2:"+sb);
+		return sb.toString();
+	}
+
+	
 
 
 }

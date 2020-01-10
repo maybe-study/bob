@@ -25,15 +25,9 @@
 <body>
 <h1>주문 작성 페이지</h1>
 
-총 가격:<%=request.getParameter("sum") %><br>
-지점선택:<select name="branch">
-		<option value="">지점선택</option>
-		<option value="가산디폴리스">가산디폴리스점</option>
-		<option value="가운">가운점</option>
-		<option value="가현초">가현초점</option>
-		<option value="가평현리">가평현리점</option>
-		<option value="갸경2호">가경2호점</option>
-</select><br>
+총 가격:${total}<br>
+
+지점선택:${branchList}<br>
 배송주소<br>
 <input type="text" id="sample4_postcode" placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
@@ -43,7 +37,7 @@
 <input type="text" id="sample4_detailAddress" placeholder="상세주소">
 <input type="text" id="sample4_extraAddress" placeholder="참고항목"><br>
 
-<button class="btn" id="btn" type="submit"><img class="btn-img" src="img/btn3.png"></button>
+<button class="btn" id="paybtn" type="button" onclick="location.href='payment'"><img class="btn-img" src="img/btn3.png"></button>
 </body>
 
 
