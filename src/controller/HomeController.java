@@ -29,8 +29,8 @@ public class HomeController extends HttpServlet {
 
 		switch(cmd) {
 
-		case "/admin":	//관리자 페이지
-			
+		case "/admin":
+
 			break;
 
 		case "/delbranchfrm":	//브런치삭제 페이지
@@ -59,11 +59,11 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/orderfrm":		//주문 페이지
-			fw=menu.getItemList();
+			fw=menu.getMenuList();
 			break;
 
 		case "/menu":		   //메뉴 페이지
-
+			fw=menu.menuList();
 			break;
 
 		case "/joinfrm":	   //회원가입
@@ -82,13 +82,10 @@ public class HomeController extends HttpServlet {
 			fw=menu.insertproduct();
 
 			break;
-			
-		case "/cartlist":
-			fw=menu.cartList();
+		case "/addcart":
+			fw=menu.addCart();
 
 			break;
-
-		
 
 		}
 		if(fw!=null) {

@@ -36,7 +36,7 @@ height:60px;
 
 <h1>지점 로그인 </h1>
 <div class="textdiv">
-<form action="branchloginfrm" method="post">
+<form action="branchlogin" method="post">
 <table>
 <tr>
 <td><input type="text" name="branchid" placeholder="아이디" /> </td>
