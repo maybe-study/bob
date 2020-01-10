@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.MenuMM;
+
 @WebServlet("/changecart")
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,17 +19,23 @@ public class RestController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String cmd=request.getServletPath();
 		System.out.println("cmd:"+cmd);
+		MenuMM menu=new MenuMM(request, response);
+		
+		
+		String json = null;
+		
 		switch(cmd) {
 		
 		case "/changecart":
-			Enumeration params = request.getParameterNames();
-			while (params.hasMoreElements()){
-				String name = (String)params.nextElement();
-				System.out.println(name + " : " +request.getParameter(name));
-			}
-			System.out.println("changecart 옴");
+			json=menu.changeCart();
 			break;
 		
+		}
+		if(json!=null) {
+			response.setContentType("text/html");
+			response.setCharacterEncoding("utf-8");
+			PrintWriter out = response.getWriter();
+			out.write(json);
 		}
 	}
 

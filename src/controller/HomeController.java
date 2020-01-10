@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
-import bean.Member;
 import dao.MemberDao;
 import service.BranchMM;
 import service.MemberMM;
@@ -18,7 +17,7 @@ import service.MenuMM;
 
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm",
 	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/cartlist","/ordersheet"
-	,"/payment"})
+	,"/payment","/addcart"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
