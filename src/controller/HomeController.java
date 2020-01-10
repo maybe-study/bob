@@ -104,8 +104,8 @@ public class HomeController extends HttpServlet {
 
 			break;
 		case "/payment":
-
-
+			fw=menu.payment();
+			break;
 		}
 		if(fw!=null) {
 			if(fw.isRedirect()) {

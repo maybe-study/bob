@@ -19,6 +19,7 @@ import bean.Bobburger;
 import bean.Branch;
 import bean.Cart;
 import bean.Forward;
+import bean.Order;
 import dao.CartDao;
 import dao.MemberDao;
 import dao.MenuDao;
@@ -423,6 +424,11 @@ public class MenuMM {
 		sb.append(sum);
 		System.out.println("2:"+sb);
 		return sb.toString();
+	}
+
+	public Forward payment() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
