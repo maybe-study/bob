@@ -96,8 +96,10 @@ public class MemberDao {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setNString(1, buyerid);
 			rs=pstmt.executeQuery();
-			if(rs.next() || buyerid.equals("")) {
+			if(rs.next()) {
 				return 0;
+			}else if(buyerid.equals("")){
+				return -1;
 			}else {
 				return 1;
 			}
