@@ -1,6 +1,6 @@
 package bean;
 
-public class AddBranch {
+public class Branch {
 
 	private String branchid;
 	private String branchpw;

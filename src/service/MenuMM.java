@@ -16,6 +16,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import bean.Bobburger;
+import bean.Branch;
 import bean.Cart;
 import bean.Forward;
 import dao.CartDao;
@@ -283,7 +284,7 @@ public class MenuMM {
 		sb.append("<tr><td colspan='4'>총가격:"+sum+"</td></tr>");
 		sb.append("</table>");
 		sb.append("<button class=\"btn\" id=\"changebtn\" type=\"button\" onclick=\"location.href='orderfrm'\"><img class=\"btn-img\" src=\"img/change.png\"></button>");
-		sb.append("<button class=\"btn\" id=\"orderbtn\" type=\"button\" onclick=\"location.href='OrderSheet.jsp?sum="+sum+"'\"><img class=\"btn-img\" src=\"img/btn2.png\"></button>");
+		sb.append("<button class=\"btn\" id=\"orderbtn\" type=\"button\" onclick=\"location.href='ordersheet?sum="+sum+"'\"><img class=\"btn-img\" src=\"img/btn2.png\"></button>");
 
 
 		System.out.println(sb);
@@ -332,26 +333,26 @@ public class MenuMM {
 		}
 		return sb.toString();
 	}
-	
-	
-	
+
+
+
 	public String changeCart() {
 		System.out.println("changeCart 옴");
-		
+
 		CartDao cDao=new CartDao();
 		String buyerid=(String) request.getSession().getAttribute("id");
 		Enumeration<String> params = request.getParameterNames();
-		
+
 		while (params.hasMoreElements()){
 			String bobid = (String)params.nextElement();
 			int cnt=Integer.parseInt(request.getParameter(bobid));
 			System.out.println(bobid + " : " +cnt);
-			
-		
+
+
 			//카트에 밥버거 아이디 구매자 아이디로 insert 할라고 했는데 있으면?
 			if(cnt!=0) {
 				Cart c= new Cart();
-			
+
 				c.setB_bobid(bobid);
 				c.setB_buyerid(buyerid);
 				c.setC_cnt(cnt);
@@ -359,40 +360,40 @@ public class MenuMM {
 					if(result==0) {	//이미 디비에 등록되어 있는 경우
 						//카운트를 업데이트
 						cDao.updateCart(c);
-						
+
 					}else if(result==1) {	//장바구니 등록 성공
 						//성공 메시지
 						System.out.println("카트 등록 성공");
-						
+
 					}else {	//장바구니 등록 실패
 						//실패 메시지
 						System.out.println("카트 등록 실패");
 					}
 				}
 			}
-		
+
 		return "{\"a\":\"1\"}";
-			
+
 	}
 	public Forward addCart() {
 		// TODO Auto-generated method stub
 		Forward fw=new Forward();
 		System.out.println("addCart 옴");
-		
+
 		CartDao cDao=new CartDao();
 		String buyerid=(String) request.getSession().getAttribute("id");
 		Enumeration<String> params = request.getParameterNames();
-		
+
 		while (params.hasMoreElements()){
 			String bobid = (String)params.nextElement();
 			int cnt=Integer.parseInt(request.getParameter(bobid));
 			System.out.println(bobid + " : " +cnt);
-			
-		
+
+
 			//카트에 밥버거 아이디 구매자 아이디로 insert 할라고 했는데 있으면?
 			if(cnt!=0) {
 				Cart c= new Cart();
-			
+
 				c.setB_bobid(bobid);
 				c.setB_buyerid(buyerid);
 				c.setC_cnt(cnt);
@@ -400,11 +401,11 @@ public class MenuMM {
 					if(result==0) {	//이미 디비에 등록되어 있는 경우
 						//카운트를 업데이트
 						cDao.updateCart(c);
-						
+
 					}else if(result==1) {	//장바구니 등록 성공
 						//성공 메시지
 						System.out.println("카트 등록 성공");
-						
+
 					}else {	//장바구니 등록 실패
 						//실패 메시지
 						System.out.println("카트 등록 실패");
@@ -413,9 +414,61 @@ public class MenuMM {
 			}
 			fw.setPath("cartlist");
 			fw.setRedirect(false);
-		
+
 		return fw;
 	}
+
+	public Forward orderSheet() {
+		HttpSession session=request.getSession();
+		Forward fw=new Forward();
+		MenuDao mnDao=new MenuDao();
+
+		String id=(String)session.getAttribute("id");
+
+		List<Branch> branchList=null;
+
+		int total=Integer.parseInt(request.getParameter("sum"));
+
+		branchList=mnDao.getBranchList(id);
+
+		System.out.println("토탈값:"+total);
+		request.setAttribute("total", total);
+		if(branchList!=null&&branchList.size()!=0) {
+			String orderListHtml1=makeHtml_branchList(branchList);
+			request.setAttribute("branchList", orderListHtml1);
+		}
+
+		fw.setPath("OrderSheet.jsp");
+		fw.setRedirect(false);
+		return fw;
+	}
+    //지점select
+	private String makeHtml_branchList(List<Branch> branchList) {
+		StringBuilder sb=new StringBuilder();
+		sb.append("<select name='branch'>");
+		sb.append("<option value=''>지점선택</option>");
+		for(int i=0;i<branchList.size();i++) {
+			Branch b=branchList.get(i);
+			sb.append("<option value="+b.getBranchname()+">"+b.getBranchname()+"</option>");
+		}
+		sb.append("</select>");
+	    System.out.println("1:"+sb);
+		return sb.toString();
+	}
+    //총 합 가격
+	private String makeHtml_orderList(List<Order> orderList) {
+		StringBuilder sb=new StringBuilder();
+		int sum=0;
+		for(int i=0;i<orderList.size();i++) {
+			Order order=orderList.get(i);
+			sum+=order.getTotcost();
+		}
+		sb.append(sum);
+		System.out.println("2:"+sb);
+		return sb.toString();
+	}
+
+
 
 
 }

@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
 import dao.MemberDao;
+import service.BranchMM;
 import service.MemberMM;
 import service.MenuMM;
 
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm",
-	"/branchlogin","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/addcart","/joinchk"})
+	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/cartlist","/ordersheet"
+	,"/payment"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -26,7 +28,7 @@ public class HomeController extends HttpServlet {
 		Forward fw=null;
 		MemberMM mm=new MemberMM(request, response);
 		MenuMM menu=new MenuMM(request, response);
-
+        BranchMM bm=new BranchMM(request, response);
 		switch(cmd) {
 
 		case "/joinchk":    //회원가입 중복확인
@@ -43,7 +45,7 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/addbranchfrm":	//브런치 추가 페이지
-
+            fw=bm.addbranchfrm();
 			break;
 
 		case "/allrevenue": // 매출 페이지
@@ -82,6 +84,9 @@ public class HomeController extends HttpServlet {
 		case "/main":		  //메인 페이지
 
 			break;
+		case "/cartlist":		  //메인 페이지
+			fw=menu.cartList();
+			break;
 
 		case "/addmenu":
 			fw=menu.insertproduct();
@@ -91,6 +96,14 @@ public class HomeController extends HttpServlet {
 			fw=menu.addCart();
 
 			break;
+
+		case "/ordersheet":
+			fw=menu.orderSheet();
+
+
+			break;
+		case "/payment":
+
 
 		}
 		if(fw!=null) {
