@@ -179,10 +179,10 @@
 			  var buyerid = $("#buyerid").val();
 	            $.ajax({
 	                type: 'POST',
-	                url: 'joinchk',
+	                url: './joinchk',
 	                data: {buyerid : buyerid},
 	                success: function(result){
-	                    if(result == 0){
+	                    if(result == 1){
 	                       alert('사용가능합니다');
 	                    }
 	                    else{
