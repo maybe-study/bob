@@ -58,7 +58,7 @@
       <body>
       <h1>상품 담기</h1><br>
       <!-- Nav Tabs -->
-      <form action="addcart">
+      <form action="addcart" name="bList" action="post">
          <ul class="nav nav-tabs">
              <li class="nav-item">
                  <a class="nav-link active" href="#n" data-toggle="tab">일반</a>
@@ -97,11 +97,10 @@
 
 
         <div id="showList"></div>
-        <div id="btndiv"><button class="btn" id="btn" type="submit" ><img class="btn-img" src="img/btn.png"></button></div>
-
-        </form>
+        <div id="btndiv"><button class="btn" id="btn" onclick="submit()" ><img class="btn-img" src="img/btn.png"></button></div>
 
 
+</form>
 
 
         <script>
@@ -111,7 +110,23 @@
           console.log("pListt:",${pListt});
           console.log("pListtt:",${pListtt});
 
+          function submit() {
+        	  var queryString = $("form[name=bList]").serialize();
+        	  
+              var form = document.createElement("form");
+              form.setAttribute("charset", "UTF-8");
+              form.setAttribute("method", "Post");  //Post 방식
+              form.setAttribute("action", "addcart"); //요청 보낼 주소
 
+              var hiddenField = document.createElement("input");
+              hiddenField.setAttribute("type", "hidden");
+              hiddenField.setAttribute("name", "queryString");
+              hiddenField.setAttribute("value", queryString);
+              form.appendChild(hiddenField);
+              document.body.appendChild(form);
+              form.submit();
+
+           }
 
           //select 버튼에 들어갈 ajax 함수
 
@@ -139,7 +154,6 @@
 
           //개수 선택 버튼을 추가하는 함수
 
-         /*  function selectButton(idx){
 
           function selectButton(idx,bobid){
         	console.log("밥아이디:"+bobid)
@@ -167,8 +181,9 @@
           //장바구니 리스트를 추가하는 함수
           function cartList(tab,bList){
         	  console.log(tab);
-        	  var $form=$("<form name='bList'>");
-        	  var $table =$("<table>").appendTo($form);
+        	  //var $form=$("<form name='bList'>");
+        	  //var $table =$("<table>").appendTo($form);
+        	  var $table =$("<table>");
               $table.attr("id", "tab"+tab.attr("id")); //아이디가 list인 테이블
 	              $.each(bList,function(idx,item){
 	            	  console.log(item);
@@ -179,8 +194,8 @@
 	                  $("<td>").append(selectButton("tab"+tab.attr("id")+idx,item.bobid)).appendTo($tr);
 	                  $("<td>").append(item.bobname).appendTo($tr);
               	})
-              	//$table.appendTo(tab);
-              	$form.appendTo(tab);
+              	$table.appendTo(tab);
+              	//$form.appendTo(tab);
               	console.log($table);
           }
 
