@@ -138,8 +138,8 @@
 			</select>
 			</td>
 			<br> 아이디:
-			<input id="id" name="buyerid" type="text" placeholder="아이디" class="txt" />
-			<input type="button" onclick="checkbtn" value="중복확인" />
+			<input id="buyerid" name="buyerid" type="text" placeholder="아이디" class="txt" />
+			<button type="button" id="checkbtn" onclick="checkbtn" class="btn btn-default">중복확인</button>
 			<br> 비밀번호:
 			<input id="pw" name="pw" type="password" placeholder="비밀번호" class="txt" />
 			<br> 비밀번호확인:
@@ -175,9 +175,22 @@
 		$(document).ready(function() {
 			$("#str_email02").hide();
 		});
-		$("#check").click(function() {
-			alert("사용가능합니다.")
-		});
+		  $('#checkbtn').on('click', function(){
+			  var buyerid = $("#buyerid").val();
+	            $.ajax({
+	                type: 'POST',
+	                url: 'joinchk',
+	                data: {buyerid : buyerid},
+	                success: function(result){
+	                    if(result == 0){
+	                       alert('사용가능합니다');
+	                    }
+	                    else{
+	                    	alert('아이디가 중복입니다.');
+	                    }
+	                }
+	            });    //end ajax    
+	        });    //end on    
 		$("#pw").keyup(
 				function() {
 					var pw = $("#pw").val();

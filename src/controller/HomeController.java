@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
 import bean.Member;
+import dao.MemberDao;
 import service.MemberMM;
 import service.MenuMM;
 
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm",
-	"/branchlogin","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/addcart"})
+	"/branchlogin","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/addcart","/joinchk"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,8 +30,13 @@ public class HomeController extends HttpServlet {
 
 		switch(cmd) {
 
+		case "/joinchk":    //회원가입 중복확인
+			String buyerid = request.getParameter("buyerid");
+			response.getWriter().write(new MemberDao().registerCheck(buyerid)+"");
+			break;
+
 		case "/admin":
-			
+
 			break;
 
 		case "/delbranchfrm":	//브런치삭제 페이지
