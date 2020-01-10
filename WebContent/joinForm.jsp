@@ -171,8 +171,8 @@
 				<input type="button"  onclick="subbtn" id="subbtn1" value="회원가입" />
 			</td>
 
-			<td><input type="button" onclick="cancel" value="회원가입취소">
-				</button></td>
+			<td><a href="#"  onClick="history.back()"><input type="button" onclick="cancel" id="cancel1" value="회원가입취소">
+				</a></td>
 		</tr>
 	</form>
 	<script>
@@ -208,6 +208,9 @@
 					alert("회원가입이 완료되었습니다.")
 					joinForm.submit();
 				}
+	        });
+	        $("#cancel1").on('click',function(){
+	        	 location.href='history.back()';
 	        });
 		$("#pw").keyup(
 				function() {
