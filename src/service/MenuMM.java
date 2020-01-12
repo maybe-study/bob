@@ -104,7 +104,11 @@ public class MenuMM {
 	public Forward getMenuList() {
 		Forward fw = new Forward();
 		// session에서 id 넘어오는지 체크 나중에 추가
-
+		if(isLogin()) {
+			fw.setPath("login.jsp");
+			fw.setRedirect(false);
+			return fw;
+		}
 		MenuDao pDao = new MenuDao();
 
 		List<Bobburger> pListn = pDao.getItemList("일반");
@@ -286,7 +290,7 @@ public class MenuMM {
 
 		sb.append("<tr><td colspan='4'>총가격:"+sum+"</td></tr>");
 		sb.append("</table>");
-		sb.append("<button class=\"btn\" id=\"changebtn\" type=\"button\" onclick=\"location.href='orderfrm'\"><img class=\"btn-img\" src=\"img/change.png\"></button>");
+		sb.append("<button class=\"btn\" id=\"changebtn\" type=\"button\" onclick=\"location.href='modifycart'\"><img class=\"btn-img\" src=\"img/change.png\"></button>");
 		sb.append("<button class=\"btn\" id=\"orderbtn\" type=\"button\" onclick=\"location.href='ordersheet?sum="+sum+"'\"><img class=\"btn-img\" src=\"img/btn2.png\"></button>");
 
 
@@ -337,7 +341,31 @@ public class MenuMM {
 		return sb.toString();
 	}
 
-
+	public Forward modifyCart() {
+		Forward fw=new Forward();
+		MenuDao mnDao=new MenuDao();
+		
+		String id=(String) request.getSession().getAttribute("id");
+		if(isLogin()) {
+			fw.setPath("login.jsp");
+			fw.setRedirect(false);
+			return fw;
+		}
+		
+		List<Bobburger> mListn=mnDao.getCartList("일반",id);
+		List<Bobburger> mListm=mnDao.getCartList("고기",id);
+		List<Bobburger> mListt=mnDao.getCartList("튀김",id);
+		List<Bobburger> mListtt=mnDao.getCartList("떡갈비",id);
+		mnDao.close();
+		request.setAttribute("pListn", new Gson().toJson(mListn));
+		request.setAttribute("pListm", new Gson().toJson(mListm));
+		request.setAttribute("pListt", new Gson().toJson(mListt));
+		request.setAttribute("pListtt", new Gson().toJson(mListtt));
+		fw.setPath("Order.jsp");
+		fw.setRedirect(false);
+		 return fw;
+		
+	}
 
 	public String changeCart() {
 		System.out.println("changeCart 옴");
@@ -353,7 +381,7 @@ public class MenuMM {
 
 
 			//카트에 밥버거 아이디 구매자 아이디로 insert 할라고 했는데 있으면?
-			if(cnt!=0) {
+			
 				Cart c= new Cart();
 
 				c.setB_bobid(Integer.parseInt(bobid));
@@ -373,7 +401,7 @@ public class MenuMM {
 						System.out.println("카트 등록 실패");
 					}
 				}
-			}
+			
 
 		return "{\"a\":\"1\"}";
 
@@ -394,7 +422,7 @@ public class MenuMM {
 
 
 			//카트에 밥버거 아이디 구매자 아이디로 insert 할라고 했는데 있으면?
-			if(cnt!=0) {
+			
 				Cart c= new Cart();
 
 				c.setB_bobid(Integer.parseInt(bobid));
@@ -414,7 +442,7 @@ public class MenuMM {
 						System.out.println("카트 등록 실패");
 					}
 				}
-			}
+			
 			fw.setPath("cartlist");
 			fw.setRedirect(false);
 
@@ -480,6 +508,16 @@ public class MenuMM {
 		
 		
 		return null;
+	}
+	public boolean isLogin() {
+		String id=(String) request.getSession().getAttribute("id");
+		System.out.println("id검사:"+id);
+		if(id==null) {	
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 
 

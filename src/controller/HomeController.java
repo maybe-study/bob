@@ -17,7 +17,7 @@ import service.MenuMM;
 
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm",
 	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/cartlist","/ordersheet"
-	,"/payment","/addcart"})
+	,"/payment","/addcart","/modifycart","/branchlogin"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -105,6 +105,10 @@ public class HomeController extends HttpServlet {
 		case "/payment":
 			fw=menu.payment();
 			break;
+		case "/modifycart":
+			fw=menu.modifyCart();
+			break;
+
 		}
 		if(fw!=null) {
 			if(fw.isRedirect()) {

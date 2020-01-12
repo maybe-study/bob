@@ -7,6 +7,15 @@ public class Bobburger {
 	String pic;
 	String explanation;
 	String kind;
+	int cnt;
+	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	
 	
 	public int getBobid() {
 		return bobid;
