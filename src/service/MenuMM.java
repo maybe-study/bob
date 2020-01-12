@@ -102,7 +102,11 @@ public class MenuMM {
 	public Forward getMenuList() {
 		Forward fw = new Forward();
 		// session에서 id 넘어오는지 체크 나중에 추가
-
+		if(isLogin()) {
+			fw.setPath("login.jsp");
+			fw.setRedirect(false);
+			return fw;
+		}
 		MenuDao pDao = new MenuDao();
 
 		List<Bobburger> pListn = pDao.getItemList("일반");
@@ -340,11 +344,12 @@ public class MenuMM {
 		MenuDao mnDao=new MenuDao();
 		
 		String id=(String) request.getSession().getAttribute("id");
-		System.out.println("id:"+id);
-		if(id==null) {
+		if(isLogin()) {
 			fw.setPath("login.jsp");
 			fw.setRedirect(false);
+			return fw;
 		}
+		
 		List<Bobburger> mListn=mnDao.getCartList("일반",id);
 		List<Bobburger> mListm=mnDao.getCartList("고기",id);
 		List<Bobburger> mListt=mnDao.getCartList("튀김",id);
@@ -354,7 +359,7 @@ public class MenuMM {
 		request.setAttribute("pListm", new Gson().toJson(mListm));
 		request.setAttribute("pListt", new Gson().toJson(mListt));
 		request.setAttribute("pListtt", new Gson().toJson(mListtt));
-		fw.setPath("cartModify.jsp");
+		fw.setPath("Order.jsp");
 		fw.setRedirect(false);
 		 return fw;
 		
@@ -483,6 +488,16 @@ public class MenuMM {
 	public Forward payment() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public boolean isLogin() {
+		String id=(String) request.getSession().getAttribute("id");
+		System.out.println("id검사:"+id);
+		if(id==null) {	
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 
 

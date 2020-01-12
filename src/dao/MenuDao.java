@@ -66,6 +66,7 @@ public class MenuDao {
 				product.setCost(rs.getInt("cost"));
 				product.setExplanation(rs.getNString("explanation"));
 				product.setKind(kind);
+				product.setCnt(0);
 				pList.add(product);
 			}
 			System.out.println("겟 완료");

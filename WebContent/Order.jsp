@@ -151,7 +151,7 @@
           //개수 선택 버튼을 추가하는 함수
 
 
-          function selectButton(idx,bobid){
+          function selectButton(idx,bobid,cnt){
         	console.log("밥아이디:"+bobid)
         	var bCnt="bCnt"+idx;
             var $div=$("<div>").attr("class","cntdiv");
@@ -163,7 +163,7 @@
 
        			}
             });
-            $("<input>").attr("value","0").attr("class","cnt").attr("id","bCnt"+idx).attr("name",bobid).appendTo($div);
+            $("<input>").attr("value",cnt).attr("class","cnt").attr("id","bCnt"+idx).attr("name",bobid).appendTo($div);
             $("<input type='button'>").val("▶").appendTo($div).click(function(){
             	var c=$("#"+bCnt).val()*1+1;
             	$("#"+bCnt).val(c);
@@ -187,7 +187,7 @@
 	                  var $tr = $("<tr>").appendTo($table);
 	                  var $img = $("<img class='bobimg'>").attr("src", 'upload/'+item.pic);
 	                  $("<td>").append($img).appendTo($tr);
-	                  $("<td>").append(selectButton("tab"+tab.attr("id")+idx,item.bobid)).appendTo($tr);
+	                  $("<td>").append(selectButton("tab"+tab.attr("id")+idx,item.bobid,item.cnt)).appendTo($tr);
 	                  $("<td>").append(item.bobname).appendTo($tr);
               	})
               	$table.appendTo(tab);
