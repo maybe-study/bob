@@ -31,7 +31,7 @@ public class CartDao {
 		//넣는거는 insert
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setNString(1, cart.getB_bobid());
+			pstmt.setInt(1, cart.getB_bobid());
 			pstmt.setNString(2, cart.getB_buyerid());
 			pstmt.setInt(3, cart.getC_cnt());
 
@@ -64,7 +64,7 @@ public class CartDao {
 		try {
 			System.out.println("여기는 업데이트 카트입니다. bobid:"+cart.getB_bobid()+"buyerid:"+cart.getB_buyerid()+"cnt:"+cart.getC_cnt());
 			pstmt = con.prepareStatement(sql);
-			pstmt.setNString(2, cart.getB_bobid());
+			pstmt.setInt(2, cart.getB_bobid());
 			pstmt.setNString(3, cart.getB_buyerid());
 			pstmt.setInt(1, cart.getC_cnt());
 

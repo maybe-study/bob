@@ -4,10 +4,18 @@ public class Order {
    String orderid;
    String ordertime;
    int totcost;
+   int tototcost;
    String address;
    String state;
    String branchid;
-   String branchname;
+
+   public int getTototcost() {
+	return tototcost;
+}
+public void setTototcost(int tototcost) {
+	this.tototcost = tototcost;
+}
+String branchname;
    public String getBranchname() {
 	return branchname;
 }

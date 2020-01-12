@@ -24,20 +24,22 @@
 </head>
 <body>
 <h1>주문 작성 페이지</h1>
-
+<form>
 총 가격:${total}<br>
+<input type="hidden" name="total" value="${total }">
 
 지점선택:${branchList}<br>
 배송주소<br>
 <input type="text" id="sample4_postcode" placeholder="우편번호">
 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+<input type="text" name='address' id="sample4_roadAddress" placeholder="도로명주소">
 <input type="text" id="sample4_jibunAddress" placeholder="지번주소"><br>
 <span id="guide" style="color:#999;display:none"></span>
 <input type="text" id="sample4_detailAddress" placeholder="상세주소">
 <input type="text" id="sample4_extraAddress" placeholder="참고항목"><br>
 
 <button class="btn" id="paybtn" type="button" onclick="location.href='payment'"><img class="btn-img" src="img/btn3.png"></button>
+</form>
 </body>
 
 
