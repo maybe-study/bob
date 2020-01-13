@@ -7,12 +7,7 @@
 <title>Insert title here</title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
- <script>
-    new daum.Postcode({
-        oncomplete: function(data) {
-        }
-    }).open();
-</script>
+
 
 <style>
  h1{
@@ -24,7 +19,7 @@
 </head>
 <body>
 <h1>주문 작성 페이지</h1>
-<form>
+<form action="payment">
 총 가격:${total}<br>
 <input type="hidden" name="total" value="${total}">
 
@@ -38,7 +33,7 @@
 <input type="text" id="sample4_detailAddress" placeholder="상세주소">
 <input type="text" id="sample4_extraAddress" placeholder="참고항목"><br>
 
-<button class="btn" id="paybtn" type="button" onclick="location.href='payment'"><img class="btn-img" src="img/btn3.png"></button>
+<button><img class="btn-img" src="img/btn3.png"/></button>
 </form>
 </body>
 

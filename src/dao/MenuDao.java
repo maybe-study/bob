@@ -122,14 +122,13 @@ public class MenuDao {
 			e.printStackTrace();
 		}
 	}
-	public List<Bobburger> getCartList(String kind,String id) {
-		String sql = "select * from \"bobburger\" b join \"cart\" c on b.\"bobid\"=c.\"bobid\" join \"buyer\" buy on c.\"buyerid\"=buy.\"buyerid\""
-				+ "where c.\"buyerid\"=? and b.\"kind\"=?";
+	public List<Bobburger> getCartList(String kind) {
+		String sql = "select b.\"bobid\",b.\"bobname\",b.\"pic\",nvl(c.\"cnt\",0) \"cnt\" ,b.\"cost\",b.\"explanation\",b.\"kind\"\r\n" + 
+				"from \"bobburger\" b left outer join \"cart\" c on b.\"bobid\"=c.\"bobid\" where b.\"kind\"=?";
 		List<Bobburger> mList = null;
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setNString(2, kind);
-			pstmt.setNString(1, id);
+			pstmt.setNString(1, kind);
 			rs = pstmt.executeQuery();
 			mList = new ArrayList<Bobburger>();
 			while (rs.next()) {

@@ -80,6 +80,29 @@ public class CartDao {
 		} 
 		return false;
 	}
+
+	public int deleteCart(Cart c) {
+		// TODO Auto-generated method stub
+		String sql = "delete \"cart\" where \"bobid\"=? and \"buyerid\"=?";
+		try {
+			System.out.println("여기는 딜리트 카트입니다. bobid:"+c.getB_bobid()+"buyerid:"+c.getB_buyerid()+"cnt:"+c.getC_cnt());
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, c.getB_bobid());
+			pstmt.setNString(2, c.getB_buyerid());
+
+			int result = pstmt.executeUpdate();
+			if (result != 0) { // 작업 성공
+				System.out.println("삭제 성공");
+				return 1;
+			}
+
+		} catch (SQLException e) {
+			System.out.println("삭제 예외");
+			e.printStackTrace();
+		} 
+		
+		return 0;
+	}
 	
 	
 	
