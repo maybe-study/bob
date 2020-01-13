@@ -531,7 +531,110 @@ public class MenuMM {
 		
 	}
 
+	public Forward orderConfirm() {
+		HttpSession session=request.getSession();
+		Forward fw=new Forward();
+		OrderDao odDao=new OrderDao();
+		
+		String id=(String)session.getAttribute("id");
+		List<Order> odList=null;
+		odList=odDao.odList(id);
+		
+		
+		if(odList!=null&&odList.size()!=0) {
+			String odListHtml=makeHtml_odList(odList);
+			request.setAttribute("odList", odListHtml);
+		}
+		
+		fw.setPath("OrderConfirm.jsp");
+		fw.setRedirect(false);
+		return fw;
+	}
 
 
+	private String makeHtml_odList(List<Order> odList) {
+		StringBuilder sb=new StringBuilder();
+		sb.append("<table>");
+		sb.append("<tr>");
+		sb.append("<th>주문번호</th>");
+		sb.append("<th>주문날짜</th>");
+		sb.append("<th>배송주소</th>");
+		sb.append("<th></th>");
+		sb.append("</tr>");
+		for(int i=0;i<odList.size();i++) {
+			Order od=odList.get(i);		
+			OrderDao odDao=new OrderDao();
+			List<OrderDetail> oddList=null;
+			oddList=odDao.oddList(odList.get(i).getOrderid());
+			
+			sb.append("<tr>");
+			sb.append("<td>"+od.getOrderid()+"</td>");
+			sb.append("<td>"+od.getOrdertime()+"</td>");
+			sb.append("<td>"+od.getAddress()+"</td>");
+			sb.append("<td><button id='menubtn'>메뉴보기</button>");
+			sb.append("</tr>");
+			sb.append("<tr id='in'>");
+			sb.append("<td colspan='3'>"+makeHtml_oddList(oddList)+"</td>");
+			sb.append("<td>"+"총"+od.getTototcost()+"원"+"</td>");
+			sb.append("</tr>");
+		  
 
-}
+		}
+		sb.append("</table>");
+		return sb.toString();
+	}
+
+	private String makeHtml_oddList(List<OrderDetail> oddList) {
+		StringBuilder sb=new StringBuilder();
+		sb.append("<table>");
+		for(int i=0;i<oddList.size();i++) {
+			OrderDetail odd=oddList.get(i);
+			OrderDao odDao=new OrderDao();
+			
+			sb.append("<tr>");
+			sb.append("<td>"+odd.getBobname()+"</td>");
+			sb.append("<td>"+odd.getCnt()+"</td>");
+			sb.append("<td>"+odd.getCost()+"</td>");
+			sb.append("</tr>");
+			
+				
+			
+			
+		}
+		sb.append("</table>");
+		return sb.toString();
+	}
+
+	}
+
+/*
+ * private String makeHtml_oddList(List<OrderDetail> oddList) { StringBuilder
+ * sb=new StringBuilder();
+ * 
+ * sb.append("<h2>"+oddList.get(0).getBuyername()+"님의 주문내역</h2>");
+ * sb.append("<table>"); sb.append("<tr>"); sb.append("<th>주문번호</th>");
+ * sb.append("<th>주문날짜</th>"); sb.append("<th>배송주소</th>");
+ * sb.append("<th></th>");
+ * 
+ * sb.append("</tr>");
+ * 
+ * for(int i=0;i<oddList.size();i++) { OrderDetail odd=oddList.get(i);
+ * 
+ * sb.append("<tr>"); sb.append("<td>"+odd.getOrderid()+"</td>");
+ * sb.append("<td>"+odd.getOrdertime()+"</td>");
+ * sb.append("<td>"+odd.getAddress()+"</td>");
+ * sb.append("<td><button id='menubtn'>메뉴보기</button>"); sb.append("</tr>");
+ * sb.append("<tr id='in'>");
+ * sb.append("<td colspan='3'>"+odd.getBobname()+"|"+odd.getCnt()+"|"+odd.
+ * getCost()+"</td>"); sb.append("<td>"+"총"+odd.getTotcost()+"원"+"</td>");
+ * sb.append("</tr>");
+ * 
+ * 
+ * }
+ * 
+ * return sb.toString(); }
+ * 
+ * 
+ */
+
+

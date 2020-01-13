@@ -1,8 +1,8 @@
 package bean;
 
 public class Order {
-   String orderid;
-   String ordertime;
+   int orderid;
+String ordertime;
    int totcost;
    int tototcost;
    String address;
@@ -24,10 +24,10 @@ public void setBranchname(String branchname) {
 }
 String buyerid;
 
-   public String getOrderid() {
+public int getOrderid() {
 	return orderid;
 }
-public void setOrderid(String orderid) {
+public void setOrderid(int orderid) {
 	this.orderid = orderid;
 }
 public String getOrdertime() {

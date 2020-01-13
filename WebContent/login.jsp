@@ -91,6 +91,7 @@ display:inline-block;
 <a href="joinForm.jsp"><button class="joinbtn">회원가입</button></a>
 </td>
 </tr>
+
 </table>
 </div>
 </body>
