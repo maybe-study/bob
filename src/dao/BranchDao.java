@@ -72,4 +72,22 @@ public class BranchDao {
 		}
 		return null;
 	}
+
+	public void branchDelete(String branchid) {
+		String sql = "DELETE FROM \"branch\" WHERE \"branchid\"=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setNString(1, branchid);
+			int result = pstmt.executeUpdate();
+			if(result != 0) {
+				System.out.println("삭제 성공");
+			}else {
+				System.out.println("삭제 실패");
+			}
+		}catch (SQLException e) {
+			System.out.println("상품 불러오기 실패");
+			e.printStackTrace();
+		}
+		
+	}
 }

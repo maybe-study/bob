@@ -84,5 +84,16 @@ public class BranchMM {
 		sb.append("</table>");
 		return sb.toString();
 	}
+	public Forward delbranch() {
+		String [] checkedBranch = request.getParameterValues("checkedBranch");
+		BranchDao bDao = new BranchDao();
+		Branch br = new Branch();
+		for(int i=0;i<checkedBranch.length;i++) {
+			bDao.branchDelete(checkedBranch[i]);
+		}
+		bDao.close();
+		return delbranchfrm();
+	}
+	
 	
 }
