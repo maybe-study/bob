@@ -4,6 +4,14 @@
 <html>
 <head>
 <script src="http://www.w3schools.com/lib/w3data.js"></script>
+
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <meta charset="UTF-8">
 <title>봉구스밥버거</title>
 <style>
@@ -29,6 +37,7 @@ height: 100px;
 	color: white;
 	}
 #submenu{
+text-align:center;
 float:left;
 width:200px;
 height:100%;
@@ -57,6 +66,16 @@ margin:10px 0px;
 }
 #maindiv{
 	position:relative;
+}
+#myCarousel{
+	top:100px;
+	left:400px;
+	position:absolute;
+	display: inline-block;
+}
+.slideimg{
+	width:1000px;
+	height:500px;
 }
 </style>
 </head>
@@ -103,17 +122,59 @@ margin:10px 0px;
 
 
 		<div id="submenu">
-		<ul>
-		<a href="login.jsp"><img alt="img" src="./img/logingimg.PNG" class="menuimg"></a>
-		<a href="Branchlogin.jsp"><img alt="img" src="./img/brlogimg.PNG" class="menuimg"></a>
-		<a href="joinForm.jsp"><img alt="img" src="./img/joinimg.PNG" class="menuimg"></a>
-		<a href="#"><img alt="img" src="./img/faceimg.PNG" class="menuimg"></a>
-		<a href="#"><img alt="img" src="./img/blogimg.PNG" class="menuimg"></a>
-		</ul>
+		
+		<a href="login.jsp"><img alt="img" src="./img/logingimg.PNG" class="menuimg"/></a>
+		<a href="Branchlogin.jsp"><img alt="img" src="./img/brlogimg.PNG" class="menuimg"/></a>
+		<a href="joinForm.jsp"><img alt="img" src="./img/joinimg.PNG" class="menuimg"/></a>
+		<a href="#"><img alt="img" src="./img/faceimg.PNG" class="menuimg"/></a>
+		<a href="#"><img alt="img" src="./img/blogimg.PNG" class="menuimg"/></a>
+		
 		</div>
 		</div>
-		<div id="header">로그인 여부 출력하기</div>
-		<div id="main" w3-include-html="main.jsp"></div>
+		<div id="header">
+		<%if(session.getAttribute("id")==null){%>
+			<h1>로그인 해주세요</h1>
+		<% }else{%>
+			<h1>${id}님 반갑습니다.</h1>
+			<h6><a href="logout">로그아웃</a></h6>
+		<%} %>
+		
+		</div>
+		<div class="container">
+		  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+		    <!-- Indicators -->
+		    <ol class="carousel-indicators">
+		      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		      <li data-target="#myCarousel" data-slide-to="1"></li>
+		      <li data-target="#myCarousel" data-slide-to="2"></li>
+		    </ol>
+		
+		    <!-- Wrapper for slides -->
+		    <div class="carousel-inner">
+		      <div class="item active">
+		        <img class="slideimg" src="img/tmp_slide00.jpg" alt="Los Angeles" >
+		      </div>
+		
+		      <div class="item">
+		        <img class="slideimg" src="img/king.PNG" alt="Chicago" >
+		      </div>
+		    
+		      <div class="item">
+		        <img class="slideimg" src="img/delicious.PNG" alt="New york" >
+		      </div>
+		    </div>
+		
+		    <!-- Left and right controls -->
+		    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+		      <span class="glyphicon glyphicon-chevron-left"></span>
+		      <span class="sr-only">Previous</span>
+		    </a>
+		    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+		      <span class="glyphicon glyphicon-chevron-right"></span>
+		      <span class="sr-only">Next</span>
+		    </a>
+		  </div>
+		</div>
 		<!--
 		<img alt="img" src="./img/img1.PNG" class="bobbugers"><br>
 		<img alt="img" src="./img/img2.PNG" class="bobbugers" style="top:800px"><br>
@@ -142,39 +203,13 @@ margin:10px 0px;
         }
 
         var main=document.getElementById('main');
-
-</script>
-<script>
-    function includeHTML() {
-      var z, i, elmnt, file, xhttp;
-      /*loop through a collection of all HTML elements:*/
-      z = document.getElementsByTagName("*");
-      for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        /*search for elements with a certain atrribute:*/
-        file = elmnt.getAttribute("w3-include-html");
-        if (file) {
-          /*make an HTTP request using the attribute value as the file name:*/
-          xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4) {
-              if (this.status == 200) {
-            	  elmnt.innerHTML = this.responseText;
-              }
-              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-              /*remove the attribute, and call this function once more:*/
-              elmnt.removeAttribute("w3-include-html");
-              includeHTML();
-            }
-          }
-          xhttp.open("GET", file, true);
-          xhttp.send();
-          /*exit the function:*/
-          return;
-        }
-      }
-    }
-    includeHTML();
+	
+        
+        
+        
+        
+        //로그인 되있는지 확인 하는 스크립트
+        
 </script>
 
 </body>

@@ -17,7 +17,7 @@ import service.MenuMM;
 
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm",
 	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/cartlist","/ordersheet"
-	,"/payment","/addcart","/modifycart","/branchlogin","/orderconfirm"})
+	,"/payment","/addcart","/modifycart","/branchlogin","/printbranch","/delbranch","/logout"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -41,6 +41,8 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/delbranchfrm":	//브런치삭제 페이지
+			fw=bm.delbranchList();
+			break;
 
 			break;
 
@@ -110,8 +112,17 @@ public class HomeController extends HttpServlet {
 			fw=menu.modifyCart();
 			break;
 
+
 		case "/orderconfirm":
 			fw=menu.orderConfirm();
+
+		case "/printbranch":
+			System.out.println("프린트브런치온");
+			fw=bm.printbranch();
+
+			break;
+		case "/logout":
+			fw=mm.logout();
 			break;
 
 		}
