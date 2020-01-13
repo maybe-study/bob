@@ -44,8 +44,6 @@ public class HomeController extends HttpServlet {
 			fw=bm.delbranchList();
 			break;
 
-			break;
-
 		case "/addbranchfrm":	//브런치 추가 페이지
             fw=bm.addbranchfrm();
 			break;
