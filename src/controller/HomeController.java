@@ -1,4 +1,4 @@
-package controller;
+﻿package controller;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ import service.OrderMM;
 
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm",
 	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/cartlist","/ordersheet"
-	,"/payment","/addcart","/modifycart","/branchlogin","/printbranch","/delbranch","/orderrecieveu","/orderrecievefrm"})
+	,"/payment","/addcart","/modifycart","/branchlogin","/printbranch","/delbranch","/orderrecieveu","/orderrecievefrm","/logout","/orderconfirm"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -111,12 +111,23 @@ public class HomeController extends HttpServlet {
 		case "/payment":
 			fw=menu.payment();
 			break;
+
 		case "/modifycart":
 			fw=menu.modifyCart();
 			break;
+
+
+		case "/orderconfirm":
+			fw=menu.orderConfirm();
+			break;
+
 		case "/printbranch":
 			System.out.println("프린트브런치온");
 			fw=bm.printbranch();
+
+			break;
+		case "/logout":
+			fw=mm.logout();
 			break;
 		case "/orderrecievefrm":
 			fw=om.recieveList();

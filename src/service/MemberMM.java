@@ -104,7 +104,7 @@ public class MemberMM {
 		} else if (result == 0) {
 			System.out.println("비밀번호가 다릅니다.");
 		} else {
-			session.setAttribute("id", id);
+			session.setAttribute("branchid", id);
 			if (id.equals("admin")) {
 				fw.setPath("adminPage.jsp");
 				fw.setRedirect(false);
@@ -118,6 +118,16 @@ public class MemberMM {
 
 		}
 
+		return fw;
+	}
+
+	public Forward logout() {
+
+		Forward fw = new Forward();
+		HttpSession session = request.getSession();
+		session.invalidate();
+		fw.setPath("index.jsp");
+		fw.setRedirect(true);
 		return fw;
 	}
 

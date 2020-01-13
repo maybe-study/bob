@@ -132,27 +132,27 @@ public class MenuMM {
 	/*
 	 * public Forward getItemList() { Forward fw = new Forward(); // session에서 id
 	 * 넘어오는지 체크 나중에 추가
-	 * 
+	 *
 	 * MenuDao pDao = new MenuDao();
-	 * 
+	 *
 	 * List<Bobburger> pListn = pDao.getItemList("일반"); List<Bobburger> pListm =
 	 * pDao.getItemList("고기"); List<Bobburger> pListt = pDao.getItemList("튀김");
 	 * List<Bobburger> pListtt = pDao.getItemList("떡갈비");
-	 * 
+	 *
 	 * pDao.close();
-	 * 
-	 * 
+	 *
+	 *
 	 * String pListHtmln = makeHtml_pList(pListn); String pListHtmlm =
 	 * makeHtml_pList(pListm); String pListHtmlt = makeHtml_pList(pListt); String
 	 * pListHtmlntt = makeHtml_pList(pListtt);
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 * request.setAttribute("pListHtmln", pListHtmln);
 	 * request.setAttribute("pListHtmlm", pListHtmlm);
 	 * request.setAttribute("pListHtmlt", pListHtmlt);
 	 * request.setAttribute("pListHtmltt", pListHtmlntt);
-	 * 
+	 *
 	 * fw.setPath("Order.jsp"); fw.setRedirect(false); return fw; }
 	 */
 
@@ -371,7 +371,7 @@ public class MenuMM {
 			c.setC_cnt(cnt);
 			// 카트에 밥버거 아이디 구매자 아이디로 insert 할라고 했는데 있으면?
 			if (cnt != 0) { // 카운트가 0이 아닐때만 인서트 한다.
-				
+
 
 				int result = cDao.insertCart(c);
 				if (result == 0) { // 이미 디비에 등록되어 있는 경우
@@ -416,7 +416,7 @@ public class MenuMM {
 			c.setC_cnt(cnt);
 			// 카트에 밥버거 아이디 구매자 아이디로 insert 할라고 했는데 있으면?
 			if (cnt != 0) { // 카운트가 0이 아닐때만 인서트 한다.
-				
+
 
 				int result = cDao.insertCart(c);
 				if (result == 0) { // 이미 디비에 등록되어 있는 경우
@@ -493,8 +493,8 @@ public class MenuMM {
 		}
 		String id = (String) session.getAttribute("id");
 		Order od = new Order();
-		
-		
+
+
 		System.out.println("토탈값:"+request.getParameter("total"));
 		od.setTototcost(Integer.parseInt(request.getParameter("total")));
 		od.setAddress(request.getParameter("address"));
@@ -504,10 +504,11 @@ public class MenuMM {
 		orDao.orderInsert(od);
 
 		orDao.orderdetailInsert(id);
-		
-		orDao.cartDelete(id);
 
-		return null;
+		orDao.cartDelete(id);
+		fw.setPath("orderconfirm");
+		fw.setRedirect(false);
+		return fw;
 	}
 
 	public boolean isLogin() {
@@ -521,4 +522,105 @@ public class MenuMM {
 
 	}
 
+	public Forward orderConfirm() {
+		HttpSession session=request.getSession();
+		Forward fw=new Forward();
+		OrderDao odDao=new OrderDao();
+
+		String id=(String)session.getAttribute("id");
+		List<Order> odList=null;
+		odList=odDao.odList(id);
+
+
+		if(odList!=null&&odList.size()!=0) {
+			String odListHtml=makeHtml_odList(odList);
+			request.setAttribute("odList", odListHtml);
+		}
+
+		fw.setPath("OrderConfirm.jsp");
+		fw.setRedirect(false);
+		return fw;
+	}
+
+
+	private String makeHtml_odList(List<Order> odList) {
+		StringBuilder sb=new StringBuilder();
+		sb.append("<table>");
+		sb.append("<tr>");
+		sb.append("<th>주문번호</th>");
+		sb.append("<th>주문날짜</th>");
+		sb.append("<th>배송주소</th>");
+		sb.append("<th></th>");
+		sb.append("</tr>");
+		for(int i=0;i<odList.size();i++) {
+			Order od=odList.get(i);
+			OrderDao odDao=new OrderDao();
+			List<OrderDetail> oddList=null;
+			oddList=odDao.oddList(odList.get(i).getOrderid());
+
+			sb.append("<tr>");
+			sb.append("<td>"+od.getOrderid()+"</td>");
+			sb.append("<td>"+od.getOrdertime()+"</td>");
+			sb.append("<td>"+od.getAddress()+"</td>");
+			sb.append("<td><button id='menubtn'>메뉴보기</button>");
+			sb.append("</tr>");
+			sb.append("<tr id='in'>");
+			sb.append("<td colspan='3'>"+makeHtml_oddList(oddList)+"</td>");
+			sb.append("<td>"+"총"+od.getTototcost()+"원"+"</td>");
+			sb.append("</tr>");
+
+
+		}
+		sb.append("</table>");
+		return sb.toString();
+	}
+
+	private String makeHtml_oddList(List<OrderDetail> oddList) {
+		StringBuilder sb=new StringBuilder();
+		sb.append("<table>");
+		for(int i=0;i<oddList.size();i++) {
+			OrderDetail odd=oddList.get(i);
+			OrderDao odDao=new OrderDao();
+			sb.append("<tr>");
+			sb.append("<td>"+odd.getBobname()+"</td>");
+			sb.append("<td>"+odd.getCnt()+"</td>");
+			sb.append("<td>"+odd.getCost()+"</td>");
+			sb.append("</tr>");
+
+		}
+		sb.append("</table>");
+		return sb.toString();
+	}
+
 }
+
+/*
+ * private String makeHtml_oddList(List<OrderDetail> oddList) { StringBuilder
+ * sb=new StringBuilder();
+ *
+ * sb.append("<h2>"+oddList.get(0).getBuyername()+"님의 주문내역</h2>");
+ * sb.append("<table>"); sb.append("<tr>"); sb.append("<th>주문번호</th>");
+ * sb.append("<th>주문날짜</th>"); sb.append("<th>배송주소</th>");
+ * sb.append("<th></th>");
+ *
+ * sb.append("</tr>");
+ *
+ * for(int i=0;i<oddList.size();i++) { OrderDetail odd=oddList.get(i);
+ *
+ * sb.append("<tr>"); sb.append("<td>"+odd.getOrderid()+"</td>");
+ * sb.append("<td>"+odd.getOrdertime()+"</td>");
+ * sb.append("<td>"+odd.getAddress()+"</td>");
+ * sb.append("<td><button id='menubtn'>메뉴보기</button>"); sb.append("</tr>");
+ * sb.append("<tr id='in'>");
+ * sb.append("<td colspan='3'>"+odd.getBobname()+"|"+odd.getCnt()+"|"+odd.
+ * getCost()+"</td>"); sb.append("<td>"+"총"+odd.getTotcost()+"원"+"</td>");
+ * sb.append("</tr>");
+ *
+ *
+ * }
+ *
+ * return sb.toString(); }
+ *
+ *
+ */
+
