@@ -4,10 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>지점출력페이지</title>
+<title>Insert title here</title>
 </head>
+<style>
+h1{
+          font-weight:bold;
+          font-family:system-ui;
+          }
+</style>
 <body>
-${brtable}
-
+<h1>주문 확인 페이지</h1>
 </body>
 </html>

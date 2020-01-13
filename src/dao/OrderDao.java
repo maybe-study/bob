@@ -45,14 +45,16 @@ public class OrderDao {
 		}
 		return false;
 	}
-	public boolean orderdetailInsert(OrderDetail odd) {
-		String sql = "insert into \"orderdetail\" VALUES(oddseq.nextval,?,?,?,?)" ;
+	public boolean orderdetailInsert(String id) {
+		String sql = "insert into \"orderdetail\" (\"detailid\",\"cost\",\"cnt\",\"orderid\",\"bobid\")\r\n" + 
+				"select oddseq.nextval,b.\"cost\",c.\"cnt\",ODSEQ.currval,b.\"bobid\"\r\n" + 
+				"                       from \"bobburger\" b join \"cart\" c \r\n" + 
+				"                       on b.\"bobid\"=c.\"bobid\"\r\n" + 
+				"                       where c.\"buyerid\"=?" ;
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, odd.getCost());
-			pstmt.setInt(2, odd.getCnt());
-			pstmt.setInt(3, odd.getOrderid());
-			pstmt.setInt(4, odd.getBobid());
+			pstmt.setNString(1, id);
+			
 			
 			int result=pstmt.executeUpdate();
 			if(result!=0) {
@@ -66,12 +68,12 @@ public class OrderDao {
 		}
 		return false;
 	}
-	public void cartDelete(Cart c) {
-		String sql = "DELETE FROM \"cart\" WHERE \"bobid\"=? and \"buyerid\"=?";
+	public void cartDelete(String id) {
+		String sql = "delete from \"cart\" where \"buyerid\"=?";
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, c.getB_bobid());
-			pstmt.setNString(2, c.getB_buyerid());
+			pstmt.setNString(1, id);
+		
 			int result = pstmt.executeUpdate();
 			if (result != 0) {
 				System.out.println("카트삭제 성공");
