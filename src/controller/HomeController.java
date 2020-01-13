@@ -41,7 +41,7 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/delbranchfrm":	//브런치삭제 페이지
-			fw=bm.delbranchfrm();
+			fw=bm.delbranchList();
 			break;
 
 		case "/delbranch":
@@ -113,6 +113,7 @@ public class HomeController extends HttpServlet {
 			fw=menu.modifyCart();
 			break;
 		case "/printbranch":
+			System.out.println("프린트브런치온");
 			fw=bm.printbranch();
 			break;
 
