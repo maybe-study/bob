@@ -506,8 +506,9 @@ public class MenuMM {
 		orDao.orderdetailInsert(id);
 
 		orDao.cartDelete(id);
-
-		return null;
+		fw.setPath("orderconfirm");
+		fw.setRedirect(false);
+		return fw;
 	}
 
 	public boolean isLogin() {
@@ -580,22 +581,18 @@ public class MenuMM {
 		for(int i=0;i<oddList.size();i++) {
 			OrderDetail odd=oddList.get(i);
 			OrderDao odDao=new OrderDao();
-
 			sb.append("<tr>");
 			sb.append("<td>"+odd.getBobname()+"</td>");
 			sb.append("<td>"+odd.getCnt()+"</td>");
 			sb.append("<td>"+odd.getCost()+"</td>");
 			sb.append("</tr>");
 
-
-
-
 		}
 		sb.append("</table>");
 		return sb.toString();
 	}
 
-	}
+}
 
 /*
  * private String makeHtml_oddList(List<OrderDetail> oddList) { StringBuilder
