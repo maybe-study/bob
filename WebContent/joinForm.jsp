@@ -171,7 +171,7 @@
 				<input type="button"  onclick="subbtn" id="subbtn1" value="회원가입" />
 			</td>
 
-			<td><a href="#"  onClick="history.back()"><input type="button" onclick="cancel" id="cancel1" value="회원가입취소">
+			<td><a href=''  onClick="history.back()"><input type="button" onclick="cancel" id="cancel1" value="회원가입취소">
 				</a></td>
 		</tr>
 	</form>

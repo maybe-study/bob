@@ -41,7 +41,7 @@ public class HomeController extends HttpServlet {
 			break;
 
 		case "/delbranchfrm":	//브런치삭제 페이지
-			fw=bm.delbranchfrm();
+			fw=bm.delbranchList();
 			break;
 
 		case "/delbranch":

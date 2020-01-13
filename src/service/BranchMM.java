@@ -46,25 +46,15 @@ public class BranchMM {
 		return fw;
 
 	}
-	public Forward delbranchfrm() {
+	public Forward delbranchList() {
 		Forward fw=new Forward();
 		BranchDao bDao=new BranchDao();
 		
-		List<Branch> brListn=bDao.delbranchList("일반");
-		List<Branch> brListm=bDao.delbranchList("고기");
-		List<Branch> brListt=bDao.delbranchList("튀김");
-		List<Branch> brListtt=bDao.delbranchList("떡갈비");
+		List<Branch> brList=bDao.delbranchList();
 		bDao.close();
 		
-		String brListHtmln = makeHtml_brList(brListn);
-		String brListHtmlm = makeHtml_brList(brListm);
-		String brListHtmlt = makeHtml_brList(brListt);
-		String brListHtmltt = makeHtml_brList(brListtt);
-		
-		request.setAttribute("brLsitHtmln", brListHtmln);
-		request.setAttribute("brLsitHtmlm", brListHtmlm);
-		request.setAttribute("brLsitHtmlt", brListHtmlt);
-		request.setAttribute("brLsitHtmltt", brListHtmltt);
+		String brListHtml = makeHtml_brList(brList);
+		request.setAttribute("brListHtml", brListHtml);
 		fw.setPath("delBranch.jsp");
 		fw.setRedirect(false);
 		return fw;
@@ -75,10 +65,11 @@ public class BranchMM {
 		for(int i=0; i<brList.size();i++) {
 			Branch br = brList.get(i);
 			sb.append("<tr>");
-			sb.append("<td>"+br.getBranchname()+"<td>");
-			sb.append("<td>"+br.getSales()+"<td>");
-			sb.append("<td>"+br.getBranchaddress()+"<td>");
-			sb.append("<td>"+br.getExplain()+"<td>");
+			sb.append("<td><input type='checkbox' name='checkedBranch' value='"+br.getBranchid()+"'></td>");
+			sb.append("<td>"+br.getBranchname()+"</td>");
+			sb.append("<td>"+br.getSales()+"</td>");
+			sb.append("<td>"+br.getBranchaddress()+"</td>");
+			sb.append("<td>"+br.getExplain()+"</td>");
 			sb.append("<tr>");
 		}
 		sb.append("</table>");
@@ -92,7 +83,7 @@ public class BranchMM {
 			bDao.branchDelete(checkedBranch[i]);
 		}
 		bDao.close();
-		return delbranchfrm();
+		return delbranchList();
 	}
 	public Forward printbranch() {
 		

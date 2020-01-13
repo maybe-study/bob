@@ -46,12 +46,11 @@ public class BranchDao {
 
 	}
 
-	public List<Branch> delbranchList(String kind) {
-		String sql="SELECT * FROM \"branch\" WHERE \"kind\"=?";
+	public List<Branch> delbranchList() {
+		String sql="SELECT * FROM \"branch\"";
 		List<Branch> brList = null;
 		try {
 			pstmt= con.prepareStatement(sql);
-			pstmt.setNString(1, kind);
 			rs = pstmt.executeQuery();
 			brList = new ArrayList<Branch>();
 			while(rs.next()) {
@@ -62,7 +61,6 @@ public class BranchDao {
 				br.setExplain(rs.getNString("explain"));
 				br.setBranchid(rs.getNString("branchid"));
 				br.setBranchpw(rs.getNString("branchpw"));
-				
 				brList.add(br);
 			}
 			return brList;
