@@ -94,6 +94,10 @@ public class BranchMM {
 		bDao.close();
 		return delbranchfrm();
 	}
+	public Forward printbranch() {
+		
+		return null;
+	}
 	
 	
 }
