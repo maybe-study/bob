@@ -22,20 +22,20 @@ border: 1px black solid;
 <body>
 <h1>접수된 주문</h1>
 
-<ul class="nav nav-tabs">
-		<li class="orderrevieve-state">
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
 		<a class="nav-link active" href="#tab1" data-toggle="tab">들어온 주문</a>
-			</li>
-		<li class="orderrevieve-state">
+		</li>
+		<li class="nav-item">
 		<a class="nav-link" href="#tab2" data-toggle="tab">배달된 주문</a>
 		</li>
-		<li class="orderrevieve-state">
+		<li class="nav-item">
 		<a class="nav-link" href="index.jsp">메인으로 돌아가기</a>
 		</li>
 	</ul>
 	<div class="tab-content px-1 pt-2">
-		<div class="tab-pane active" id="tab1">${oListr}</div>
-		<div class="tab-pane" id="tab2">${oListc}</div>
+		<div class="tab-pane active" id="tab1">1번 내용입니다.${oListr}</div>
+		<div class="tab-pane" id="tab2">2번  내용입니다.${oListc}</div>
 	</div>
 </body>
 </html>
