@@ -90,4 +90,32 @@ public class BranchDao {
 		}
 		
 	}
+
+	public List<Branch> printbranch() {
+		String sql="SELECT * FROM \"branch\"";
+		List<Branch> brList = null;
+		try {
+			pstmt= con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			brList = new ArrayList<Branch>();
+			while(rs.next()) {
+				System.out.println("브런치아이디:"+rs.getNString("branchid"));
+				Branch br = new Branch();
+				br.setBranchaddress(rs.getNString("branchid"));
+				br.setBranchname(rs.getNString("branchname"));
+				br.setSales(rs.getInt("sales"));
+				br.setExplain(rs.getNString("explain"));
+				br.setBranchid(rs.getNString("branchid"));
+				br.setBranchpw(rs.getNString("branchpw"));
+				
+				brList.add(br);
+			}
+			return brList;
+		}catch (SQLException e) {
+			System.out.println("지점 목록 풀러오기 실패");
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
 }

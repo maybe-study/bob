@@ -95,8 +95,30 @@ public class BranchMM {
 		return delbranchfrm();
 	}
 	public Forward printbranch() {
+		Forward fw=new Forward();
+		BranchDao bDao=new BranchDao();
 		
-		return null;
+		List<Branch> brList=bDao.printbranch();
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("<table>");
+		for(int i=0; i<brList.size();i++) {
+			Branch br = brList.get(i);
+			sb.append("<tr>");
+			sb.append("<td>"+br.getBranchname()+"</td>");
+			sb.append("<td>"+br.getSales()+"</td>");
+			sb.append("<td>"+br.getBranchaddress()+"</td>");
+			sb.append("<td>"+br.getExplain()+"</td>");
+			sb.append("</tr>");
+		}
+		sb.append("</table>");
+		System.out.println("만든테이블:"+sb.toString());
+		
+		request.setAttribute("brtable", sb.toString());
+		fw.setPath("Branchprint.jsp");
+		fw.setRedirect(false);
+		
+		return fw;
 	}
 	
 	
