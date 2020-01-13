@@ -26,7 +26,7 @@
 <h1>주문 작성 페이지</h1>
 <form>
 총 가격:${total}<br>
-<input type="hidden" name="total" value="${total }">
+<input type="hidden" name="total" value="${total}">
 
 지점선택:${branchList}<br>
 배송주소<br>

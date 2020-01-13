@@ -491,6 +491,11 @@ public class MenuMM {
 		Forward fw=new Forward();
 		HttpSession session=request.getSession();
 		OrderDao orDao=new OrderDao();
+		if(isLogin()) {
+			fw.setPath("login.jsp");
+			fw.setRedirect(false);
+			return fw;
+		}
 		String id=(String)session.getAttribute("id");
 		Order od=new Order();
 		OrderDetail odd=new OrderDetail();
@@ -503,8 +508,14 @@ public class MenuMM {
 		
 		
 		orDao.orderInsert(od);
-		orDao.orderdetailInsert(odd);
-		orDao.cartDelete(c);
+		
+		
+		
+		
+		
+		
+		orDao.orderdetailInsert(id);
+		orDao.cartDelete(id);
 		
 		
 		return null;
