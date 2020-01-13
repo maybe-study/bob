@@ -1,7 +1,7 @@
 package bean;
 
 public class Cart {
-	private String b_bobid;
+	private int b_bobid;
 	private String b_bobname;
 	private String b_buyerid;
 	private int c_cnt;
@@ -40,10 +40,10 @@ public class Cart {
 	public void setAllt_price(int allt_price) {
 		this.allt_price = allt_price;
 	}
-	public String getB_bobid() {
+	public int getB_bobid() {
 		return b_bobid;
 	}
-	public void setB_bobid(String b_bobid) {
+	public void setB_bobid(int b_bobid) {
 		this.b_bobid = b_bobid;
 	}
 	public String getB_buyerid() {

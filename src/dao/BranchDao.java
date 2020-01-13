@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import bean.Branch;
 
@@ -42,5 +44,50 @@ public class BranchDao {
 	public void close() {
 		JdbcUtil.close(rs, pstmt, con);
 
+	}
+
+	public List<Branch> delbranchList(String kind) {
+		String sql="SELECT * FROM \"branch\" WHERE \"kind\"=?";
+		List<Branch> brList = null;
+		try {
+			pstmt= con.prepareStatement(sql);
+			pstmt.setNString(1, kind);
+			rs = pstmt.executeQuery();
+			brList = new ArrayList<Branch>();
+			while(rs.next()) {
+				Branch br = new Branch();
+				br.setBranchaddress(rs.getNString("branchid"));
+				br.setBranchname(rs.getNString("branchname"));
+				br.setSales(rs.getInt("sales"));
+				br.setExplain(rs.getNString("explain"));
+				br.setBranchid(rs.getNString("branchid"));
+				br.setBranchpw(rs.getNString("branchpw"));
+				
+				brList.add(br);
+			}
+			return brList;
+		}catch (SQLException e) {
+			System.out.println("상품 목록 풀러오기 실패");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public void branchDelete(String branchid) {
+		String sql = "DELETE FROM \"branch\" WHERE \"branchid\"=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setNString(1, branchid);
+			int result = pstmt.executeUpdate();
+			if(result != 0) {
+				System.out.println("삭제 성공");
+			}else {
+				System.out.println("삭제 실패");
+			}
+		}catch (SQLException e) {
+			System.out.println("상품 불러오기 실패");
+			e.printStackTrace();
+		}
+		
 	}
 }

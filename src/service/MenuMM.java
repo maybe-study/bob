@@ -20,9 +20,11 @@ import bean.Branch;
 import bean.Cart;
 import bean.Forward;
 import bean.Order;
+import bean.OrderDetail;
 import dao.CartDao;
 import dao.MemberDao;
 import dao.MenuDao;
+import dao.OrderDao;
 
 public class MenuMM {
 	HttpServletRequest request;
@@ -382,7 +384,7 @@ public class MenuMM {
 			
 				Cart c= new Cart();
 
-				c.setB_bobid(bobid);
+				c.setB_bobid(Integer.parseInt(bobid));
 				c.setB_buyerid(buyerid);
 				c.setC_cnt(cnt);
 				int result=cDao.insertCart(c);
@@ -423,7 +425,7 @@ public class MenuMM {
 			
 				Cart c= new Cart();
 
-				c.setB_bobid(bobid);
+				c.setB_bobid(Integer.parseInt(bobid));
 				c.setB_buyerid(buyerid);
 				c.setC_cnt(cnt);
 				int result=cDao.insertCart(c);
@@ -474,11 +476,11 @@ public class MenuMM {
     //지점select
 	private String makeHtml_branchList(List<Branch> branchList) {
 		StringBuilder sb=new StringBuilder();
-		sb.append("<select name='branch'>");
+		sb.append("<select name='branchid'>");
 		sb.append("<option value=''>지점선택</option>");
 		for(int i=0;i<branchList.size();i++) {
 			Branch b=branchList.get(i);
-			sb.append("<option value="+b.getBranchname()+">"+b.getBranchname()+"</option>");
+			sb.append("<option value="+b.getBranchid()+">"+b.getBranchname()+"</option>");
 		}
 		sb.append("</select>");
 	    System.out.println("1:"+sb);
@@ -486,7 +488,25 @@ public class MenuMM {
 	}
 
 	public Forward payment() {
-		// TODO Auto-generated method stub
+		Forward fw=new Forward();
+		HttpSession session=request.getSession();
+		OrderDao orDao=new OrderDao();
+		String id=(String)session.getAttribute("id");
+		Order od=new Order();
+		OrderDetail odd=new OrderDetail();
+		Cart c=new Cart();
+		
+		od.setTototcost(Integer.parseInt(request.getParameter("total")));
+		od.setAddress(request.getParameter("address"));
+		od.setBranchid(request.getParameter("branchid"));
+		od.setBuyerid(id);
+		
+		
+		orDao.orderInsert(od);
+		orDao.orderdetailInsert(odd);
+		orDao.cartDelete(c);
+		
+		
 		return null;
 	}
 	public boolean isLogin() {

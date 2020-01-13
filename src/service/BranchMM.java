@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -44,5 +46,54 @@ public class BranchMM {
 		return fw;
 
 	}
+	public Forward delbranchfrm() {
+		Forward fw=new Forward();
+		BranchDao bDao=new BranchDao();
+		
+		List<Branch> brListn=bDao.delbranchList("일반");
+		List<Branch> brListm=bDao.delbranchList("고기");
+		List<Branch> brListt=bDao.delbranchList("튀김");
+		List<Branch> brListtt=bDao.delbranchList("떡갈비");
+		bDao.close();
+		
+		String brListHtmln = makeHtml_brList(brListn);
+		String brListHtmlm = makeHtml_brList(brListm);
+		String brListHtmlt = makeHtml_brList(brListt);
+		String brListHtmltt = makeHtml_brList(brListtt);
+		
+		request.setAttribute("brLsitHtmln", brListHtmln);
+		request.setAttribute("brLsitHtmlm", brListHtmlm);
+		request.setAttribute("brLsitHtmlt", brListHtmlt);
+		request.setAttribute("brLsitHtmltt", brListHtmltt);
+		fw.setPath("delBranch.jsp");
+		fw.setRedirect(false);
+		return fw;
+	}
+	private String makeHtml_brList(List<Branch> brList) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<table>");
+		for(int i=0; i<brList.size();i++) {
+			Branch br = brList.get(i);
+			sb.append("<tr>");
+			sb.append("<td>"+br.getBranchname()+"<td>");
+			sb.append("<td>"+br.getSales()+"<td>");
+			sb.append("<td>"+br.getBranchaddress()+"<td>");
+			sb.append("<td>"+br.getExplain()+"<td>");
+			sb.append("<tr>");
+		}
+		sb.append("</table>");
+		return sb.toString();
+	}
+	public Forward delbranch() {
+		String [] checkedBranch = request.getParameterValues("checkedBranch");
+		BranchDao bDao = new BranchDao();
+		Branch br = new Branch();
+		for(int i=0;i<checkedBranch.length;i++) {
+			bDao.branchDelete(checkedBranch[i]);
+		}
+		bDao.close();
+		return delbranchfrm();
+	}
+	
 	
 }
