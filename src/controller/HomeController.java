@@ -125,8 +125,8 @@ public class HomeController extends HttpServlet {
 
 		case "/orderconfirm":
 			fw=menu.orderConfirm();
-			break;
 
+			break;
 		case "/printbranch":
 			System.out.println("프린트브런치온");
 			fw=bm.printbranch();

@@ -31,7 +31,7 @@ public class OrderDao {
 		try {
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, od.getTotcost());
+			pstmt.setInt(1, od.getTototcost());
 			pstmt.setNString(2, od.getAddress());
 			pstmt.setNString(3, od.getBranchid());
 			pstmt.setNString(4, od.getBuyerid());
@@ -182,7 +182,7 @@ public class OrderDao {
 
 	}
 	public List<Order> odList(String id) {
-		String sql="SELECT * FROM \"order\" WHERE \"buyerid\"=?";
+		String sql="select * from \"order\" where \"buyerid\"=? order by \"ordertime\" desc";
 		List<Order> odList=null;
 		try {
 			pstmt=con.prepareStatement(sql);

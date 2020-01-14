@@ -98,7 +98,7 @@ margin:10px 0px;
 		<ul>
 			<li><a href="orderfrm">주문하기</a>
 				<ul>
-					<li><a href="#">주문내역</a></li>
+					<li><a href="orderconfirm">주문내역</a></li>
 				</ul></li>
 		</ul>
 		<ul>

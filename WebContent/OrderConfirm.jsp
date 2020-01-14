@@ -22,13 +22,24 @@ border:1px solid;
 </style>
 <body>
 <h1>주문 확인 페이지</h1>
-${odList }
+${odList}
 
 </body>
 <script>
-$('#menubtn').click(function(){
-	$('#in').toggle();
+
+$(function(){
+	$('.menutr').hide();
 })
 
+$('.menubtn').each(function(index,item){
+	console.log(index,item);
+	console.dir(item);
+	item.onclick=function(){
+		var menutr=document.getElementsByClassName("menutr");
+		
+		console.log($(menutr[index]));
+       $(menutr[index]).toggle();
+    }
+});
 </script>
 </html>
