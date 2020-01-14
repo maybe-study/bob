@@ -22,7 +22,7 @@ border:1px solid;
 </style>
 <body>
 <h1>주문 확인 페이지</h1>
-${odList }
+${odList}
 
 </body>
 <script>

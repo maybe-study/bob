@@ -182,7 +182,7 @@ public class OrderDao {
 
 	}
 	public List<Order> odList(String id) {
-		String sql="SELECT * FROM \"order\" WHERE \"buyerid\"=?";
+		String sql="select * from \"order\" where \"buyerid\"=? order by \"ordertime\" desc";
 		List<Order> odList=null;
 		try {
 			pstmt=con.prepareStatement(sql);

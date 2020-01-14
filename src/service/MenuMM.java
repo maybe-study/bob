@@ -577,14 +577,14 @@ public class MenuMM {
 
 	private String makeHtml_oddList(List<OrderDetail> oddList) {
 		StringBuilder sb=new StringBuilder();
-		sb.append("<table>");
+		sb.append("<table >");
 		for(int i=0;i<oddList.size();i++) {
 			OrderDetail odd=oddList.get(i);
 			OrderDao odDao=new OrderDao();
 			sb.append("<tr>");
 			sb.append("<td>"+odd.getBobname()+"</td>");
-			sb.append("<td>"+odd.getCnt()+"</td>");
-			sb.append("<td>"+odd.getCost()+"</td>");
+			sb.append("<td>"+odd.getCnt()+"개</td>");
+			sb.append("<td>"+odd.getCost()+"원</td>");
 			sb.append("</tr>");
 
 		}
