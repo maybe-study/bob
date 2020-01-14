@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
 import dao.MemberDao;
+import dao.OrderDao;
 import service.BranchMM;
 import service.MemberMM;
 import service.MenuMM;
@@ -18,7 +19,7 @@ import service.OrderMM;
 
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm",
 	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/cartlist","/ordersheet"
-	,"/payment","/addcart","/modifycart","/branchlogin","/printbranch","/delbranch","/orderrecieveu","/orderrecievefrm","/logout","/orderconfirm"})
+	,"/payment","/addcart","/modifycart","/branchlogin","/printbranch","/delbranch","/orderrecieveu","/orderrecievefrm","/logout","/orderconfirm","/refresh"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,6 +33,11 @@ public class HomeController extends HttpServlet {
         BranchMM bm=new BranchMM(request, response);
         OrderMM om=new OrderMM(request,response);
 		switch(cmd) {
+		
+		case"/refresh":
+			
+			break;
+		
 
 		case "/joinchk":    //회원가입 중복확인
 			String buyerid = request.getParameter("buyerid");

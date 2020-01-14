@@ -126,7 +126,7 @@ public class OrderDao {
 	}
 	public void stateUpdate(int orderid) {
 		String sql = "UPDATE \"order\" "
-				+ "SET \"state\"='배달'"
+				+ "SET \"state\"='배달완료'"
 				+ "WHERE \"orderid\"=?";
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -208,5 +208,6 @@ public class OrderDao {
 		}
 		return null;
 	}
+	
 
 }
