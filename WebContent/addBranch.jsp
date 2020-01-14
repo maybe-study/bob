@@ -66,42 +66,7 @@ h1 {
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04cfe5f1eb29416b59e4313a6acea9b8&libraries=services"></script>
 <script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };  
-
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
-
-// 주소로 좌표를 검색합니다
-geocoder.addressSearch('인천 연수구 솔샘로 120', function(result, status) {
-
-    // 정상적으로 검색이 완료됐으면 
-     if (status === kakao.maps.services.Status.OK) {
-
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new kakao.maps.Marker({
-            map: map,
-            position: coords
-        });
-
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-        });
-        infowindow.open(map, marker);
-
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
-    } 
-});    
+ 
 </script>
 </body>
 
@@ -116,26 +81,26 @@ geocoder.addressSearch('인천 연수구 솔샘로 120', function(result, status
 	        window.alert("아이디를 입력하시오");
 	        document.fmField.branchid.focus();
 	        //branchId.select();
-	        return false; // 아이디 입력이 안되어 있다면 submint 이벤트를 중지
+	        return false; 
 	    }
-		/* if(branchName.value == '') {
-	        window.alert("아이디를 입력하시오");
-	        document.fmField.id.focus();
+		if(branchName.value == '') {
+	        window.alert("이름을 입력하시오");
+	        document.fmField.branchname.focus();
 	        
-	        return false; // 아이디 입력이 안되어 있다면 submint 이벤트를 중지
+	        return false; 
 	    }
 		if(branchPw.value == '') {
-	        window.alert("아이디를 입력하시오");
-	        document.fmField.uerId.focus();
+	        window.alert("비밀번호를 입력하시오");
+	        document.fmField.branchpw.focus();
 	        
-	        return false; // 아이디 입력이 안되어 있다면 submint 이벤트를 중지
+	        return false; 
 	    }
 		if(branchAddress.value == '') {
-	        window.alert("아이디를 입력하시오");
-	        document.fmField.uerId.focus();
+	        window.alert("주소를 입력하시오");
+	        document.fmField.branchaddress.focus();
 	        
-	        return false; // 아이디 입력이 안되어 있다면 submint 이벤트를 중지
-	    } */
+	        return false; 
+	    }
 		
 	}
 	
@@ -187,7 +152,54 @@ geocoder.addressSearch('인천 연수구 솔샘로 120', function(result, status
 							guideTextBox.innerHTML = '';
 							guideTextBox.style.display = 'none';
 						}
+						
+						var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+					    mapOption = {
+					        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+					        level: 3 // 지도의 확대 레벨
+					    };  
+
+					// 지도를 생성합니다    
+					var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+					// 주소-좌표 변환 객체를 생성합니다
+					var geocoder = new kakao.maps.services.Geocoder();
+
+					// 주소로 좌표를 검색합니다
+					geocoder.addressSearch(roadAddr, function(result, status) {
+
+					    // 정상적으로 검색이 완료됐으면 
+					     if (status === kakao.maps.services.Status.OK) {
+
+					        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+					        // 결과값으로 받은 위치를 마커로 표시합니다
+					        var marker = new kakao.maps.Marker({
+					            map: map,
+					            position: coords
+					        });
+
+					        // 인포윈도우로 장소에 대한 설명을 표시합니다
+					        var infowindow = new kakao.maps.InfoWindow({
+					            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+roadAddr+'</div>'
+					        });
+					        infowindow.open(map, marker);
+
+					        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+					        map.setCenter(coords);
+					    } 
+					});   
+						
+						
+						
+						
+						
+						
+						
 					}
+				
+
+				
 				}).open();
 	}
 	$("#cancel1").on('click', function() {
