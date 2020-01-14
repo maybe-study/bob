@@ -528,6 +528,11 @@ public class MenuMM {
 		OrderDao odDao=new OrderDao();
 
 		String id=(String)session.getAttribute("id");
+		if(isLogin()) {
+			fw.setPath("login.jsp");
+			fw.setRedirect(false);
+			return fw;
+		}
 		List<Order> odList=null;
 		odList=odDao.odList(id);
 
