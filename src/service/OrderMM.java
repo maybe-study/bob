@@ -72,4 +72,20 @@ public class OrderMM {
 		return recieveList();
 	}
 
+	public String recieveref() {
+		
+		Forward fw=new Forward();
+		OrderDao oDao=new OrderDao();
+		
+		List<Recieve> oListr=oDao.recieveList("주문접수");
+		List<Recieve> oListc=oDao.recieveList("배달완료");
+		oDao.close();
+		String oListHtmlr = makeHtml_oList(oListr);
+		String oListHtmlc = makeHtml_oList(oListc);
+		request.setAttribute("oListr",oListHtmlr);
+		request.setAttribute("oListc",oListHtmlc);
+		
+		return oListHtmlr;
+	}
+
 }
