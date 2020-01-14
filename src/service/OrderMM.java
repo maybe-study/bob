@@ -57,6 +57,7 @@ public class OrderMM {
 			sb.append("<td colspan=\"5\">"+re.getAddress()+"</td>");
 			sb.append("</tr>");
 		}
+		sb.append("</table>");
 		return sb.toString();
 	}
 
