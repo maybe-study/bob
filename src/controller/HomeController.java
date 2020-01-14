@@ -34,11 +34,6 @@ public class HomeController extends HttpServlet {
         OrderMM om=new OrderMM(request,response);
 		switch(cmd) {
 		
-		case"/refresh":
-			
-			break;
-		
-
 		case "/joinchk":    //회원가입 중복확인
 			String buyerid = request.getParameter("buyerid");
 			response.getWriter().write(new MemberDao().registerCheck(buyerid)+"");

@@ -181,6 +181,7 @@ public class OrderDao {
 		return null;
 
 	}
+	
 	public List<Order> odList(String id) {
 		String sql="select * from \"order\" where \"buyerid\"=? order by \"ordertime\" desc";
 		List<Order> odList=null;
@@ -199,6 +200,78 @@ public class OrderDao {
 				od.setBranchid(rs.getNString("branchid"));
 				od.setBuyerid(rs.getNString("buyerid"));
 				odList.add(od);
+			}
+			System.out.println("겟 완료");
+			return odList;
+		} catch (SQLException e) {
+			System.out.println("db예외");
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	public List<OrderDetail> recieveOddList(int orderid) {
+		String sql="select odd.\"detailid\",odd.\"cost\",odd.\"cnt\",odd.\"orderid\",odd.\"bobid\",b.\"bobname\"\r\n" +
+				"from \"orderdetail\" odd join \"bobburger\" b\r\n" +
+				"on odd.\"bobid\"=b.\"bobid\"\r\n" +
+				"where \"orderid\"=?";
+		List<OrderDetail> oddList=null;
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, orderid);
+
+			rs=pstmt.executeQuery();
+			oddList=new ArrayList<OrderDetail>();
+			while(rs.next()) {
+				OrderDetail odd=new OrderDetail();
+				odd.setOrderid(rs.getInt("orderid"));
+				odd.setBobname(rs.getNString("bobname"));
+				odd.setDetailid(rs.getInt("detailid"));
+				odd.setCost(rs.getInt("cost"));
+				odd.setCnt(rs.getInt("cnt"));
+				odd.setBobid(rs.getInt("bobid"));
+
+				oddList.add(odd);
+
+			}
+
+
+			System.out.println("order-get완료");
+			return oddList;
+
+		} catch (SQLException e) {
+			System.out.println("db오류");
+			e.printStackTrace();
+		}
+
+		return null;
+
+	}
+	
+	
+	
+	public List<Order> recieveOdList(String branchid,String state) {
+		String sql="select * from \"order\" where \"branchid\"=? and \"state\"=? order by \"ordertime\" desc";
+		List<Order> odList=null;
+		try {
+			System.out.println("리시브 오더 리스트의 지점 아이디:"+branchid);
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, branchid);
+			pstmt.setNString(2, state);
+			rs=pstmt.executeQuery();
+			odList=new ArrayList<Order>();
+			while(rs.next()) {
+				Order od=new Order();
+				od.setOrderid(rs.getInt("orderid"));
+				od.setOrdertime(rs.getNString("ordertime"));
+				od.setTototcost(rs.getInt("tcost"));
+				od.setAddress(rs.getNString("address"));
+				od.setState(rs.getNString("state"));
+				od.setBranchid(rs.getNString("branchid"));
+				od.setBuyerid(rs.getNString("buyerid"));
+				odList.add(od);
+				System.out.println("주문시간:"+rs.getNString("ordertime"));
 			}
 			System.out.println("겟 완료");
 			return odList;

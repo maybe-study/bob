@@ -111,7 +111,7 @@ public class MemberMM {
 				System.out.println("어드민 로그인 성공");
 			} else {
 				
-				fw.setPath("orderrecievefrm");
+				fw.setPath("OrderRecieve.jsp");
 				fw.setRedirect(false);
 				System.out.println("지점 로그인 성공");
 			}

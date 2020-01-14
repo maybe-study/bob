@@ -455,6 +455,7 @@ public class MenuMM {
 		int total = Integer.parseInt(request.getParameter("sum"));
 
 		branchList = mnDao.getBranchList(id);
+		mnDao.close();
 
 		System.out.println("토탈값:" + total);
 		request.setAttribute("total", total);
@@ -506,6 +507,8 @@ public class MenuMM {
 		orDao.orderdetailInsert(id);
 
 		orDao.cartDelete(id);
+		
+		orDao.close();
 		fw.setPath("orderconfirm");
 		fw.setRedirect(false);
 		return fw;
@@ -535,6 +538,7 @@ public class MenuMM {
 		}
 		List<Order> odList=null;
 		odList=odDao.odList(id);
+		odDao.close();
 
 
 		if(odList!=null&&odList.size()!=0) {
@@ -562,12 +566,13 @@ public class MenuMM {
 			OrderDao odDao=new OrderDao();
 			List<OrderDetail> oddList=null;
 			oddList=odDao.oddList(odList.get(i).getOrderid());
+			odDao.close();
 
 			sb.append("<tr>");
 			sb.append("<td id='orderid'>"+od.getOrderid()+"</td>");
 			sb.append("<td >"+od.getOrdertime()+"</td>");
 			sb.append("<td>"+od.getAddress()+"</td>");
-			sb.append("<td><button class='menubtn'>메뉴보기</button>");
+			sb.append("<td><button class='menubtn'>메뉴보기</button></td>");
 			sb.append("</tr>");
 			sb.append("<tr class='menutr'>");
 			sb.append("<td colspan='3'>"+makeHtml_oddList(oddList)+"</td>");
@@ -585,7 +590,6 @@ public class MenuMM {
 		sb.append("<table >");
 		for(int i=0;i<oddList.size();i++) {
 			OrderDetail odd=oddList.get(i);
-			OrderDao odDao=new OrderDao();
 			sb.append("<tr>");
 			sb.append("<td>"+odd.getBobname()+"</td>");
 			sb.append("<td>"+odd.getCnt()+"개</td>");

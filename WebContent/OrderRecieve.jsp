@@ -33,16 +33,44 @@ border: 1px black solid;
 		<a class="nav-link" href="index.jsp">메인으로 돌아가기</a>
 		</li>
 	</ul>
-	<form action="orderrecieveu" method="post">
+	
 	<div class="tab-content px-1 pt-2">
 		<div class="tab-pane active" id="tab1"><button>배달 완료</button></div>
 		<div class="tab-pane" id="tab2">${oListc}</div>
 		
 	</div>
-	</form>
+	
 	<script>
-	function aj(){
+	function makeTable(json){
+		$("#tab1").html(json.rList);
+		$("#tab2").html(json.dList);
+		//버튼에다가 추가해야돼
+		$('.combtn').each(function(index,item){
+			var bId=item.getAttribute('id');
+			console.log("버튼 아이디:"+bId);
+			console.log(index,item);
+			console.dir(item);
+			item.onclick=function(){
+				var bId=item.getAttribute('id');
+				deliveryAj(bId);
+		    }
+		});
+	}
+	function deliveryAj(bId){
+		$.ajax({
+			type: 'POST',
+			url: 'delivery?bid='+bId,
+			dataType:'json',
+			success: function(json){
+				console.log("성공:",json);
+				makeTable(json);
+			},error:function(err){
+				console.log(err);
+			}
 		
+		});
+	}
+	function aj(){
 		$.ajax({
 			type: 'POST',
 			url: 'refresh',
@@ -50,16 +78,7 @@ border: 1px black solid;
 			success: function(json){
 				console.log("성공:",json);
 				
-				//$("#tab1").html(html);
-				//버튼에다가 추가해야돼
-				$('.combtn').each(function(index,item){
-					console.log(index,item);
-					console.dir(item);
-					item.onclick=function(){
-						var bId=item.getAttribute('bid');
-						location.href='delivery?'+'id='+bId;
-				    }
-				});
+				makeTable(json);
 				
 			},error:function(err){
 				console.log(err);
@@ -67,6 +86,8 @@ border: 1px black solid;
 		
 		});
 	}
+	
+	aj();
 	window.setInterval("aj()",3000);
 		
 // 		setTimeout(function(){
