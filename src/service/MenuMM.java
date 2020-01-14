@@ -545,12 +545,12 @@ public class MenuMM {
 
 	private String makeHtml_odList(List<Order> odList) {
 		StringBuilder sb=new StringBuilder();
-		sb.append("<table>");
-		sb.append("<tr>");
-		sb.append("<th>주문번호</th>");
-		sb.append("<th>주문날짜</th>");
-		sb.append("<th>배송주소</th>");
-		sb.append("<th></th>");
+		sb.append("<table id='odtb'>");
+		sb.append("<tr class='otr'>");
+		sb.append("<th >주문번호</th>");
+		sb.append("<th >주문날짜</th>");
+		sb.append("<th >배송주소</th>");
+		sb.append("<th></th>");//
 		sb.append("</tr>");
 		for(int i=0;i<odList.size();i++) {
 			Order od=odList.get(i);
@@ -558,14 +558,14 @@ public class MenuMM {
 			List<OrderDetail> oddList=null;
 			oddList=odDao.oddList(odList.get(i).getOrderid());
 
-			sb.append("<tr>");
-			sb.append("<td id='orderid'>"+od.getOrderid()+"</td>");
-			sb.append("<td >"+od.getOrdertime()+"</td>");
-			sb.append("<td>"+od.getAddress()+"</td>");
+			sb.append("<tr class='otr'>");
+			sb.append("<td class='otd'>"+od.getOrderid()+"</td>");
+			sb.append("<td class='otd'>"+od.getOrdertime()+"</td>");
+			sb.append("<td class='otd'>"+od.getAddress()+"</td>");
 			sb.append("<td><button class='menubtn'>메뉴보기</button>");
 			sb.append("</tr>");
 			sb.append("<tr class='menutr'>");
-			sb.append("<td colspan='3'>"+makeHtml_oddList(oddList)+"</td>");
+			sb.append("<td class='otd' colspan='3'>"+makeHtml_oddList(oddList)+"</td>");
 			sb.append("<td>"+"총"+od.getTototcost()+"원"+"</td>");
 			sb.append("</tr>");
 
@@ -577,7 +577,7 @@ public class MenuMM {
 
 	private String makeHtml_oddList(List<OrderDetail> oddList) {
 		StringBuilder sb=new StringBuilder();
-		sb.append("<table >");
+		sb.append("<table id='menutb' >");
 		for(int i=0;i<oddList.size();i++) {
 			OrderDetail odd=oddList.get(i);
 			OrderDao odDao=new OrderDao();

@@ -155,6 +155,7 @@ margin:10px 0px;
 		        <img class="slideimg" src="img/tmp_slide00.jpg" alt="Los Angeles" >
 		      </div>
 		
+		
 		      <div class="item">
 		        <img class="slideimg" src="img/king.PNG" alt="Chicago" >
 		      </div>

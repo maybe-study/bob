@@ -12,22 +12,22 @@
         <style>
         
           table{
-           text-align:center;
-           width:500px;
+          text-align:center;
+ 			width:70%;
+ 			margin:auto;
+ 			border-collapse:collapse;
           }
           th,td {
             border: 1px solid black;
             padding: 10px;
           }
-        /*   #btndiv{
-           position: fixed;
-            right: 10px;
-            top:50%
-          } */
+        
           h1{
           font-weight:bold;
           font-family:system-ui;
+          text-align:center;
           }
+        
          
         </style>
       </head>

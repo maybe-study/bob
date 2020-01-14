@@ -10,28 +10,78 @@
 
 
 <style>
- h1{
+ h1{	  text-align:center;
           font-weight:bold;
           font-family:system-ui;
           }
+ b{
+ font-size:30px;
+
+ }
+form{
+ border:1px solid #ccc;
+ margin:auto;
+ height:50%;
+ width:900px;
+ padding:30px;
+ 
+}
+select{
+margin-left:28px;
+width:400px;
+height:35px;
+}
+
+#sample4_postcode{
+width:400px;
+height:35px;
+margin-left:23px;
+margin-bottom:10px;
+}
+#sample4_roadAddress{
+width:320px;
+height:35px;
+margin-left:149px;
+margin-bottom:10px;
+}
+#sample4_jibunAddress{
+width:320px;
+height:35px;
+margin-bottom:10px;
+}
+#sample4_detailAddress{
+width:320px;
+height:35px;
+margin-left:149px;
+margin-bottom:10px;
+}
+#sample4_extraAddress{
+height:35px;
+width:320px;
+margin-bottom:10px;
+}
+#btn{
+margin-left:380px;
+
+}
 
 </style>
 </head>
 <body>
 <h1>주문 작성 페이지</h1>
 <form action="payment">
-총 가격:${total}<br>
+<b>총 가격</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${total}원<br><br>
 <input type="hidden" name="total" value="${total}">
 
-지점선택:${branchList}<br>
-배송주소<br>
+<b>지점선택</b>${branchList}<br><br>
+<b>배송주소</b>
 <input type="text" id="sample4_postcode" placeholder="우편번호">
-<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+<input type="button" id="postbtn" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" name='address' id="sample4_roadAddress" placeholder="도로명주소">
 <input type="text" id="sample4_jibunAddress" placeholder="지번주소"><br>
 <span id="guide" style="color:#999;display:none"></span>
 <input type="text" id="sample4_detailAddress" placeholder="상세주소">
-<input type="text" id="sample4_extraAddress" placeholder="참고항목"><br>
+<input type="text" id="sample4_extraAddress" placeholder="참고항목"><br><br>
 
 <button id="btn"><img class="btn-img" src="img/btn3.png"/></button>
 </form>
