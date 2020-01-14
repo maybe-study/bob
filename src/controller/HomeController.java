@@ -1,4 +1,4 @@
-package controller;
+﻿package controller;
 
 import java.io.IOException;
 
@@ -14,10 +14,11 @@ import dao.MemberDao;
 import service.BranchMM;
 import service.MemberMM;
 import service.MenuMM;
+import service.OrderMM;
 
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm",
 	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/cartlist","/ordersheet"
-	,"/payment","/addcart","/modifycart","/branchlogin","/printbranch","/delbranch","/logout","/orderconfirm"})
+	,"/payment","/addcart","/modifycart","/branchlogin","/printbranch","/delbranch","/orderrecieveu","/orderrecievefrm","/logout","/orderconfirm"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,6 +30,7 @@ public class HomeController extends HttpServlet {
 		MemberMM mm=new MemberMM(request, response);
 		MenuMM menu=new MenuMM(request, response);
         BranchMM bm=new BranchMM(request, response);
+        OrderMM om=new OrderMM(request,response);
 		switch(cmd) {
 
 		case "/joinchk":    //회원가입 중복확인
@@ -44,7 +46,10 @@ public class HomeController extends HttpServlet {
 			fw=bm.delbranchList();
 			break;
 
-	
+		case "/delbranch":		//지점 삭제
+			fw=bm.delbranch();
+			break;
+
 		case "/addbranchfrm":	//브런치 추가 페이지
             fw=bm.addbranchfrm();
 			break;
@@ -52,10 +57,10 @@ public class HomeController extends HttpServlet {
 		case "/allrevenue": // 매출 페이지
 
 			break;
-		case "/delmenufrm":
+		case "/delmenufrm":		//메뉴삭제페이지
 			fw=menu.delmenuList();
 			break;
-		case "/delmenu":
+		case "/delmenu":		//메뉴삭제
 			fw=menu.delmenu();
 			break;
 		case "/addmenufrm": //메뉴 추가 페이지
@@ -114,7 +119,7 @@ public class HomeController extends HttpServlet {
 
 		case "/orderconfirm":
 			fw=menu.orderConfirm();
-			
+
 			break;
 		case "/printbranch":
 			System.out.println("프린트브런치온");
@@ -124,7 +129,12 @@ public class HomeController extends HttpServlet {
 		case "/logout":
 			fw=mm.logout();
 			break;
-
+		case "/orderrecievefrm":
+			fw=om.recieveList();
+			break;
+		case "/orderrecieveu":
+			fw=om.recieveu();
+			break;
 		}
 		if(fw!=null) {
 			if(fw.isRedirect()) {
