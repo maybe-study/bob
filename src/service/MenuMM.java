@@ -507,7 +507,7 @@ public class MenuMM {
 		orDao.orderdetailInsert(id);
 
 		orDao.cartDelete(id);
-		
+
 		orDao.close();
 		fw.setPath("orderconfirm");
 		fw.setRedirect(false);
@@ -554,12 +554,12 @@ public class MenuMM {
 
 	private String makeHtml_odList(List<Order> odList) {
 		StringBuilder sb=new StringBuilder();
-		sb.append("<table>");
-		sb.append("<tr>");
-		sb.append("<th>주문번호</th>");
-		sb.append("<th>주문날짜</th>");
-		sb.append("<th>배송주소</th>");
-		sb.append("<th></th>");
+		sb.append("<table id='odtb'>");
+		sb.append("<tr class='otr'>");
+		sb.append("<th >주문번호</th>");
+		sb.append("<th >주문날짜</th>");
+		sb.append("<th >배송주소</th>");
+		sb.append("<th></th>");//
 		sb.append("</tr>");
 		for(int i=0;i<odList.size();i++) {
 			Order od=odList.get(i);
@@ -575,7 +575,7 @@ public class MenuMM {
 			sb.append("<td><button class='menubtn'>메뉴보기</button></td>");
 			sb.append("</tr>");
 			sb.append("<tr class='menutr'>");
-			sb.append("<td colspan='3'>"+makeHtml_oddList(oddList)+"</td>");
+			sb.append("<td class='otd' colspan='3'>"+makeHtml_oddList(oddList)+"</td>");
 			sb.append("<td>"+"총"+od.getTototcost()+"원"+"</td>");
 			sb.append("</tr>");
 
@@ -587,7 +587,7 @@ public class MenuMM {
 
 	private String makeHtml_oddList(List<OrderDetail> oddList) {
 		StringBuilder sb=new StringBuilder();
-		sb.append("<table >");
+		sb.append("<table id='menutb' >");
 		for(int i=0;i<oddList.size();i++) {
 			OrderDetail odd=oddList.get(i);
 			sb.append("<tr>");

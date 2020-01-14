@@ -79,7 +79,7 @@
               -->
          </ul>
          <div class="tab-content px-1 pt-2">
-         <h1>상품 담기</h1><br>
+        
              <div class="tab-pane active" id="n">
 
              </div>
@@ -108,7 +108,7 @@
           console.dir("pListn:",${pListn});
           console.log("pListm:",${pListm});
           console.log("pListt:",${pListt});
-          console.log("pListtt:",${pListtt});
+          console.log("pListtt:",${pListtt}); 
 
           function submit() {
         	  var queryString = $("form[name=bList]").serialize();
