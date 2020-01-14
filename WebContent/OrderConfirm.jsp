@@ -40,6 +40,6 @@ $('.menubtn').each(function(index,item){
 		console.log($(menutr[index]));
        $(menutr[index]).toggle();
     }
-})
+});
 </script>
 </html>
