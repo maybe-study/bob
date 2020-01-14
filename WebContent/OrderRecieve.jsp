@@ -45,14 +45,24 @@ border: 1px black solid;
 		
 		$.ajax({
 			type: 'POST',
-			url: 'recieveref',
-			success: function(html){
-				console.log("성공:"+html);
-				$("#tab1").html(html);
-				console.log("1")
+			url: 'refresh',
+			dataType:'json',
+			success: function(json){
+				console.log("성공:",json);
 				
-			},error:function(){
-				console.log("실패");
+				//$("#tab1").html(html);
+				//버튼에다가 추가해야돼
+				$('.combtn').each(function(index,item){
+					console.log(index,item);
+					console.dir(item);
+					item.onclick=function(){
+						var bId=item.getAttribute('bid');
+						location.href='delivery?'+'id='+bId;
+				    }
+				});
+				
+			},error:function(err){
+				console.log(err);
 			}
 		
 		});

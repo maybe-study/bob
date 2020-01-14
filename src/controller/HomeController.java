@@ -19,7 +19,7 @@ import service.OrderMM;
 
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm",
 	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/cartlist","/ordersheet"
-	,"/payment","/addcart","/modifycart","/branchlogin","/printbranch","/delbranch","/orderrecieveu","/orderrecievefrm","/logout","/orderconfirm","/refresh"})
+	,"/payment","/addcart","/modifycart","/branchlogin","/printbranch","/delbranch","/orderrecieveu","/orderrecievefrm","/logout","/orderconfirm"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

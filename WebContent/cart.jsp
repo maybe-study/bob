@@ -18,7 +18,7 @@
           th,td {
             border: 1px solid black;
             padding: 10px;
-          }
+          }``
         /*   #btndiv{
            position: fixed;
             right: 10px;

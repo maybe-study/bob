@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import service.MenuMM;
 import service.OrderMM;
 
-@WebServlet({"/changecart","/recieveref"})
+@WebServlet({"/changecart","/recieveref","/delivery","/refresh"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -27,6 +27,14 @@ public class RestController extends HttpServlet {
 		String json = null;
 		
 		switch(cmd) {
+		case "/delivery":
+			json=om.delivery();
+			break;
+			
+		case "/refresh":
+			json=om.refresh();
+			
+			break;
 		
 		case "/changecart":
 			json=menu.changeCart();
@@ -41,6 +49,7 @@ public class RestController extends HttpServlet {
 			response.setCharacterEncoding("utf-8");
 			System.out.println("json:"+json);
 			PrintWriter out = response.getWriter();
+			System.out.println("json:"+json);
 			out.write(json);
 		}
 	}
