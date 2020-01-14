@@ -558,12 +558,12 @@ public class MenuMM {
 			oddList=odDao.oddList(odList.get(i).getOrderid());
 
 			sb.append("<tr>");
-			sb.append("<td>"+od.getOrderid()+"</td>");
-			sb.append("<td>"+od.getOrdertime()+"</td>");
+			sb.append("<td id='orderid'>"+od.getOrderid()+"</td>");
+			sb.append("<td >"+od.getOrdertime()+"</td>");
 			sb.append("<td>"+od.getAddress()+"</td>");
-			sb.append("<td><button id='menubtn'>메뉴보기</button>");
+			sb.append("<td><button class='menubtn'>메뉴보기</button>");
 			sb.append("</tr>");
-			sb.append("<tr id='in'>");
+			sb.append("<tr class='menutr'>");
 			sb.append("<td colspan='3'>"+makeHtml_oddList(oddList)+"</td>");
 			sb.append("<td>"+"총"+od.getTototcost()+"원"+"</td>");
 			sb.append("</tr>");
@@ -627,4 +627,4 @@ public class MenuMM {
  *
  */
 
-	}
+	
