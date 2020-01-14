@@ -20,7 +20,7 @@ h1 {
 </style>
 </head>
 <body>
-	<form action="addbranchfrm">
+	<form id="fmField" name="fmField" action="" method="post" onsubmit="return checkForm();">
 		<h1>지점추가</h1>
 		<tr>
 			<td>지점명</td>
@@ -41,9 +41,9 @@ h1 {
 			<br>
 		</tr>
 		지점주소<br> <input type="text" id="sample4_postcode"
-			placeholder="우편번호" name="branchaddress"> <input type="button"
+			placeholder="우편번호" > <input type="button"
 			onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-		<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+		<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="branchaddress">
 		<input type="text" id="sample4_jibunAddress" placeholder="지번주소"><br>
 		<span id="guide" style="color: #999; display: none"></span> <input
 			type="text" id="sample4_detailAddress" placeholder="상세주소"> <input
@@ -65,6 +65,38 @@ h1 {
 
 
 <script>
+	function checkForm(){
+		var branchId=document.getElementById("id");
+		var branchName=document.getElementById("name");
+		var branchPw=document.getElementById("pw");
+		var branchAddress=document.getElementById("sample4_roadAddress");
+		if(branchId.value == '') {
+	        window.alert("아이디를 입력하시오");
+	        document.fmField.branchid.focus();
+	        //branchId.select();
+	        return false; // 아이디 입력이 안되어 있다면 submint 이벤트를 중지
+	    }
+		/* if(branchName.value == '') {
+	        window.alert("아이디를 입력하시오");
+	        document.fmField.id.focus();
+	        
+	        return false; // 아이디 입력이 안되어 있다면 submint 이벤트를 중지
+	    }
+		if(branchPw.value == '') {
+	        window.alert("아이디를 입력하시오");
+	        document.fmField.uerId.focus();
+	        
+	        return false; // 아이디 입력이 안되어 있다면 submint 이벤트를 중지
+	    }
+		if(branchAddress.value == '') {
+	        window.alert("아이디를 입력하시오");
+	        document.fmField.uerId.focus();
+	        
+	        return false; // 아이디 입력이 안되어 있다면 submint 이벤트를 중지
+	    } */
+		
+	}
+	
 	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 	function sample4_execDaumPostcode() {
 		new daum.Postcode(
