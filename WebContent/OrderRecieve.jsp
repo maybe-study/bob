@@ -35,7 +35,7 @@ border: 1px black solid;
 	</ul>
 	<form action="orderrecieveu" method="post">
 	<div class="tab-content px-1 pt-2">
-		<div class="tab-pane active" id="tab1">${oListr}<button>배달 완료</button></div>
+		<div class="tab-pane active" id="tab1"><button>배달 완료</button></div>
 		<div class="tab-pane" id="tab2">${oListc}</div>
 		
 	</div>
