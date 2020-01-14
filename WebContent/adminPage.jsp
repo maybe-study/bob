@@ -72,7 +72,7 @@ footer {
 					<small>본점</small>
 				</h4>
 				<hr>
-				<h2>조진우</h2>
+				<h2>사장:조진우</h2>
 
 				<h5>
 					<span class="label label-danger">Food</span> <span
@@ -84,7 +84,7 @@ footer {
 				<h2>살려줘...</h2>
 
 				<h5>
-					<span class="label label-success">제발...</span>
+					<span class="label label-success">2020년 1월 8일 살려줘....</span>
 				</h5>
 				<br>
 

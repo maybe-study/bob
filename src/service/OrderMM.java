@@ -52,6 +52,7 @@ public class OrderMM {
 			sb.append("<td>"+re.getOrdertime()+"</td>");
 			sb.append("<td>"+re.getBobname()+re.getCnt()+"개"+"</td>");
 			sb.append("<td>"+re.getState()+"</td>");
+			sb.append("<td rowspan='2'>"+"<button class='combtn' id='"+re.getOrderid()+"'>배달완료</button>"+"</td>");
 			sb.append("</tr>");
 			sb.append("<tr>");
 			sb.append("<td colspan=\"5\">"+re.getAddress()+"</td>");
@@ -70,6 +71,56 @@ public class OrderMM {
 		}
 		oDao.close();
 		return recieveList();
+	}
+	public String delivery() {
+		String bid=request.getParameter("bid");
+		OrderDao oDao=new OrderDao();
+		Recieve re =new Recieve();
+		
+			oDao.stateUpdate(Integer.parseInt(bid));
+		oDao.close();
+	
+		List<Recieve> oListr=oDao.recieveList("주문접수");
+		List<Recieve> oListc=oDao.recieveList("배달완료");
+		oDao.close();
+		String rList = makeHtml_oList(oListr);
+		String dList = makeHtml_oList(oListc);
+		
+		String json="{\"rList\":+\"\"\"+rList+\"\"\"}"+"{\"dList\":+\"\"\"+dList+\"\"\"}";
+		
+		
+		return json;
+	}
+	public String refresh() {
+		OrderDao oDao=new OrderDao();
+		Recieve re =new Recieve();
+	
+		List<Recieve> oListr=oDao.recieveList("주문접수");
+		List<Recieve> oListc=oDao.recieveList("배달완료");
+		oDao.close();
+		String rList = makeHtml_oList(oListr);
+		String dList = makeHtml_oList(oListc);
+		
+		String json="{\"rList\": "+"\""+rList+"\",\"dList\": "+"\""+dList+"\"}";
+		json="{\"rList\":\""+rList+"\"}";
+		
+		return json;
+	}
+
+	public String recieveref() {
+		
+		Forward fw=new Forward();
+		OrderDao oDao=new OrderDao();
+		
+		List<Recieve> oListr=oDao.recieveList("주문접수");
+		List<Recieve> oListc=oDao.recieveList("배달완료");
+		oDao.close();
+		String oListHtmlr = makeHtml_oList(oListr);
+		String oListHtmlc = makeHtml_oList(oListc);
+		request.setAttribute("oListr",oListHtmlr);
+		request.setAttribute("oListc",oListHtmlc);
+		
+		return oListHtmlr;
 	}
 
 }

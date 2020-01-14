@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
 import dao.MemberDao;
+import dao.OrderDao;
 import service.BranchMM;
 import service.MemberMM;
 import service.MenuMM;
@@ -32,6 +33,11 @@ public class HomeController extends HttpServlet {
         BranchMM bm=new BranchMM(request, response);
         OrderMM om=new OrderMM(request,response);
 		switch(cmd) {
+		
+		case"/refresh":
+			
+			break;
+		
 
 		case "/joinchk":    //회원가입 중복확인
 			String buyerid = request.getParameter("buyerid");

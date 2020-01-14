@@ -33,9 +33,48 @@ border: 1px black solid;
 		<a class="nav-link" href="index.jsp">메인으로 돌아가기</a>
 		</li>
 	</ul>
+	<form action="orderrecieveu" method="post">
 	<div class="tab-content px-1 pt-2">
-		<div class="tab-pane active" id="tab1">1번 내용입니다.${oListr}</div>
-		<div class="tab-pane" id="tab2">2번  내용입니다.${oListc}</div>
+		<div class="tab-pane active" id="tab1"><button>배달 완료</button></div>
+		<div class="tab-pane" id="tab2">${oListc}</div>
+		
 	</div>
+	</form>
+	<script>
+	function aj(){
+		
+		$.ajax({
+			type: 'POST',
+			url: 'refresh',
+			dataType:'json',
+			success: function(json){
+				console.log("성공:",json);
+				
+				//$("#tab1").html(html);
+				//버튼에다가 추가해야돼
+				$('.combtn').each(function(index,item){
+					console.log(index,item);
+					console.dir(item);
+					item.onclick=function(){
+						var bId=item.getAttribute('bid');
+						location.href='delivery?'+'id='+bId;
+				    }
+				});
+				
+			},error:function(err){
+				console.log(err);
+			}
+		
+		});
+	}
+	window.setInterval("aj()",3000);
+		
+// 		setTimeout(function(){
+// 			location.reload();
+// 			aj();
+// 			console.log("실행되는지");
+// 		},3000);
+	
+	</script>
 </body>
 </html>
