@@ -255,7 +255,7 @@ public class OrderDao {
 		String sql="select * from \"order\" where \"branchid\"=? and \"state\"=? order by \"ordertime\" desc";
 		List<Order> odList=null;
 		try {
-			System.out.println("리시브 오더 리스트의 지점 아이디:"+branchid);
+			
 			pstmt=con.prepareStatement(sql);
 			pstmt.setNString(1, branchid);
 			pstmt.setNString(2, state);
@@ -271,12 +271,12 @@ public class OrderDao {
 				od.setBranchid(rs.getNString("branchid"));
 				od.setBuyerid(rs.getNString("buyerid"));
 				odList.add(od);
-				System.out.println("주문시간:"+rs.getNString("ordertime"));
+				
 			}
-			System.out.println("겟 완료");
+			System.out.println("recieveOdList겟 완료");
 			return odList;
 		} catch (SQLException e) {
-			System.out.println("db예외");
+			System.out.println("recieveOdListdb예외");
 			e.printStackTrace();
 		}
 		return null;

@@ -107,7 +107,38 @@ public class MenuDao {
 	}
 
 	public void menuDelete(int bobid) {
-		String sql = "DELETE FROM \"bobburger\" WHERE \"bobid\"=?";
+		//메뉴를 참조하는 주문 상세 삭제
+		String sql = "DELETE FROM \"orderdetail\" WHERE \"bobid\"=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, bobid);
+			int result = pstmt.executeUpdate();
+			if (result != 0) {
+				System.out.println("삭제 성공");
+			} else {
+				System.out.println("삭제 실패");
+			}
+		} catch (SQLException e) {
+			System.out.println("상품 목록 불러오기 오류");
+			e.printStackTrace();
+		}
+		//메뉴를 참조하는 장바구니 삭제
+		sql = "DELETE FROM \"cart\" WHERE \"bobid\"=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, bobid);
+			int result = pstmt.executeUpdate();
+			if (result != 0) {
+				System.out.println("삭제 성공");
+			} else {
+				System.out.println("삭제 실패");
+			}
+		} catch (SQLException e) {
+			System.out.println("상품 목록 불러오기 오류");
+			e.printStackTrace();
+		}
+		//메뉴 삭제
+		sql = "DELETE FROM \"bobburger\" WHERE \"bobid\"=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, bobid);

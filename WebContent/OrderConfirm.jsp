@@ -11,8 +11,7 @@
 h1{
       font-weight:bold;
       text-align:center;
-          }
-
+}
 .otd{
 border-bottom:1px solid #ccc;
 }

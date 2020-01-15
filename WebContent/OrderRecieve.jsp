@@ -14,7 +14,10 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <style>
-
+h1{
+      font-weight:bold;
+      text-align:center;
+}
 table,th,tr,td{
 border: 1px black solid;
 margin:10px;
@@ -61,7 +64,7 @@ table{
 		//버튼에다가 추가해야돼
 		$('.combtn').each(function(index,item){
 			var bId=item.getAttribute('id');
-			console.log("버튼 아이디:"+bId);
+			console.log("버튼 아이디:"+bId+"======================================");
 			console.log(index,item);
 			console.dir(item);
 			item.onclick=function(){
