@@ -18,11 +18,14 @@
 	list-style: none;
 	float: left;
 }
+#tab1{
+margin: auto;
+}
 </style>
 </head>
 <body>
 <h1>메뉴</h1>
-	<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs justify-content-center">
 		<li class="menu-kind"><a class="nav-link active" href="#tab1"
 			data-toggle="tab">일반</a></li>
 		<li class="menu-kind"><a class="nav-link" href="#tab2"
