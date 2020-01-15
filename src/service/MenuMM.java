@@ -237,6 +237,7 @@ public class MenuMM {
 		System.out.println("카트리스트2");
 		List<Cart> cList = null;
 		cList = mnDao.cartList(id);
+		mnDao.close();
 
 		if (cList != null && cList.size() != 0) {
 			String cListHtml = makeHtml_cList(cList);
@@ -267,13 +268,11 @@ public class MenuMM {
 
 		}
 
-		sb.append("<tr><td colspan='4'>총가격:" + sum + "</td></tr>");
+		sb.append("<tr height:100px;><td colspan='4' id='totcosttd'><b>총가격:" + sum + "</b></td></tr>");
+		
+		sb.append("<tr ><td colspan='4' id='btntd'><button class=\"btn\" id=\"modibtn\" type=\"button\" onclick=\"location.href='modifycart'\"><span>수정</button>");
+		sb.append("<button class=\"btn\" id=\"orderbtn\" type=\"button\" onclick=\"location.href='ordersheet?sum="+sum+"'\"><span>결제</button></td></tr>");
 		sb.append("</table>");
-		sb.append(
-				"<button class=\"btn\" id=\"changebtn\" type=\"button\" onclick=\"location.href='modifycart'\"><img class=\"btn-img\" src=\"img/change.png\"></button>");
-		sb.append("<button class=\"btn\" id=\"orderbtn\" type=\"button\" onclick=\"location.href='ordersheet?sum=" + sum
-				+ "'\"><img class=\"btn-img\" src=\"img/btn2.png\"></button>");
-
 		System.out.println(sb);
 		return sb.toString();
 	}
