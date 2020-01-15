@@ -38,11 +38,11 @@ public class MenuMM {
 
 	public Forward insertproduct() {
 		Forward fw = new Forward();
-//		if(request.getSession().getAttribute("id")==null) {
-//			fw.setPath("./");
-//			fw.setRedirect(true);
-//			return fw;
-//		}
+		if(request.getSession().getAttribute("branchid")==null) {
+			fw.setPath("./Branchlogin.jsp");
+			fw.setRedirect(true);
+			return fw;
+		}
 		String uploadPath = request.getSession().getServletContext().getRealPath("upload");
 		System.out.println("path=" + uploadPath);
 		File dir = new File(uploadPath);
@@ -156,33 +156,14 @@ public class MenuMM {
 	 * fw.setPath("Order.jsp"); fw.setRedirect(false); return fw; }
 	 */
 
-	private String makeHtml_pList(List<Bobburger> pList) {
-		StringBuilder sb = new StringBuilder();
-		sb.append("<table>");
-		sb.append("<tr>");
-		sb.append("<th>상품</th>");
-		sb.append("<th>수량선택</th>");
-		sb.append("</tr>");
-		for (int i = 0; i < pList.size(); i++) {
-			Bobburger bob = pList.get(i);
-			sb.append("<tr>");
-			sb.append("<td><img src='upload/" + bob.getPic() + "' width='40%'><br>");
-			sb.append("<td><input type='number' id='orderamt' name='orderamt' value=1 maxlength>");
-			sb.append("</tr>");
-			// sb.append("<input id='test' name='"+p.getP_code()+"' type='button'
-			// value='장바구니담기'>");
-
-			sb.append("</table>");
-
-		}
-		System.out.println(sb);
-		return sb.toString();
-	}
-
 	public Forward delmenuList() {
 		Forward fw = new Forward();
 		MenuDao mnDao = new MenuDao();
-
+		if(request.getSession().getAttribute("branchid")==null) {
+			fw.setPath("./Branchlogin.jsp");
+			fw.setRedirect(true);
+			return fw;
+		}
 		List<Bobburger> mnListn = mnDao.delmenuList("일반");
 		List<Bobburger> mnListm = mnDao.delmenuList("고기");
 		List<Bobburger> mnListt = mnDao.delmenuList("튀김");
@@ -223,11 +204,16 @@ public class MenuMM {
 		// 체크된 메뉴 리스트
 		// ArrayList delList = new
 		// ArrayList(Arrays.asList(request.getParameterValues("checkedMenu")));
+		Forward fw = new Forward();
+		if(request.getSession().getAttribute("branchid")==null) {
+			fw.setPath("./Branchlogin.jsp");
+			fw.setRedirect(true);
+			return fw;
+		}
 		String[] checkedMenu = request.getParameterValues("checkedMenu");
 		System.out.println("내가 태스트하낟다아아앙라아아앙ㄴㄹ머ㅣ마널;ㅣㅓ댜ㅓ;미ㅏㅓㅏㄹ");
 		System.out.println(Arrays.toString(checkedMenu));
 		MenuDao mnDao = new MenuDao();
-		Bobburger bob = new Bobburger();
 		for (int i = 0; i < checkedMenu.length; i++) {
 			mnDao.menuDelete(Integer.parseInt(checkedMenu[i]));
 		}
@@ -243,6 +229,11 @@ public class MenuMM {
 		MenuDao mnDao = new MenuDao();
 
 		String id = (String) session.getAttribute("id");
+		if(id==null) {
+			fw.setPath("./login.jsp");
+			fw.setRedirect(true);
+			return fw;
+		}
 		System.out.println("카트리스트2");
 		List<Cart> cList = null;
 		cList = mnDao.cartList(id);
@@ -330,8 +321,8 @@ public class MenuMM {
 	public Forward modifyCart() {
 		Forward fw = new Forward();
 		MenuDao mnDao = new MenuDao();
-
-		String id = (String) request.getSession().getAttribute("id");
+		
+		//String id = (String) request.getSession().getAttribute("id");
 		if (isLogin()) {
 			fw.setPath("login.jsp");
 			fw.setRedirect(false);
@@ -355,6 +346,8 @@ public class MenuMM {
 
 	public String changeCart() {
 		System.out.println("changeCart 옴");
+		
+		
 
 		CartDao cDao = new CartDao();
 		String buyerid = (String) request.getSession().getAttribute("id");
@@ -400,7 +393,11 @@ public class MenuMM {
 		// TODO Auto-generated method stub
 		Forward fw = new Forward();
 		System.out.println("addCart 옴");
-
+		if (isLogin()) {
+			fw.setPath("login.jsp");
+			fw.setRedirect(false);
+			return fw;
+		}
 		CartDao cDao = new CartDao();
 		String buyerid = (String) request.getSession().getAttribute("id");
 		Enumeration<String> params = request.getParameterNames();
@@ -444,8 +441,13 @@ public class MenuMM {
 	}
 
 	public Forward orderSheet() {
-		HttpSession session = request.getSession();
 		Forward fw = new Forward();
+		if (isLogin()) {
+			fw.setPath("login.jsp");
+			fw.setRedirect(false);
+			return fw;
+		}
+		HttpSession session = request.getSession();
 		MenuDao mnDao = new MenuDao();
 
 		String id = (String) session.getAttribute("id");
