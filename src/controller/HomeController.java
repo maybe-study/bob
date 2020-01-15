@@ -17,7 +17,7 @@ import service.MemberMM;
 import service.MenuMM;
 import service.OrderMM;
 
-@WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm",
+@WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm","/joinchk",
 	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/cartlist","/ordersheet"
 	,"/payment","/addcart","/modifycart","/branchlogin","/printbranch","/delbranch","/orderrecieveu","/orderrecievefrm","/logout","/orderconfirm","/mapfrm"})
 public class HomeController extends HttpServlet {
