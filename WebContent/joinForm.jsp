@@ -8,107 +8,124 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
-table,tr,td{
-border: solid black 1px;
+table, tr, td {
+	border: solid black 1px;
 }
-h1{
-text-align: center;
+
+h1 {
+	text-align: center;
 }
-form{
-border:1px solid #ccc;
- margin:auto;
- height:50%;
- width:610px;
- padding:30px;
+
+form {
+	border: 1px solid #ccc;
+	margin: auto;
+	height: 50%;
+	width: 610px;
+	padding: 30px;
 }
-#name{
-width:175px;
-height:23px;
-margin-left:69px;
-margin-bottom:8px;
+
+#name {
+	width: 175px;
+	height: 23px;
+	margin-left: 69px;
+	margin-bottom: 8px;
 }
-#year{
-width:56px;
-height:23px;
-margin-left:32px;
-margin-bottom:8px;
+
+#year {
+	width: 56px;
+	height: 23px;
+	margin-left: 32px;
+	margin-bottom: 8px;
 }
-#birth{
-width:56px;
-height:23px;
-margin-bottom:8px;
+
+#birth {
+	width: 56px;
+	height: 23px;
+	margin-bottom: 8px;
 }
-#day{
-width:56px;
-height:23px;
-margin-bottom:8px;
+
+#day {
+	width: 56px;
+	height: 23px;
+	margin-bottom: 8px;
 }
-#email{
-width:176px;
-height:23px;
-margin-left:53px;
-margin-right:8px;
-margin-bottom:8px;
+
+#email {
+	width: 176px;
+	height: 23px;
+	margin-left: 53px;
+	margin-right: 8px;
+	margin-bottom: 8px;
 }
-#str_email02{
-width:176px;
-height:23px;
-margin-bottom:8px;
+
+#str_email02 {
+	width: 176px;
+	height: 23px;
+	margin-bottom: 8px;
 }
-#email1{
-width:100px;
-height:29px;
-margin-left:8px;
-margin-bottom:8px;
+
+#email1 {
+	width: 100px;
+	height: 29px;
+	margin-left: 8px;
+	margin-bottom: 8px;
 }
-#buyerid{
-width:176px;
-height:23px;
-margin-left:48px;
-margin-bottom:8px;
+
+#buyerid {
+	width: 176px;
+	height: 23px;
+	margin-left: 48px;
+	margin-bottom: 8px;
 }
-#pw{
-width:176px;
-height:23px;
-margin-left:32px;
-margin-bottom:8px;
+
+#pw {
+	width: 176px;
+	height: 23px;
+	margin-left: 32px;
+	margin-bottom: 8px;
 }
-#pw1{
-width:176px;
-height:23px;
-margin-bottom:8px;
+
+#pw1 {
+	width: 176px;
+	height: 23px;
+	margin-bottom: 8px;
 }
-#phone{
-width:47px;
-height:29px;
-margin-left:42px;
-margin-bottom:8px;
+
+#phone {
+	width: 47px;
+	height: 29px;
+	margin-left: 42px;
+	margin-bottom: 8px;
 }
-#phone1{
-width:41px;
-height:23px;
-margin-left:8px;
-margin-right:8px;
-margin-bottom:8px;
+
+#phone1 {
+	width: 41px;
+	height: 23px;
+	margin-left: 8px;
+	margin-right: 8px;
+	margin-bottom: 8px;
 }
-#phone2{
-width:41px;
-height:23px;
-margin-left:8px;
-margin-bottom:8px;
+
+#phone2 {
+	width: 41px;
+	height: 23px;
+	margin-left: 8px;
+	margin-bottom: 8px;
 }
-#subbtn1{
-margin: 20px;
-margin-left: 139px;
-width:100px;
-height:40px;
-background-color: #DF7401;
+
+#subbtn1 {
+	margin: 20px;
+	margin-left: 139px;
+	width: 100px;
+	height: 40px;
+	background-color: #DF7401;
 }
-#cancel1{
-margin-left: 97px;
-width:100px;
-height:40px;
-background-color: #DF7401;
+
+#cancel1 {
+	margin-left: 97px;
+	width: 100px;
+	height: 40px;
+	background-color: #DF7401;
 }
 </style>
 </head>
@@ -116,9 +133,8 @@ background-color: #DF7401;
 	<h1>회원가입 페이지</h1>
 	<form name="joinForm" action="joinfrm">
 		<tr>
-			<td><b>이름:</b><input id="name" name="name" type="text" placeholder="이름"
-				class="txt" />
-			</td>
+			<td><b>이름:</b><input id="name" name="name" type="text"
+				placeholder="이름" class="txt" /></td>
 			<br>
 		</tr>
 		<tr>
@@ -229,7 +245,7 @@ background-color: #DF7401;
 		</tr>
 		<tr>
 			<td><b>이메일:</b><input id="email" name="email" type="text"
-				placeholder="이메일" class="txt" />@ <input type="text" name="email1"
+				placeholder="이메일" class="txt" />@ <input type="text" name="email2"
 				id="str_email02" disabled value="선택하세요"> <select
 				name="email1" id="email1">
 					<option value="0">선택하세요</option>
@@ -238,17 +254,20 @@ background-color: #DF7401;
 					<option value="nate.com">nate.com</option>
 					<option value="gmail.com">gmail.com</option>
 					<option value="daum.net">daum.net</option>
-			</select>
-			</td>
-			<br> <b>아이디:</b>
+			</select></td>
+			<br>
+			<b>아이디:</b>
 			<input id="buyerid" name="buyerid" type="text" placeholder="아이디"
-				class="txt" />
+				class="username_input" />
 			<button type="button" id="checkbtn" onclick="checkbtn"
 				class="btn btn-default">중복확인</button>
-			<br> <b>비밀번호:</b>
+			<img id="id_check_sucess" style="display: none;">
+			<br>
+			<b>비밀번호:</b>
 			<input id="pw" name="pw" type="password" placeholder="비밀번호"
 				class="txt" />
-			<br> <b>비밀번호확인:</b>
+			<br>
+			<b>비밀번호확인:</b>
 			<input id="pw1" name="pw1" type="password" placeholder="비밀번호확인"
 				class="txt" />
 			<br>
@@ -269,53 +288,109 @@ background-color: #DF7401;
 			<br>
 		</tr>
 		<div>
-		<tr>
-			<td>
-				<input type="button"  onclick="subbtn" id="subbtn1" value="회원가입" />
-			</td>
+			<tr>
+				<td><input type="button" onclick="subbtn" id="subbtn1"
+					value="회원가입" /></td>
 
-			<td><a href=''  onClick="history.back()"><input type="button" onclick="cancel" id="cancel1" value="회원가입취소">
+				<td><a href='' onClick="history.back()"><input
+						type="button" onclick="cancel" id="cancel1" value="회원가입취소">
 				</a></td>
-		</tr>
+			</tr>
 		</div>
 	</form>
 	<script>
 		$(document).ready(function() {
 			$("#str_email02").hide();
-			
+
 		});
-		  $('#checkbtn').on('click', function(){
-			  var buyerid = $("#buyerid").val();
-	            $.ajax({
-	                type: 'POST',
-	                url: './joinchk',
-	                data: {buyerid : buyerid},
-	                success: function(result){
-	                    if(result == 1){
-	                       alert('사용가능합니다');
-	                    }
-	                    else if(result == 0){
-	                    	alert('아이디가 중복입니다.');
-	                    }else{
-	                    	alert('아이디가 입력되지 않았습니다');
-	                    }
-	                }
-	            });    //end ajax    
-	        });    //end on    
-	        $("#subbtn1").on('click',function(){
-	        	var joinForm = document.joinForm; //joinForm=form 태그의 name값
-	        	var pw = joinForm.pw.value;	//pw=비밀번호input태그의 name값 (응용해서 아이디도 사용가능)
-	        	var pw1 = joinForm.pw1.value;//위와같지만 pw1은 비밀번호 input태그의 name값임
-				if(!pw || !pw1){ //이건 그냥 유도리있게 써라 !에 var값 추가한거 쓰면 됨)
-					alert("비밀번호를 입력해주세요")
-				}else{
-					alert("회원가입이 완료되었습니다.")
-					joinForm.submit();
+		$('.username_input').change(function() {
+			$('#id_check_sucess').hide();
+			$('.btn btn-default').show();
+			$('.username_input').attr("check_result", "fail");
+
+		});
+
+		$("#cancel1").on('click', function() {
+			location.href = 'history.back()';
+		});
+		$('#checkbtn').on('click', function() {
+			var buyerid = $("#buyerid").val();
+			$.ajax({
+				type : 'POST',
+				url : './joinchk',
+				data : {
+					buyerid : buyerid
+				},
+				success : function(result) {
+					if (result == 1) {
+						alert('사용가능합니다');
+						$('.username_input').attr("check_result", "success");
+						$('#id_check_sucess').show();
+						$('.btn btn-default').hide();
+					} else if (result == 0) {
+						alert('아이디가 중복입니다.');
+					} else {
+						alert('아이디가 입력되지 않았습니다');
+					}
 				}
-	        });
-	        $("#cancel1").on('click',function(){
-	        	 location.href='history.back()';
-	        });
+			}); //end ajax    
+		}); //end on   
+
+		$("#subbtn1")
+				.on(
+						'click',
+						function() {
+							var joinForm = document.joinForm; //joinForm=form 태그의 name값
+							var name = joinForm.name.value;
+							var year = joinForm.year.value;
+							var birth = joinForm.birth.value;
+							var day = joinForm.day.value;
+							var email = joinForm.email.value;
+							var email2 = joinForm.email2.value;
+							var email1 = joinForm.email1.value;
+							var id = joinForm.buyerid.value;
+							var pw = joinForm.pw.value; //pw=비밀번호input태그의 name값 (응용해서 아이디도 사용가능)
+							var pw1 = joinForm.pw1.value;//위와같지만 pw1은 비밀번호 input태그의 name값임
+							var phone1 = joinForm.phone1.value;
+							var phone2 = joinForm.phone2.value;
+
+							if (!name) {
+								alert("이름을 입력해 주세요")
+							} else if (!year || !birth || !day) {
+								alert("생년월일을 선택해주세요")
+							} else if (!email || !email1 || !email2) {
+								alert("이메일을 입력해주세요")
+							} else if (email2 == "선택하세요") {
+								alert("이메일을 선택하거나 직접 입력하여주세요")
+							} else if (!id) {
+								alert("아이디를 입력해주세요")
+							} else if ($('.username_input')
+									.attr("check_result") == "fail") {
+								alert("아이디 중복체크를 해주시기 바랍니다.");
+								$('.username_input').focus();
+								return false;
+							} else if (!pw || !pw1) { //이건 그냥 유도리있게 써라 !에 var값 추가한거 쓰면 됨)
+								alert("비밀번호를 입력해주세요")
+							} else if (pw.length < 8) {
+								alert("비밀번호는 8자 이상이어야 합니다.");
+							} else if (pw.length > 20) {
+								alert("비밀번호는 20자 이하이어야 합니다.");
+							} else if (pw1.length < 8) {
+								alert("비밀번호는 8자 이상이어야 합니다.");
+							} else if (pw1.length > 20) {
+								alert("비밀번호는 20자 이하이어야 합니다.");
+							} else if (pw == pw1 && pw.length < 8) {
+								alert("비밀번호는 8자 이상이어야 합니다.");
+							} else if (pw == pw1 && pw.length > 20) {
+								alert("비밀번호는 20자 이하이어야 합니다.");
+							} else if (!phone1 || !phone2) {
+								alert("전화번호를 입력해주세요")
+							} else {
+								alert("회원가입이 완료되었습니다.")
+								joinForm.submit();
+							}
+						});
+
 		$("#pw").keyup(
 				function() {
 					var pw = $("#pw").val();
@@ -328,7 +403,7 @@ background-color: #DF7401;
 								"orangered");
 					}
 				});
-	    
+
 		$("#pw1").keyup(
 				function() {
 					var pw = $("#pw").val();
@@ -339,21 +414,19 @@ background-color: #DF7401;
 					} else if (pw1.length > 20) {
 						$("#pwdiv").text("비밀번호는 20자 이하이어야 합니다.").css("color",
 								"orangered");
-					}
-					else if (pw == pw1 && pw.length > 8 ) {
+					} else if (pw == pw1 && pw.length > 8) {
 						$("#pwdiv").text("");
-					} else if(pw == pw1 && pw.length<8 ){
+					} else if (pw == pw1 && pw.length < 8) {
 						$("#pwdiv").text("비밀번호는 8자 이상이어야 합니다.").css("color",
-						"orangered");
-					}else if(pw == pw1 && pw.length < 20){
+								"orangered");
+					} else if (pw == pw1 && pw.length < 20) {
 						$("#pwdiv").text("");
-					}else if(pw == pw1 && pw.length>20 ){
+					} else if (pw == pw1 && pw.length > 20) {
 						$("#pwdiv").text("비밀번호는 20자 이하이어야 합니다.").css("color",
-						"orangered");
-					}
-					else {
+								"orangered");
+					} else {
 						$("#pwdiv").text("비밀번호가 다릅니다.").css("color",
-						"orangered");
+								"orangered");
 					}
 				});
 		$("#email1").change(function() {

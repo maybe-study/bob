@@ -160,7 +160,7 @@ public class BranchDao {
 				Branch br = new Branch();
 				
 				br.setBranchname(rs.getNString("branchname"));
-				br.setSales(rs.getInt("sales"));
+				br.setBranchaddress(rs.getNString("address"));
 				br.setExplain(rs.getNString("explain"));
 				
 				
@@ -173,5 +173,26 @@ public class BranchDao {
 		}
 		
 		return null;
+	}
+
+	public boolean updateSales(String branchid,int total) {
+		String sql = "update \"branch\" set \"sales\"=(select \"branch\".\"sales\"+? from \"branch\" where \"branchid\"=?) where \"branchid\"=?" ;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, total);
+			pstmt.setNString(2, branchid);
+			pstmt.setNString(3, branchid);
+			
+			int result=pstmt.executeUpdate();
+			if(result!=0)
+				return true;
+			
+			
+		}catch(SQLException e) {
+			System.out.println("지점추가실패");
+			e.printStackTrace();
+		}
+		return false;
+		
 	}
 }

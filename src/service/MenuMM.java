@@ -21,6 +21,7 @@ import bean.Cart;
 import bean.Forward;
 import bean.Order;
 import bean.OrderDetail;
+import dao.BranchDao;
 import dao.CartDao;
 import dao.MemberDao;
 import dao.MenuDao;
@@ -485,6 +486,7 @@ public class MenuMM {
 		Forward fw = new Forward();
 		HttpSession session = request.getSession();
 		OrderDao orDao = new OrderDao();
+		BranchDao brDao= new BranchDao();
 		if (isLogin()) {
 			fw.setPath("login.jsp");
 			fw.setRedirect(false);
@@ -493,18 +495,24 @@ public class MenuMM {
 		String id = (String) session.getAttribute("id");
 		Order od = new Order();
 
-
-		System.out.println("토탈값:"+request.getParameter("total"));
-		od.setTototcost(Integer.parseInt(request.getParameter("total")));
+		int total=Integer.parseInt(request.getParameter("total"));
+		od.setTototcost(total);
 		od.setAddress(request.getParameter("address"));
 		od.setBranchid(request.getParameter("branchid"));
 		od.setBuyerid(id);
-
+		if(!orDao.existCart(id)) {
+			fw.setPath("orderfrm");
+			fw.setRedirect(false);
+			return fw;
+		}
 		orDao.orderInsert(od);
 
 		orDao.orderdetailInsert(id);
 
 		orDao.cartDelete(id);
+		
+		brDao.updateSales(request.getParameter("branchid"),total);
+		
 
 		orDao.close();
 		fw.setPath("orderconfirm");

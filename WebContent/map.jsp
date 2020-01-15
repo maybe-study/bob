@@ -11,22 +11,10 @@
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <style>
-table {
-	color: #fff !important;
-	text-transform: uppercase;
-	text-decoration: none;
-	background: #ff7300;
-	padding-right: 20px;
-	padding-left: 20px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	margin-bottom: 10px;
-	margin-top: 5px;
-	
-	border-radius: 5px;
-	display: inline-block;
-	border: none;
-	transition: all 0.4s ease 0s;
+table,tr,td{
+border:1px solid #ccc;
+margin:auto;
+ padding:30px;
 }
 form{
  border:1px solid #ccc;
@@ -76,12 +64,12 @@ form{
 #adr{
  font-size:30px;
  text-align: center;
- margin: 340px;
+ margin: 360px;
  }
  #ad{
  font-size:30px;
  text-align: center;
- margin: 360px;
+ margin: 390px;
  }
 </style>
 <body>
