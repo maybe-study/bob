@@ -21,6 +21,7 @@
 </style>
 </head>
 <body>
+<h1>메뉴</h1>
 	<ul class="nav nav-tabs">
 		<li class="menu-kind"><a class="nav-link active" href="#tab1"
 			data-toggle="tab">일반</a></li>

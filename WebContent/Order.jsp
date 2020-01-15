@@ -19,6 +19,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
         <style>
+        table{
+        margin: auto;
+        }
+        ul,li{
+        text-align: center;
+        }
           .bobimg{
             width:100px;
             height:100px;
