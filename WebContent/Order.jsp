@@ -20,17 +20,19 @@
 
         <style>
         h1{
-       	margin-left: 387px;
+       	text-align:center;
         }
         table{
         margin: auto;
+        width:450px;
+        text-align:center;
         }
         ul,li{
         text-align: center;
         }
           .bobimg{
-            width:100px;
-            height:100px;
+            width:100%;
+            height:120px;
           }
           .cntdiv{
             text-align:center;
@@ -42,13 +44,10 @@
           }
 
           th,td {
-            border: 1px solid black;
+            border: 1px solid grey;
             padding: 10px;
           }
-         .btn-img{
-          width:150px;
-          height:60px;
-         }
+         
           h1{
           font-weight:bold;
           font-family:system-ui;
@@ -58,9 +57,43 @@
             position: fixed;
             right: 10px;
             top:50%
-
-
          }
+         #btn{
+   			border-radius: 4px;
+  		    background: #ff7300 !important;
+  	 		border: none;
+   			color: #FFFFFF;
+  		    text-align: center;
+            font-size: 17px;
+            
+            transition: all 0.4s;
+            cursor: pointer;
+            margin:30px 5px;
+           width:120px;
+           height:50px;
+         }
+         #btn span {
+   			 cursor: pointer;
+  			 display: inline-block;
+  			 position: relative;
+   			 transition: 0.4s;
+ 			}
+ 	#btn span:after {
+   content: ">>";
+   position: absolute;
+   opacity: 0;
+   top: 0;
+   right: -20px;
+   transition: 0.5s;
+ }
+ #btn:hover span {
+   padding-right: 25px;
+ }
+ #btn:hover span:after {
+   opacity: 1;
+   right: 0;
+ }
+         
         </style>
 
       </head>
@@ -106,7 +139,7 @@
 
 
         <div id="showList"></div>
-        <div id="btndiv"><button class="btn" id="btn" onclick="submit()" ><img class="btn-img" src="img/btn.png"></button></div>
+        <div id="btndiv"><button class="btn" id="btn" onclick="submit()" ><span>장바구니</span></button></div>
 
 
 </form>
