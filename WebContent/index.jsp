@@ -116,8 +116,12 @@ margin:10px 0px;
 
 
 		<div id="submenu">
+		<%if(session.getAttribute("id")==null){%>
+			<a href="login.jsp"><img alt="img" src="./img/logingimg.PNG" class="menuimg"/></a>
+		<% }else{%>
+			<a href="logout"><img alt="img" src="./img/logoutimg.PNG" class="menuimg"/></a>
+		<%} %>
 		
-		<a href="login.jsp"><img alt="img" src="./img/logingimg.PNG" class="menuimg"/></a>
 		<a href="Branchlogin.jsp"><img alt="img" src="./img/brlogimg.PNG" class="menuimg"/></a>
 		<a href="joinForm.jsp"><img alt="img" src="./img/joinimg.PNG" class="menuimg"/></a>
 		<a href="#"><img alt="img" src="./img/faceimg.PNG" class="menuimg"/></a>
@@ -130,7 +134,6 @@ margin:10px 0px;
 			<h1>로그인 해주세요</h1>
 		<% }else{%>
 			<h1>${id}님 반갑습니다.</h1>
-			<h6><a href="logout">로그아웃</a></h6>
 		<%} %>
 		
 		</div>
