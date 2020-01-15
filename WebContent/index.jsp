@@ -31,15 +31,15 @@ height: 100px;
 }
 #mainmenu{
     float:left;
-    width:200px;
+    width:170px;
     height:100%;
-	background-color: #FFD016;
+	background-color: #ffa901;
 	color: white;
 	}
 #submenu{
 text-align:center;
 float:left;
-width:200px;
+width:70px;
 height:100%;
 background-color: #fcfcfc;
 }
@@ -77,33 +77,46 @@ margin:10px 0px;
 	width:1000px;
 	height:500px;
 }
+.listname{
+   font-size:20px;
+   cursor: pointer;
+ }
 </style>
 </head>
 <body>
 	<div id="menu">
+		
 		<div id="mainmenu">
+		<img src="./img/logo.PNG" alt="logo" width=100% > 
 		<ul>
-			<li><a href="#">본점</a>
-				<ul>
+			<li class='list'>
+				<a class='listname'>회사소개</a>
+				<ul class="hide">
 					<li><a href="#">CEO인사말</a></li>
+					<li><a href="#">봉구스밥버거</a></li>
+					<li><a href="#">회사연혁</a></li>
 					<li><a href="#">오시는길</a>
-				</ul></li>
-		</ul>
-		<ul>
-			<li><a href="#">메뉴안내</a>
-				<ul>
+				</ul>
+			</li>
+			<br>
+			<li class='list'>
+				<a class='listname'>메뉴안내</a>
+				<ul class="hide">
 					<li><a href="menu">메뉴안내</a></li>
-				</ul></li>
-		</ul>
-		<ul>
-			<li><a href="orderfrm">주문하기</a>
-				<ul>
+				</ul>
+			</li>
+		    <br>
+			<li class='list'>
+				<a class='listname'>메뉴주문</a>
+				<ul class="hide">
+				    <li><a href="orderfrm">주문하기</a></li>
 					<li><a href="orderconfirm">주문내역</a></li>
-				</ul></li>
-		</ul>
-		<ul>
-			<li><a href="#">지점안내</a>
-				<ul>
+				</ul>
+			</li>
+		   <br>
+		   <li class='list'>
+				<a class='listname'>지점안내</a>
+				<ul class="hide">
 					<li><a href="mapfrm">전국지점안내</a></li>
 				</ul>
 			</li>
@@ -116,21 +129,26 @@ margin:10px 0px;
 
 
 		<div id="submenu">
+		<%if(session.getAttribute("id")==null){%>
+			<a href="login.jsp"><img alt="img" src="./img/logingimg.PNG" class="menuimg"/></a>
+		<% }else{%>
+			<a href="logout"><img alt="img" src="./img/logoutimg.PNG" class="menuimg"/></a>
+		<%} %>
 		
-		<a href="login.jsp"><img alt="img" src="./img/logingimg.PNG" class="menuimg"/></a>
 		<a href="Branchlogin.jsp"><img alt="img" src="./img/brlogimg.PNG" class="menuimg"/></a>
 		<a href="joinForm.jsp"><img alt="img" src="./img/joinimg.PNG" class="menuimg"/></a>
-		<a href="#"><img alt="img" src="./img/faceimg.PNG" class="menuimg"/></a>
-		<a href="#"><img alt="img" src="./img/blogimg.PNG" class="menuimg"/></a>
+		<a href="https://www.facebook.com/qkqqjrj"><img alt="img" src="./img/faceimg.PNG" class="menuimg"/></a>
+		<a href="https://blog.naver.com/bong_bab"><img alt="img" src="./img/blogimg.PNG" class="menuimg"/></a>
 		
 		</div>
 		</div>
+		
+		
 		<div id="header">
 		<%if(session.getAttribute("id")==null){%>
 			<h1>로그인 해주세요</h1>
 		<% }else{%>
 			<h1>${id}님 반갑습니다.</h1>
-			<h6><a href="logout">로그아웃</a></h6>
 		<%} %>
 		
 		</div>
@@ -199,8 +217,19 @@ margin:10px 0px;
 
         var main=document.getElementById('main');
 	
-        
-        
+        $(function(){
+        	var subli=$(".list>b").next("ul");
+        	sunli.hide();
+        }) 
+       $(document).ready(function(){
+    	 $(".list>a").click(function(){
+    		$(this).next("ul").toggleClass("hide");
+    	
+    		
+    	 })  ;
+       });
+       
+       
         
         
         //로그인 되있는지 확인 하는 스크립트
