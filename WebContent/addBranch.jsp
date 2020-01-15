@@ -20,7 +20,7 @@ h1 {
 </style>
 </head>
 <body>
-	<form id="fmField" name="fmField" action="" method="post" onsubmit="return checkForm();">
+	<form id="fmField" name="fmField" action="addbranchfrm" method="post" onsubmit="return checkForm();">
 		<h1>지점추가</h1>
 		<tr>
 			<td>지점명</td>
@@ -55,7 +55,7 @@ h1 {
 			<br>
 		</tr>
 		<tr>
-			<td><button>지점 등록</button></td>
+			<td><input type="submit" value="지점 등록"></td>
 			<td><input type="button" id="cancel1" onclick="cancel1"
 				value="지점등록 취소" /></td>
 			<td></td>
@@ -101,6 +101,7 @@ h1 {
 	        
 	        return false; 
 	    }
+		return true;
 		
 	}
 	

@@ -47,9 +47,9 @@ public class RestController extends HttpServlet {
 		if(json!=null) {
 			response.setContentType("text/html");
 			response.setCharacterEncoding("utf-8");
-			System.out.println("json:"+json);
+			
 			PrintWriter out = response.getWriter();
-			System.out.println("json:"+json);
+			
 			out.write(json);
 		}
 	}

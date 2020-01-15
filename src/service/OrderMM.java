@@ -164,7 +164,7 @@ public class OrderMM {
 		OrderDao oDao=new OrderDao();
 		HttpSession session = request.getSession();
 		String branchid=(String) session.getAttribute("branchid");
-			
+		oDao.stateUpdate(Integer.parseInt(bid));
 		List<Order> rList=oDao.recieveOdList(branchid,"주문접수");
 		List<Order> dList=oDao.recieveOdList(branchid,"배달완료");
 		oDao.close();

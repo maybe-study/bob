@@ -19,6 +19,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
         <style>
+        h1{
+       	margin-left: 387px;
+        }
         table{
         margin: auto;
         }
@@ -65,7 +68,7 @@
       <h1>상품 담기</h1><br>
       <!-- Nav Tabs -->
       <form action="addcart" name="bList" action="post">
-         <ul class="nav nav-tabs">
+         <ul class="nav nav-tabs justify-content-center" >
              <li class="nav-item">
                  <a class="nav-link active" href="#n" data-toggle="tab">일반</a>
              </li>
