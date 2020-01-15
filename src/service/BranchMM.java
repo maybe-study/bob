@@ -111,6 +111,31 @@ public class BranchMM {
 		
 		return fw;
 	}
+	public Forward mapfrm() { //지점나타내기
+		Forward fw=new Forward();
+		BranchDao bDao=new BranchDao();
+		
+		List<Branch> mapList=bDao.branchmap();
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("<table>");
+		for(int i=0; i<mapList.size();i++) {
+			Branch br = mapList.get(i);
+			sb.append("<tr>");
+			sb.append("<td>"+br.getBranchname()+"</td>");
+			sb.append("<td>"+br.getBranchaddress()+"</td>");
+			sb.append("<td>"+br.getExplain()+"</td>");
+			sb.append("</tr>");
+		}
+		sb.append("</table>");
+		System.out.println("만든테이블:"+sb.toString());
+		
+		request.setAttribute("maptable", sb.toString());
+		fw.setPath("map.jsp");
+		fw.setRedirect(false);
+		
+		return fw;
+	}
 	
 	
 }
