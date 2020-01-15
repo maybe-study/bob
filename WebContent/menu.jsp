@@ -14,12 +14,26 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <style>
+ h1{
+          font-weight:bold;
+          font-family:system-ui;
+          text-align:center;
+          margin-bottom:30px;
+          }
 #menubody {
 	list-style: none;
-	float: left;
+	
 }
 #tab1{
 margin: auto;
+}
+.exdiv{
+border:1px solid;
+width:180px;
+height:220px;
+text-align:center;
+padding:5px;
+font-family:sans-serif;
 }
 </style>
 </head>
