@@ -28,7 +28,7 @@ border:1px solid #ccc;
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-	<form action="addmenu" method="post" enctype="multipart/form-data">
+	<form action="addmenu" method="post" enctype="multipart/form-data" name="addmenu">
 		<table>
 		<tr>
 			<td colspan="2" align="center" style="font-size:20px;">메뉴 추가</td>
@@ -58,7 +58,8 @@ border:1px solid #ccc;
 		</tr>
 		<tr>
 			<td colspan="2">
-				<button id="addBtn">상품등록</button>
+				<input type="button" onclick="subbtn" id="subbtn1"
+					value="상품등록" />
 				<input type="button"  id="canBtn1" onclick="canBtn" value="등록취소">
 			</td>
 		</tr>
@@ -66,6 +67,29 @@ border:1px solid #ccc;
 	</table>
 	</form>
 	<script>
+	$("#subbtn1")
+	.on(
+			'click',
+			function() {
+				var addmenu = document.addmenu; //joinForm=form 태그의 name값
+				var bobname = addmenu.bobname.value;
+				var cost = addmenu.cost.value;
+				var explanation = addmenu.explanation.value;
+				var p_file = addmenu.p_file.value;
+
+				if(!bobname){
+					alert("메뉴명을 입력해주세요");
+				}else if(!cost){
+					alert("가격을 입력해주세요");
+				}else if(!explanation){
+					alert("메뉴설명을 입력해주세요")
+				}else if(!p_file){
+					alert("사진을 넣어주세요");
+				} else {
+					alert("상품등록이 완료되었습니다.");
+					addmenu.submit();
+				}
+			});
 	$("#canBtn1").on('click',function(){
 		location.href = 'adminPage.jsp';
 	});

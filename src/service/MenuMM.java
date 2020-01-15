@@ -270,7 +270,7 @@ public class MenuMM {
 		}
 
 		sb.append("<tr height:100px;><td colspan='4' id='totcosttd'><b>총가격:" + sum + "</b></td></tr>");
-		
+
 		sb.append("<tr ><td colspan='4' id='btntd'><button class=\"btn\" id=\"modibtn\" type=\"button\" onclick=\"location.href='modifycart'\"><span>수정</button>");
 		sb.append("<button class=\"btn\" id=\"orderbtn\" type=\"button\" onclick=\"location.href='ordersheet?sum="+sum+"'\"><span>주문</button></td></tr>");
 		sb.append("</table>");
@@ -301,25 +301,36 @@ public class MenuMM {
 
 	private String makeHtml_mList(List<Bobburger> mList) {
 		StringBuilder sb = new StringBuilder();
-		  sb.append("<div id='outdiv'>");
-		for (int i = 0; i < mList.size(); i++) {
-			Bobburger bob = mList.get(i);
-			sb.append("<ul id=menubody>");
-			sb.append("<li><img src='upload/" + bob.getPic() + "' width='180px'>");
-			sb.append("</li>");
-			sb.append("<li><div class='exdiv'>" + bob.getExplanation()+"</div>");
-			sb.append("</li>");
-			sb.append("</ul>");
+		int i=0;
+		sb.append("<table>");
+		sb.append("<tr>");
+		while (i<mList.size()) {
+				Bobburger bob = mList.get(i);
+				if(i%4==0&&i!=0) {sb.append("</tr>");}
+				if(i%4==0&&i!=0) {sb.append("<tr>");}
+				sb.append("<td>");
+				sb.append("<ul id=menubody>");
+				sb.append("<li><img src='upload/" + bob.getPic() + "' width='180px'>");
+				sb.append("</li>");
+				sb.append("<li><div class='exdiv'>" + bob.getExplanation()+"</div>");
+				sb.append("</li>");
+				sb.append("</ul>");
+				sb.append("</td>");
+
+
+				i++;
 
 		}
-		  sb.append("</div>");
+		sb.append("</tr>");
+		sb.append("</table>");
+		System.out.println(sb.toString());
 		return sb.toString();
 	}
 
 	public Forward modifyCart() {
 		Forward fw = new Forward();
 		MenuDao mnDao = new MenuDao();
-		
+
 		//String id = (String) request.getSession().getAttribute("id");
 		if (isLogin()) {
 			fw.setPath("login.jsp");
@@ -344,8 +355,8 @@ public class MenuMM {
 
 	public String changeCart() {
 		System.out.println("changeCart 옴");
-		
-		
+
+
 
 		CartDao cDao = new CartDao();
 		String buyerid = (String) request.getSession().getAttribute("id");
@@ -511,9 +522,9 @@ public class MenuMM {
 		orDao.orderdetailInsert(id);
 
 		orDao.cartDelete(id);
-		
+
 		brDao.updateSales(request.getParameter("branchid"),total);
-		
+
 
 		orDao.close();
 		fw.setPath("orderconfirm");
