@@ -14,15 +14,28 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <style>
-table,tr,td{
+
+table,th,tr,td{
 border: 1px black solid;
+margin:10px;
+padding:20px;
+}
+table{
+	margin:auto;
+	
+}
+.oddtable{
+	width:100%;
+}
+#tab1{
+	text-align:center;
 }
 </style>
 </head>
 <body>
 <h1>접수된 주문</h1>
 
-	<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs justify-content-center">
 		<li class="nav-item">
 		<a class="nav-link active" href="#tab1" data-toggle="tab">들어온 주문</a>
 		</li>
@@ -35,8 +48,9 @@ border: 1px black solid;
 	</ul>
 	
 	<div class="tab-content px-1 pt-2">
-		<div class="tab-pane active" id="tab1"><button>배달 완료</button></div>
-		<div class="tab-pane" id="tab2">${oListc}</div>
+	
+		<div class="tab-pane active" id="tab1"></div>
+		<div class="tab-pane" id="tab2"></div>
 		
 	</div>
 	

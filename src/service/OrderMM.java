@@ -83,7 +83,6 @@ public class OrderMM {
 		sb.append("<th>주문번호</th>");
 		sb.append("<th>주문날짜</th>");
 		sb.append("<th>배송주소</th>");
-		sb.append("<th></th>");
 		sb.append("</tr>");
 		for(int i=0;i<odList.size();i++) {
 			Order od=odList.get(i);
@@ -110,7 +109,8 @@ public class OrderMM {
 
 	private String makeHtml_oddList(List<OrderDetail> oddList) {
 		StringBuilder sb=new StringBuilder();
-		sb.append("<table >");
+		sb.append("<table class='oddtable'>");
+		int tot= 0;
 		for(int i=0;i<oddList.size();i++) {
 			OrderDetail odd=oddList.get(i);
 
@@ -119,8 +119,10 @@ public class OrderMM {
 			sb.append("<td>"+odd.getCnt()+"개</td>");
 			sb.append("<td>"+odd.getCost()+"원</td>");
 			sb.append("</tr>");
+			tot+=odd.getCost();
 
 		}
+		sb.append("<tr><td colspan='3'>합계:"+tot+"</td></tr>");
 		sb.append("</table>");
 		return sb.toString();
 	}
@@ -160,17 +162,16 @@ public class OrderMM {
 		String bid=request.getParameter("bid");
 		System.out.println("bid:"+bid+"======================================");
 		OrderDao oDao=new OrderDao();
-		
-		oDao.stateUpdate(Integer.parseInt(bid));
-		
-	
-		List<Recieve> oListr=oDao.recieveList("주문접수");
-		List<Recieve> oListc=oDao.recieveList("배달완료");
+		HttpSession session = request.getSession();
+		String branchid=(String) session.getAttribute("branchid");
+			
+		List<Order> rList=oDao.recieveOdList(branchid,"주문접수");
+		List<Order> dList=oDao.recieveOdList(branchid,"배달완료");
 		oDao.close();
-		String rList = makeHtml_oList(oListr);
-		String dList = makeHtml_oList(oListc);
+		String rListhtml = makeHtml_odList(rList);
+		String dListhtml = makeHtml_odcomList(dList);
 		
-		String json="{\"rList\":\""+rList+"\",\"dList\":\""+dList+"\"}";
+		String json="{\"rList\":\""+rListhtml+"\",\"dList\":\""+dListhtml+"\"}";
 		
 		
 		return json;

@@ -8,19 +8,121 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
+table,tr,td{
+border: solid black 1px;
+}
+h1{
+text-align: center;
+}
+form{
+border:1px solid #ccc;
+ margin:auto;
+ height:50%;
+ width:610px;
+ padding:30px;
+}
+#name{
+width:175px;
+height:23px;
+margin-left:69px;
+margin-bottom:8px;
+}
+#year{
+width:56px;
+height:23px;
+margin-left:32px;
+margin-bottom:8px;
+}
+#birth{
+width:56px;
+height:23px;
+margin-bottom:8px;
+}
+#day{
+width:56px;
+height:23px;
+margin-bottom:8px;
+}
+#email{
+width:176px;
+height:23px;
+margin-left:53px;
+margin-right:8px;
+margin-bottom:8px;
+}
+#str_email02{
+width:176px;
+height:23px;
+margin-bottom:8px;
+}
+#email1{
+width:100px;
+height:29px;
+margin-left:8px;
+margin-bottom:8px;
+}
+#buyerid{
+width:176px;
+height:23px;
+margin-left:48px;
+margin-bottom:8px;
+}
+#pw{
+width:176px;
+height:23px;
+margin-left:32px;
+margin-bottom:8px;
+}
+#pw1{
+width:176px;
+height:23px;
+margin-bottom:8px;
+}
+#phone{
+width:47px;
+height:29px;
+margin-left:42px;
+margin-bottom:8px;
+}
+#phone1{
+width:41px;
+height:23px;
+margin-left:8px;
+margin-right:8px;
+margin-bottom:8px;
+}
+#phone2{
+width:41px;
+height:23px;
+margin-left:8px;
+margin-bottom:8px;
+}
+#subbtn1{
+margin: 20px;
+margin-left: 139px;
+width:100px;
+height:40px;
+background-color: #DF7401;
+}
+#cancel1{
+margin-left: 97px;
+width:100px;
+height:40px;
+background-color: #DF7401;
+}
 </style>
 </head>
 <body>
 	<h1>회원가입 페이지</h1>
 	<form name="joinForm" action="joinfrm">
 		<tr>
-			<td>이름:<input id="name" name="name" type="text" placeholder="이름"
+			<td><b>이름:</b><input id="name" name="name" type="text" placeholder="이름"
 				class="txt" />
 			</td>
 			<br>
 		</tr>
 		<tr>
-			생년월일:
+			<b>생년월일:</b>
 			<td><select name="year" id="year" class="foot1">
 					<option value="">년도</option>
 					<option value="2019">2019</option>
@@ -126,7 +228,7 @@
 			<br>
 		</tr>
 		<tr>
-			<td>이메일:<input id="email" name="email" type="text"
+			<td><b>이메일:</b><input id="email" name="email" type="text"
 				placeholder="이메일" class="txt" />@ <input type="text" name="email1"
 				id="str_email02" disabled value="선택하세요"> <select
 				name="email1" id="email1">
@@ -138,22 +240,22 @@
 					<option value="daum.net">daum.net</option>
 			</select>
 			</td>
-			<br> 아이디:
+			<br> <b>아이디:</b>
 			<input id="buyerid" name="buyerid" type="text" placeholder="아이디"
 				class="txt" />
 			<button type="button" id="checkbtn" onclick="checkbtn"
 				class="btn btn-default">중복확인</button>
-			<br> 비밀번호:
+			<br> <b>비밀번호:</b>
 			<input id="pw" name="pw" type="password" placeholder="비밀번호"
 				class="txt" />
-			<br> 비밀번호확인:
+			<br> <b>비밀번호확인:</b>
 			<input id="pw1" name="pw1" type="password" placeholder="비밀번호확인"
 				class="txt" />
 			<br>
 		</tr>
 		<div id="pwdiv"></div>
 		<tr>
-			<td>전화번호<select name="phone" id="phone" class="foot1">
+			<td><b>전화번호</b><select name="phone" id="phone" class="foot1">
 					<option value="010">010</option>
 					<option value="011">011</option>
 					<option value="016">016</option>
@@ -161,11 +263,12 @@
 					<option value="018">018</option>
 					<option value="019">019</option>
 			</select></td>
-			<td>-<input type="text" name="phone1" class="txt" />-<input
-				type="txt" name="phone2" class="txt">
+			<td>-<input type="text" id="phone1" name="phone1" class="txt" />-<input
+				type="txt" id="phone2" name="phone2" class="txt">
 			</td>
 			<br>
 		</tr>
+		<div>
 		<tr>
 			<td>
 				<input type="button"  onclick="subbtn" id="subbtn1" value="회원가입" />
@@ -174,6 +277,7 @@
 			<td><a href=''  onClick="history.back()"><input type="button" onclick="cancel" id="cancel1" value="회원가입취소">
 				</a></td>
 		</tr>
+		</div>
 	</form>
 	<script>
 		$(document).ready(function() {
