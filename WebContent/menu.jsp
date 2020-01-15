@@ -59,5 +59,10 @@ font-family:sans-serif;
 		<div class="tab-pane" id="tab4">${mListHtmltt}</div>
 
 	</div>
+	
+	<script>
+	console.log(${mListHtmln});
+	</script>
 </body>
+
 </html>

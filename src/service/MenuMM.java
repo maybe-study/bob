@@ -301,17 +301,29 @@ public class MenuMM {
 
 	private String makeHtml_mList(List<Bobburger> mList) {
 		StringBuilder sb = new StringBuilder();
-		  
-		for (int i = 0; i < mList.size(); i++) {
-			Bobburger bob = mList.get(i);
-			sb.append("<ul id=menubody>");
-			sb.append("<li><img src='upload/" + bob.getPic() + "' width='180px'>");
-			sb.append("</li>");
-			sb.append("<li><div class='exdiv'>" + bob.getExplanation()+"</div>");
-			sb.append("</li>");
-			sb.append("</ul>");
-
+		int i=0;
+		sb.append("<table>");
+		sb.append("<tr>");
+		while (i<mList.size()) {
+				Bobburger bob = mList.get(i);
+				if(i%4==0&&i!=0) {sb.append("</tr>");}
+				if(i%4==0&&i!=0) {sb.append("<tr>");}
+				sb.append("<td>");
+				sb.append("<ul id=menubody>");
+				sb.append("<li><img src='upload/" + bob.getPic() + "' width='180px'>");
+				sb.append("</li>");
+				sb.append("<li><div class='exdiv'>" + bob.getExplanation()+"</div>");
+				sb.append("</li>");
+				sb.append("</ul>");
+				sb.append("</td>");
+				
+				
+				i++;
+			
 		}
+		sb.append("</tr>");
+		sb.append("</table>");
+		System.out.println(sb.toString());
 		return sb.toString();
 	}
 
