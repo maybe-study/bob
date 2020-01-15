@@ -301,16 +301,13 @@ public class MenuMM {
 
 	private String makeHtml_mList(List<Bobburger> mList) {
 		StringBuilder sb = new StringBuilder();
+		  
 		for (int i = 0; i < mList.size(); i++) {
 			Bobburger bob = mList.get(i);
 			sb.append("<ul id=menubody>");
-			sb.append("<li><img src='upload/" + bob.getPic() + "' width='150px'>");
+			sb.append("<li><img src='upload/" + bob.getPic() + "' width='180px'>");
 			sb.append("</li>");
-			sb.append("<li>" + bob.getBobname());
-			sb.append("</li>");
-			sb.append("<li>" + bob.getCost() + "원");
-			sb.append("</li>");
-			sb.append("<li>" + bob.getExplanation());
+			sb.append("<li><div class='exdiv'>" + bob.getExplanation()+"</div>");
 			sb.append("</li>");
 			sb.append("</ul>");
 
