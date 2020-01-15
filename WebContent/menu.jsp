@@ -24,6 +24,10 @@
           text-align:center;
           margin-bottom:30px;
           }
+table{
+	margin:auto;
+	
+}
 #menubody {
 	list-style: none;
 	float:left;
