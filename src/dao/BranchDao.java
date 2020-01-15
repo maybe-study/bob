@@ -160,7 +160,7 @@ public class BranchDao {
 				Branch br = new Branch();
 				
 				br.setBranchname(rs.getNString("branchname"));
-				br.setSales(rs.getInt("sales"));
+				br.setBranchaddress(rs.getNString("address"));
 				br.setExplain(rs.getNString("explain"));
 				
 				
