@@ -60,10 +60,41 @@ height:35px;
 width:320px;
 margin-bottom:10px;
 }
-#btn{
-margin-left:380px;
-
-}
+    #paybtn{
+   			border-radius: 4px;
+  		    background: #ff7300 !important;
+  	 		border: none;
+   			color: #FFFFFF;
+  		    text-align: center;
+            font-size: 17px;
+            
+            transition: all 0.4s;
+            cursor: pointer;
+            margin:30px 5px;
+           width:120px;
+           height:50px;
+         }
+         #paybtn span {
+   			 cursor: pointer;
+  			 display: inline-block;
+  			 position: relative;
+   			 transition: 0.4s;
+ 			}
+ 	#paybtn span:after {
+   content: ">>";
+   position: absolute;
+   opacity: 0;
+   top: 0;
+   right: -20px;
+   transition: 0.5s;
+ }
+ #paybtn:hover span {
+   padding-right: 25px;
+ }
+ #paybtn:hover span:after {
+   opacity: 1;
+   right: 0;
+ }
 
 </style>
 </head>
@@ -83,7 +114,7 @@ margin-left:380px;
 <input type="text" id="sample4_detailAddress" placeholder="상세주소">
 <input type="text" id="sample4_extraAddress" placeholder="참고항목"><br><br>
 
-<button id="btn"><img class="btn-img" src="img/btn3.png"/></button>
+<button id="paybtn"><span>결제</span></button>
 </form>
 </body>
 

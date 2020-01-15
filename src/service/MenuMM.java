@@ -301,7 +301,7 @@ public class MenuMM {
 
 	private String makeHtml_mList(List<Bobburger> mList) {
 		StringBuilder sb = new StringBuilder();
-		  
+		  sb.append("<div id='outdiv'>");
 		for (int i = 0; i < mList.size(); i++) {
 			Bobburger bob = mList.get(i);
 			sb.append("<ul id=menubody>");
@@ -312,6 +312,7 @@ public class MenuMM {
 			sb.append("</ul>");
 
 		}
+		  sb.append("</div>");
 		return sb.toString();
 	}
 

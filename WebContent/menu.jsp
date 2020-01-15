@@ -14,6 +14,10 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <style>
+ #outdiv{
+ width:60%;
+ margin:auto;
+ }
  h1{
           font-weight:bold;
           font-family:system-ui;
@@ -22,7 +26,7 @@
           }
 #menubody {
 	list-style: none;
-	
+	float:left;
 }
 #tab1{
 margin: auto;
@@ -48,9 +52,7 @@ font-family:sans-serif;
 			data-toggle="tab">튀김</a></li>
 		<li class="menu-kind"><a class="nav-link" href="#tab4"
 			data-toggle="tab">떡갈비</a></li>
-		<li class="menu-kind"><a class="nav-link" href="index.jsp">메인으로 돌아가기</a>
-				
-		</li>
+		
 	</ul>
 	<div class="tab-content px-1 pt-2">
 		<div class="tab-pane active" id="tab1">${mListHtmln}</div>
