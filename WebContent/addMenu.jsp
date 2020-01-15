@@ -4,14 +4,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메뉴 추가 페이지</title>
+<style>
+table{
+width:100%;
+border: solid black 1px;
+}
+tr,td{
+	padding:10px;
+}
+h1{
+text-align: center;
+}
+form{
+border:1px solid #ccc;
+ margin:auto;
+ height:50%;
+ width:610px;
+ padding:30px;
+}
+
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 	<form action="addmenu" method="post" enctype="multipart/form-data">
 		<table>
 		<tr>
-			<td colspan="2" align="center">메뉴 추가</td>
+			<td colspan="2" align="center" style="font-size:20px;">메뉴 추가</td>
 		</tr>
 		<tr>
 			<td>메뉴명</td><td><input type="text" name="bobname"></td>

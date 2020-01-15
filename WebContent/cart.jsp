@@ -23,7 +23,7 @@
          height:40px;
          }
          th{border-bottom:3px solid #168;
-           font-size:17px;
+           font-size:20px;
          }
 
           h1{
@@ -52,6 +52,7 @@
  }
  #totcosttd{
  border-top:3px solid #168;
+ font-size:25px;
  }
   	#orderbtn{
    			border-radius: 4px;
