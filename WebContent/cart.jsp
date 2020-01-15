@@ -16,18 +16,99 @@
  			width:70%;
  			margin:auto;
  			border-collapse:collapse;
+ 			font-size:15px;
           }
-          th,td {
-            border: 1px solid black;
-            padding: 10px;
-          }
+          
+         tr{
+         height:40px;
+         }
+         th{border-bottom:3px solid #168;
+           font-size:17px;
+         }
 
           h1{
           font-weight:bold;
           font-family:system-ui;
           text-align:center;
+          margin-bottom:30px;
           }
+  	#modibtn{
+   			border-radius: 4px;
+  		    background: #ff7300 !important;
+  	 		border: none;
+   			color: #FFFFFF;
+  		    text-align: center;
+            font-size: 17px;
+           
+            
+            transition: all 0.4s;
+            cursor: pointer;
+            margin:30px 5px;
+         
+           
+           width:110px;
+           height:50px;
+           
+ }
+ #totcosttd{
+ border-top:3px solid #168;
+ }
+  	#orderbtn{
+   			border-radius: 4px;
+  		    background: #ff7300 !important;
+  	 		border: none;
+   			color: #FFFFFF;
+  		    text-align: center;
+            font-size: 17px;
+            
+            transition: all 0.4s;
+            cursor: pointer;
+            margin:30px 5px;
+           width:110px;
+           height:50px;
+          
+ }
+  #btntd{
+  border: none;  
+  }
+ 
 
+ .btn span {
+   cursor: pointer;
+   display: inline-block;
+   position: relative;
+   transition: 0.4s;
+ }
+ #modibtn span:before {
+   content: "<<";
+   position: absolute;
+   opacity: 0;
+   top: 0;
+   left: -20px;
+   transition: 0.5s;
+ }
+ #orderbtn span:after {
+   content: ">>";
+   position: absolute;
+   opacity: 0;
+   top: 0;
+   right: -20px;
+   transition: 0.5s;
+ }
+ #orderbtn:hover span {
+   padding-right: 25px;
+ }
+ #modibtn:hover span {
+   padding-left: 25px;
+ }
+ #orderbtn:hover span:after {
+   opacity: 1;
+   right: 0;
+ }
+ #modibtn:hover span:before {
+   opacity: 1;
+   left: 0;
+ }
 
         </style>
       </head>
