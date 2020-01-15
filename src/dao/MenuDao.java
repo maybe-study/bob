@@ -108,11 +108,15 @@ public class MenuDao {
 
 	public void menuDelete(int bobid) {
 		//메뉴를 참조하는 주문 상세 삭제
+		System.out.println("주문 상세 삭제합니다.");
 		String sql = "DELETE FROM \"orderdetail\" WHERE \"bobid\"=?";
+		System.out.println("sql문 만들었습니다.");
 		try {
 			pstmt = con.prepareStatement(sql);
+			
 			pstmt.setInt(1, bobid);
 			int result = pstmt.executeUpdate();
+			System.out.println("실행 성공했습니다.");
 			if (result != 0) {
 				System.out.println("삭제 성공");
 			} else {
@@ -122,6 +126,7 @@ public class MenuDao {
 			System.out.println("상품 목록 불러오기 오류");
 			e.printStackTrace();
 		}
+		System.out.println("주문 상세 삭제 성공");
 		//메뉴를 참조하는 장바구니 삭제
 		sql = "DELETE FROM \"cart\" WHERE \"bobid\"=?";
 		try {
@@ -137,6 +142,7 @@ public class MenuDao {
 			System.out.println("상품 목록 불러오기 오류");
 			e.printStackTrace();
 		}
+		System.out.println("장바구니 삭제 성공");
 		//메뉴 삭제
 		sql = "DELETE FROM \"bobburger\" WHERE \"bobid\"=?";
 		try {
@@ -152,6 +158,7 @@ public class MenuDao {
 			System.out.println("상품 목록 불러오기 오류");
 			e.printStackTrace();
 		}
+		System.out.println("메뉴 삭제 성공");
 	}
 	public List<Bobburger> getCartList(String kind) {
 		String sql = "select b.\"bobid\",b.\"bobname\",b.\"pic\",nvl(c.\"cnt\",0) \"cnt\" ,b.\"cost\",b.\"explanation\",b.\"kind\"\r\n" + 

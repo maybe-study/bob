@@ -72,7 +72,8 @@ public class BranchDao {
 	}
 
 	public void branchDelete(String branchid) {
-		String sql = "DELETE FROM \"orderdetail\" WHERE \"branchid\"=?";
+		//상세 내역 삭제
+		String sql = "DELETE FROM \"orderdetail\" WHERE \"orderid\" in (select \"orderid\" from \"order\" where \"branchid\"=?)";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setNString(1, branchid);
@@ -86,8 +87,8 @@ public class BranchDao {
 			System.out.println("상품 불러오기 실패");
 			e.printStackTrace();
 		}
-		
-		sql = "DELETE FROM \"branch\" WHERE \"branchid\"=?";
+		//오더 삭제
+		sql = "DELETE FROM \"order\" WHERE \"branchid\"=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setNString(1, branchid);
