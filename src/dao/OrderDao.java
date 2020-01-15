@@ -281,6 +281,24 @@ public class OrderDao {
 		}
 		return null;
 	}
+	public boolean existCart(String id) {
+		// TODO Auto-generated method stub
+		String sql="select * from \"cart\" where \"buyerid\"=?";
+		try {
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, id);
+			rs=pstmt.executeQuery();
+			if(rs.next())
+				return true;
+			
+			
+			} catch (SQLException e) {
+				System.out.println("recieveOdListdb예외");
+				e.printStackTrace();
+			}
+		return false;
+	}
 	
 
 }
