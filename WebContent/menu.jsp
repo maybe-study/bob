@@ -26,7 +26,7 @@
           }
 table{
 	margin:auto;
-	
+
 }
 #menubody {
 	list-style: none;
@@ -57,10 +57,11 @@ font-family:sans-serif;
 			data-toggle="tab">튀김</a></li>
 		<li class="menu-kind"><a class="nav-link" href="#tab4"
 			data-toggle="tab">떡갈비</a></li>
+
 		<li class="menu-kind"><a class="nav-link" href="#tab5"
 			data-toggle="tab"></a></li>
 		<li class="menu-kind"><a class="nav-link" href="index.jsp">메인으로</a></li>
-		
+
 	</ul>
 	<div class="tab-content px-1 pt-2">
 		<div class="tab-pane active" id="tab1">${mListHtmln}</div>
@@ -69,7 +70,7 @@ font-family:sans-serif;
 		<div class="tab-pane" id="tab4">${mListHtmltt}</div>
 
 	</div>
-	
+
 
 </body>
 

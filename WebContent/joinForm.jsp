@@ -114,18 +114,41 @@ form {
 }
 
 #subbtn1 {
-	margin: 20px;
-	margin-left: 139px;
-	width: 100px;
-	height: 40px;
-	background-color: #DF7401;
+	color: #fff !important;
+clear:right;
+text-transform: uppercase;
+text-decoration: none;
+background: #ff7300;
+padding-right: 20px;
+padding-left: 20px;
+padding-top:5px;
+padding-bottom:5px;
+margin-left: 195px;
+margin-bottom:10px;
+margin-top:5px;
+border-radius: 5px;
+display: inline-block;
+border: none;
+transition: all 0.4s ease 0s;
 }
 
 #cancel1 {
-	margin-left: 97px;
-	width: 100px;
-	height: 40px;
-	background-color: #DF7401;
+	color: #fff !important;
+clear:right;
+text-transform: uppercase;
+text-decoration: none;
+background: #ff7300;
+padding-right: 20px;
+padding-left: 20px;
+padding-top:5px;
+padding-bottom:5px;
+margin-left: 25px;
+margin-bottom:10px;
+margin-top:5px;
+border-radius: 5px;
+display: inline-block;
+border: none;
+transition: all 0.4s ease 0s;
 }
 </style>
 </head>
