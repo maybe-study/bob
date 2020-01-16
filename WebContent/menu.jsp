@@ -70,9 +70,7 @@ font-family:sans-serif;
 
 	</div>
 	
-	<script>
-	console.log(${mListHtmln});
-	</script>
+
 </body>
 
 </html>
