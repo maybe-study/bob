@@ -13,55 +13,80 @@
 </script>
 
 <style>
+table{
+	margin:auto;
+	border-collapse: collapse;
+}
+tr,td{
+border: 1px solid;
+}
 h1 {
+	text-align:center;
 	font-weight: bold;
 	font-family: system-ui;
 }
+<<<<<<< HEAD
+=======
+input{
+	height:30px;
+	margin:10px 0;
+}
+.input{
+	width:300px;
+}
+>>>>>>> 65cb3a59531a89d08f1bb198d8cadf07ebba2179
 
 </style>
 </head>
 <body>
 	<form id="fmField" name="fmField" action="addbranchfrm" method="post" onsubmit="return checkForm();">
 		<h1>지점추가</h1>
+		<table>
 		<tr>
-			<td>지점명</td>
-			<br>
-			<td><input type="text" id="name" name="branchname" /></td>
-			<br>
+			<td class="fname">지점명</td>
+			<td><input type="text" class="input" id="name" name="branchname" /></td>
 		</tr>
 		<tr>
-			<td>지점 아이디</td>
-			<br>
-			<td><input type="text" id="id" name="branchid"/></td>
-			<br>
+			<td class="fname">지점 아이디</td>
+			<td><input type="text" class="input" id="id" name="branchid"/></td>
 		</tr>
 		<tr>
-			<td>지점 비밀번호</td>
-			<br>
-			<td><input type="password" id="pw" name="branchpw" /></td>
-			<br>
+			<td class="fname">지점 비밀번호</td>
+			<td><input class="input" type="password" id="pw" name="branchpw" /></td>
 		</tr>
-		지점주소<br> <input type="text" id="sample4_postcode"
-			placeholder="우편번호" > <input type="button"
-			onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+		<tr>
+		<td colspan="2" align="center">
+		지점주소<br>
+		
+		<input type="text" id="sample4_postcode" placeholder="우편번호" style="margin-left:-66px;">
+		<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+		
+		
 		<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="branchaddress">
 		<input type="text" id="sample4_jibunAddress" placeholder="지번주소"><br>
-		<span id="guide" style="color: #999; display: none"></span> <input
-			type="text" id="sample4_detailAddress" placeholder="상세주소"> <input
-			type="text" id="sample4_extraAddress" placeholder="참고항목"><br>
+		
+		<input type="text" id="sample4_detailAddress" placeholder="상세주소">
+		<input type="text" id="sample4_extraAddress" placeholder="참고항목">
+		
+		</tr>	
+		
 		<tr>
-			<td>지점 설명</td>
-			<br>
-			<td><textarea rows="5" cols="30" name="explain" ></textarea></td>
-			<br>
+			<td class="fname">지점 설명</td>
+			
+			<td><textarea rows="5" class="input" cols="30" name="explain" ></textarea></td>
+			
 		</tr>
 		<tr>
-			<td><input type="submit" value="지점 등록"></td>
-			<td><input type="button" id="cancel1" onclick="cancel1"
-				value="지점등록 취소" /></td>
-			<td></td>
+			<td colspan="2" align="center">
+			<input type="submit" value="지점 등록" />
+			<input type="button" id="cancel1" onclick="cancel1"	value="지점등록 취소" />
+			</td>
+			
 		</tr>
+		</table>
 	</form>
+	<span id="guide" style="color: #999; display: none"></span>
+	
 	
 <div id="map" style="width:100%;height:350px;"></div>
 
