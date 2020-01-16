@@ -11,10 +11,14 @@
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <style>
+#exp{
+text-align: center;
+}
 table,tr,td{
 border:1px solid #ccc;
 margin:auto;
  padding:30px;
+ text-align: center;
 }
 form{
  border:1px solid #ccc;
@@ -79,8 +83,11 @@ form{
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04cfe5f1eb29416b59e4313a6acea9b8&libraries=services"></script>
 	<b id="adr">지점위치찾기</b>
+	<h4 id="exp">
+					<small>※주소를 입력하시면 지점위치 위에 위치가 표시됩니다.</small>
+				</h4>
 	<br>
-	<br>
+	
 	<input type="text" id="sample4_postcode" placeholder="우편번호">
 	<input type="button" onclick="sample4_execDaumPostcode()"
 		value="우편번호 찾기">
