@@ -61,7 +61,14 @@ public class BranchMM {
 	}
 	private String makeHtml_brList(List<Branch> brList) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("<table>");
+		sb.append("<table id='brtb'>");
+		sb.append("<tr class='brt'>");
+		sb.append("<th>체크</th>");
+		sb.append("<th>지점이름</th>");
+		sb.append("<th>지점매출</th>");
+		sb.append("<th>지점아이디</th>");
+		sb.append("<th>지점설명</th>");
+		sb.append("</tr>");
 		for(int i=0; i<brList.size();i++) {
 			Branch br = brList.get(i);
 			sb.append("<tr>");
@@ -91,10 +98,16 @@ public class BranchMM {
 		List<Branch> brList=bDao.printbranch();
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("<table>");
+		sb.append("<table id='brtb'>");
+		sb.append("<tr class='brt'>");
+		sb.append("<th>지점이름</th>");
+		sb.append("<th>지점매출</th>");
+		sb.append("<th>지점아이디</th>");
+		sb.append("<th>지점설명</th>");
+		sb.append("</tr>");
 		for(int i=0; i<brList.size();i++) {
 			Branch br = brList.get(i);
-			sb.append("<tr>");
+			sb.append("<tr >");
 			sb.append("<td>"+br.getBranchname()+"</td>");
 			sb.append("<td>"+br.getSales()+"</td>");
 			sb.append("<td>"+br.getBranchaddress()+"</td>");

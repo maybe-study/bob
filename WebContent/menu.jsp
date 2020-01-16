@@ -56,6 +56,8 @@ font-family:sans-serif;
 			data-toggle="tab">튀김</a></li>
 		<li class="menu-kind"><a class="nav-link" href="#tab4"
 			data-toggle="tab">떡갈비</a></li>
+		<li class="menu-kind"><a class="nav-link" href="index.jsp"
+			>메뉴로 돌아가기</a></li>
 		
 	</ul>
 	<div class="tab-content px-1 pt-2">
