@@ -19,7 +19,8 @@ import service.OrderMM;
 
 @WebServlet({"/admin","/delbranchfrm","/addbranchfrm","/allrevenue","/delmenufrm","/delmenu","/addmenufrm","/joinchk",
 	"/branchloginfrm","/menu","/joinfrm","/loginfrm","/main","/orderfrm","/addmenu","/cartlist","/ordersheet"
-	,"/payment","/addcart","/modifycart","/branchlogin","/printbranch","/delbranch","/orderrecieveu","/orderrecievefrm","/logout","/orderconfirm","/mapfrm"})
+	,"/payment","/addcart","/modifycart","/branchlogin","/printbranch","/delbranch","/orderrecieveu","/orderrecievefrm","/logout","/orderconfirm","/mapfrm"
+	,"/ceo","/bongbob","/history","/way"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,7 +34,26 @@ public class HomeController extends HttpServlet {
         BranchMM bm=new BranchMM(request, response);
         OrderMM om=new OrderMM(request,response);
 		switch(cmd) {
-		
+		case "/ceo":
+			fw=new Forward();
+			fw.setPath("ceo.jsp");
+			fw.setRedirect(false);
+			break;
+		case "/bongbob":
+			fw=new Forward();
+			fw.setPath("bongbob.jsp");
+			fw.setRedirect(false);
+			break;
+		case "/history":
+			fw=new Forward();
+			fw.setPath("history.jsp");
+			fw.setRedirect(false);
+			break;
+		case "/way":
+			fw=new Forward();
+			fw.setPath("way.jsp");
+			fw.setRedirect(false);
+			break;
 		case "/mapfrm":
 			fw=bm.mapfrm();
 			break;

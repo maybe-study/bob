@@ -92,10 +92,10 @@ margin:10px 0px;
 			<li class='list'>
 				<a class='listname'>회사소개</a>
 				<ul class="hide">
-					<li><a href="#">CEO인사말</a></li>
-					<li><a href="#">봉구스밥버거</a></li>
-					<li><a href="#">회사연혁</a></li>
-					<li><a href="#">오시는길</a>
+					<li><a href="javascript:Aj('ceo','#main')">CEO인사말</a></li>
+					<li><a href="javascript:Aj('bongbob','#main')">봉구스밥버거</a></li>
+					<li><a href="javascript:Aj('history','#main')">회사연혁</a></li>
+					<li><a href="javascript:Aj('way','#main')">오시는길</a>
 				</ul>
 			</li>
 			<br>
@@ -152,7 +152,7 @@ margin:10px 0px;
 		<%} %>
 		
 		</div>
-		<div class="container">
+		<div class="container" id="main">
 		  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 		    <!-- Indicators -->
 		    <ol class="carousel-indicators">
@@ -233,6 +233,22 @@ margin:10px 0px;
         
         
         //로그인 되있는지 확인 하는 스크립트
+    Aj("newItem","#main");    
+     function Aj(url, position) {
+	$.ajax({
+		url: url,
+		type: "get",
+		//data:
+		dataType: "html", //
+		success: function(page) {
+			$(position).html(page);
+		},
+		error: function(error) {
+			console.log(error);
+		}
+	}) //ajax End
+}  //Aj 
+
         
 </script>
 
