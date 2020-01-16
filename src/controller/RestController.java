@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.BranchMM;
 import service.MenuMM;
 import service.OrderMM;
 
-@WebServlet({"/changecart","/recieveref","/delivery","/refresh"})
+@WebServlet({"/changecart","/recieveref","/delivery","/refresh","/getadds"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -22,7 +23,7 @@ public class RestController extends HttpServlet {
 		System.out.println("cmd:"+cmd);
 		MenuMM menu=new MenuMM(request, response);
 		OrderMM om = new OrderMM(request, response);
-		
+		BranchMM br= new BranchMM(request, response);
 		
 		String json = null;
 		
@@ -42,6 +43,9 @@ public class RestController extends HttpServlet {
 		
 		case "/recieveref":
 			json=om.recieveref();
+			break;
+		case "/getadds":
+			json=br.getAddresses();
 			break;
 		}
 		if(json!=null) {
