@@ -11,6 +11,54 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+h1{
+margin-bottom:30px;
+font-family: 'Jeju Gothic';
+text-align:center;
+}
+table{
+}
+tr{
+height:200px;
+margin:10px;
+}
+td{
+
+text-align:center;
+border-bottom:1px solid #40464b;
+
+}
+table{
+margin: auto;
+}
+
+.bobimg{
+ width:100%;
+ height:100%;
+}
+.checkedMenu{
+width:18px;
+height:18px;
+margin-right:20px;
+}
+  #delbtn{
+   			border-radius: 4px;
+  		    background: #ff7300 !important;
+  	 		border: none;
+   			color: #FFFFFF;
+  		    text-align: center;
+            font-size: 17px;
+            
+            transition: all 0.4s;
+            cursor: pointer;
+            margin:30px 5px;
+           width:120px;
+           height:50px;
+            position: fixed;
+            right: 10px;
+            top:50%
+         }
 
 </style>
 <body>
@@ -47,7 +95,7 @@
              </div>
          </div>
                    
-    <button>삭제하기</button>
+    <button id='delbtn'>삭제하기</button>
     </form>
 </body>
 
