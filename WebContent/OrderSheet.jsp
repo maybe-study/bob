@@ -60,6 +60,7 @@ height:35px;
 width:320px;
 margin-bottom:10px;
 }
+ 
     #paybtn{
    			border-radius: 4px;
   		    background: #ff7300 !important;
@@ -70,32 +71,15 @@ margin-bottom:10px;
             
             transition: all 0.4s;
             cursor: pointer;
-            margin:30px 5px;
+            margin-left:400px;
            width:120px;
            height:50px;
          }
-         #paybtn span {
-   			 cursor: pointer;
-  			 display: inline-block;
-  			 position: relative;
-   			 transition: 0.4s;
- 			}
- 	#paybtn span:after {
-   content: ">>";
-   position: absolute;
-   opacity: 0;
-   top: 0;
-   right: -20px;
-   transition: 0.5s;
- }
- #paybtn:hover span {
-   padding-right: 25px;
- }
- #paybtn:hover span:after {
-   opacity: 1;
-   right: 0;
- }
-
+     #postbtn{
+      width:100px;
+      height:40px;
+     }
+      
 </style>
 </head>
 <body>
