@@ -20,6 +20,10 @@ html, body {
             width: 100%;
             height: 100%;
 }
+#ceo{
+	margin-top:-750px;
+	margin-left:270px;
+}
 .menuimg{
 width : 100px;
 height: 100px;
@@ -58,12 +62,7 @@ margin:10px 0px;
 	position:absolute;
 	display: inline-block;
 }
-#main{
-	top:0px;
-	left:0px;
-	
-	display: inline-block;
-}
+
 #maindiv{
 	position:relative;
 }
@@ -241,7 +240,7 @@ margin:10px 0px;
 		//data:
 		dataType: "html", //
 		success: function(page) {
-			$(position).html(page);
+			$(position).html('<div id="ceo">'+page+'</div>');
 		},
 		error: function(error) {
 			console.log(error);
