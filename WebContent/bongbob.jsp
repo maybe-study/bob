@@ -7,12 +7,11 @@
 <title>Insert title here</title>
 </head>
 <style>
-.logo{ margin-left:200px;]}
+
 h6{
 text-align:center;
 }
-a{
-text-align:center;}
+
 
 </style>
 <body>

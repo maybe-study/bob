@@ -59,9 +59,9 @@ margin:10px 0px;
 	display: inline-block;
 }
 #main{
-	top:100px;
-	left:400px;
-	position:absolute;
+	top:0px;
+	left:0px;
+	
 	display: inline-block;
 }
 #maindiv{
