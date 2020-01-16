@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import bean.Branch;
 import bean.Forward;
 import dao.BranchDao;
@@ -147,6 +149,16 @@ public class BranchMM {
 		fw.setRedirect(false);
 		
 		return fw;
+	}
+	public String getAddresses() {
+		BranchDao bDao=new BranchDao();
+		
+		List<Branch> mapList=bDao.branchmap();
+		
+		Gson gs = new Gson();
+		String json= gs.toJson(mapList);
+
+		return json;
 	}
 	
 	
