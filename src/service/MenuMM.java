@@ -270,7 +270,7 @@ public class MenuMM {
 		}
 
 		sb.append("<tr height:100px;><td colspan='4' id='totcosttd'><b>총가격:" + sum + "</b></td></tr>");
-		
+
 		sb.append("<tr ><td colspan='4' id='btntd'><button class=\"btn\" id=\"modibtn\" type=\"button\" onclick=\"location.href='modifycart'\"><span>수정</button>");
 		sb.append("<button class=\"btn\" id=\"orderbtn\" type=\"button\" onclick=\"location.href='ordersheet?sum="+sum+"'\"><span>주문</button></td></tr>");
 		sb.append("</table>");
@@ -316,10 +316,10 @@ public class MenuMM {
 				sb.append("</li>");
 				sb.append("</ul>");
 				sb.append("</td>");
-				
-				
+
+
 				i++;
-			
+
 		}
 		sb.append("</tr>");
 		sb.append("</table>");
@@ -330,7 +330,7 @@ public class MenuMM {
 	public Forward modifyCart() {
 		Forward fw = new Forward();
 		MenuDao mnDao = new MenuDao();
-		
+
 		//String id = (String) request.getSession().getAttribute("id");
 		if (isLogin()) {
 			fw.setPath("login.jsp");
@@ -355,8 +355,8 @@ public class MenuMM {
 
 	public String changeCart() {
 		System.out.println("changeCart 옴");
-		
-		
+
+
 
 		CartDao cDao = new CartDao();
 		String buyerid = (String) request.getSession().getAttribute("id");
@@ -522,9 +522,9 @@ public class MenuMM {
 		orDao.orderdetailInsert(id);
 
 		orDao.cartDelete(id);
-		
+
 		brDao.updateSales(request.getParameter("branchid"),total);
-		
+
 
 		orDao.close();
 		fw.setPath("orderconfirm");
