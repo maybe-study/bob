@@ -10,14 +10,23 @@
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-	
+
 </script>
 
 <style>
+table{
+	margin:auto;
+	border-collapse: collapse;
+}
+tr,td{
+border: 1px solid;
+}
 h1 {
+	text-align:center;
 	font-weight: bold;
 	font-family: system-ui;
 }
+
 
 #dout {
 	position: relative;
@@ -183,11 +192,11 @@ h1 {
 </div>
 	</form>
 
-	
+
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04cfe5f1eb29416b59e4313a6acea9b8&libraries=services"></script>
 	<script>
-		
+
 	</script>
 </body>
 
@@ -275,7 +284,7 @@ h1 {
 							guideTextBox.style.display = 'none';
 						}
 
-						var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+						var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 						mapOption = {
 							center : new kakao.maps.LatLng(33.450701,
 									126.570667), // 지도의 중심좌표
@@ -283,7 +292,7 @@ h1 {
 						// 지도의 확대 레벨
 						};
 
-						// 지도를 생성합니다    
+						// 지도를 생성합니다
 						var map = new kakao.maps.Map(mapContainer, mapOption);
 
 						// 주소-좌표 변환 객체를 생성합니다
@@ -295,7 +304,7 @@ h1 {
 										roadAddr,
 										function(result, status) {
 
-											// 정상적으로 검색이 완료됐으면 
+											// 정상적으로 검색이 완료됐으면
 											if (status === kakao.maps.services.Status.OK) {
 
 												var coords = new kakao.maps.LatLng(

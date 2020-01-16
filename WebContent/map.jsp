@@ -11,10 +11,14 @@
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <style>
+#exp{
+text-align: center;
+}
 table,tr,td{
 border:1px solid #ccc;
 margin:auto;
  padding:30px;
+ text-align: center;
 }
 form{
  border:1px solid #ccc;
@@ -79,11 +83,13 @@ form{
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04cfe5f1eb29416b59e4313a6acea9b8&libraries=services"></script>
 	<b id="adr">지점위치찾기</b>
+	<h4 id="exp">
+					<small>※주소를 입력하시면 지점위치 위에 위치가 표시됩니다.</small>
+				</h4>
 	<br>
-	<br>
+	
 	<input type="text" id="sample4_postcode" placeholder="우편번호">
-	<input type="button" onclick="sample4_execDaumPostcode()"
-		value="우편번호 찾기">
+	<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 	<br>
 	<input type="text" id="sample4_roadAddress" placeholder="도로명주소"
 		name="branchaddress">
@@ -100,6 +106,53 @@ form{
 </form>
 </body>
 <script>
+	function showmap(roadAddr){
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+			center : new kakao.maps.LatLng(33.450701,
+					126.570667), // 지도의 중심좌표
+			level : 3
+		// 지도의 확대 레벨
+		};
+
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption);
+
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch(roadAddr,function(result, status) {
+
+							// 정상적으로 검색이 완료됐으면 
+							if (status === kakao.maps.services.Status.OK) {
+
+								var coords = new kakao.maps.LatLng(
+										result[0].y,
+										result[0].x);
+
+								// 결과값으로 받은 위치를 마커로 표시합니다
+								var marker = new kakao.maps.Marker(
+										{
+											map : map,
+											position : coords
+										});
+
+								// 인포윈도우로 장소에 대한 설명을 표시합니다
+								var infowindow = new kakao.maps.InfoWindow(
+										{
+											content : '<div style="width:150px;text-align:center;padding:6px 0;">'
+													+ roadAddr
+													+ '</div>'
+										});
+								infowindow.open(map, marker);
+
+								// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+								map.setCenter(coords);
+							}
+						});
+
+	}
 	function checkForm() {
 		var branchId = document.getElementById("id");
 		var branchName = document.getElementById("name");

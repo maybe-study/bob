@@ -47,6 +47,26 @@ transition: all 0.4s ease 0s;
 }
 </style>
 </head>
+<style>
+
+}
+table,tr,td{
+border:1px solid #ccc;
+margin:auto;
+ padding:30px;
+ text-align: center;
+}
+form{
+ border:1px solid #ccc;
+ margin:auto;
+ height:50%;
+ width:900px;
+ padding:30px;
+ text-align: center;
+
+}
+
+</style>
 <body>
 <div >
 <h1>모든 지점의 매출</h1>
@@ -55,6 +75,7 @@ transition: all 0.4s ease 0s;
 <a href="adminPage.jsp"><input type="button" id="adminb" class="adminb" value="관리자 페이지로 돌아가기"/></a>
 </div>
 ${brtable}
+
 
 
 </body>

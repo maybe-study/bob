@@ -134,7 +134,7 @@ public class BranchMM {
 		for(int i=0; i<mapList.size();i++) {
 			Branch br = mapList.get(i);
 			sb.append("<tr>");
-			sb.append("<td>"+br.getBranchname()+"</td>");
+			sb.append("<td><a href='#' onclick='showmap(\""+br.getBranchaddress()+"\")'>"+br.getBranchname()+"</a></td>");
 			sb.append("<td>"+br.getBranchaddress()+"</td>");
 			sb.append("<td>"+br.getExplain()+"</td>");
 			sb.append("</tr>");

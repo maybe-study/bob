@@ -26,7 +26,7 @@
           }
 table{
 	margin:auto;
-	
+
 }
 #menubody {
 	list-style: none;
@@ -36,13 +36,14 @@ table{
 margin: auto;
 }
 .exdiv{
-border:1px solid;
+border:1px solid #c0c0c0;
 width:180px;
 height:220px;
 text-align:center;
 padding:5px;
 font-family:sans-serif;
 }
+
 </style>
 </head>
 <body>
@@ -56,9 +57,11 @@ font-family:sans-serif;
 			data-toggle="tab">튀김</a></li>
 		<li class="menu-kind"><a class="nav-link" href="#tab4"
 			data-toggle="tab">떡갈비</a></li>
-		<li class="menu-kind"><a class="nav-link" href="index.jsp"
-			>메뉴로 돌아가기</a></li>
-		
+
+		<li class="menu-kind"><a class="nav-link" href="#tab5"
+			data-toggle="tab"></a></li>
+		<li class="menu-kind"><a class="nav-link" href="index.jsp">메인으로</a></li>
+
 	</ul>
 	<div class="tab-content px-1 pt-2">
 		<div class="tab-pane active" id="tab1">${mListHtmln}</div>
@@ -67,10 +70,8 @@ font-family:sans-serif;
 		<div class="tab-pane" id="tab4">${mListHtmltt}</div>
 
 	</div>
-	
-	<script>
-	console.log(${mListHtmln});
-	</script>
+
+
 </body>
 
 </html>
