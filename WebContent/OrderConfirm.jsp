@@ -46,6 +46,22 @@ display: inline-block;
 border: none;
 transition: all 0.4s ease 0s;
 }
+.mainbtn{
+color: #fff !important;
+text-transform: uppercase;
+text-decoration: none;
+background: #ff7300;
+padding-right: 25px;
+padding-left: 25px;
+padding-top:10px;
+padding-bottom:10px;
+margin-bottom:10px;
+margin-top:50px;
+border-radius: 5px;
+display: inline-block;
+border: none;
+transition: all 0.4s ease 0s;
+
 }
 .otr{
 height:40px;
@@ -55,6 +71,7 @@ height:40px;
 <body>
 <h1>주문 확인 페이지</h1>
 ${odList}
+
 
 </body>
 <script>

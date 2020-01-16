@@ -19,20 +19,25 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
         <style>
+        
+        tr{
+        height:200px;
+        }
         h1{
        	text-align:center;
         }
         table{
         margin: auto;
-        width:450px;
+        width:550px;
         text-align:center;
+        border:1px solid #c0c0c0;
         }
         ul,li{
         text-align: center;
         }
           .bobimg{
             width:100%;
-            height:120px;
+            height:100%;
           }
           .cntdiv{
             text-align:center;
@@ -43,8 +48,8 @@
           	width:40px;
           }
 
-          th,td {
-            border: 1px solid grey;
+          td {
+           border-bottom:1px solid #c0c0c0;
             padding: 10px;
           }
          

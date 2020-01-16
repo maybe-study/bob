@@ -599,6 +599,7 @@ public class MenuMM {
 
 
 		}
+		   sb.append("<tr><td colspan='4'><button class='mainbtn' type='button' onclick=\"location.href='index.jsp'\">메인으로</button></td></tr>");
 		sb.append("</table>");
 		return sb.toString();
 	}
