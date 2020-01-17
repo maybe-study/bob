@@ -193,7 +193,7 @@ public class MenuMM {
 		for (int i = 0; i < mnList.size(); i++) {
 			Bobburger bob = mnList.get(i);
 			sb.append("<tr>");
-			sb.append("<td><input type='checkbox' class ='checkedMenu' value='" + bob.getBobid() + "'></td>");
+			sb.append("<td><input name ='checkedMenu' type='checkbox' class ='checkedMenu' value='" + bob.getBobid() + "'></td>");
 			sb.append("<td><img class='bobimg' src='upload/" + bob.getPic() + "' width='40%'></td>");
 			sb.append("<td>" + bob.getBobname() +"</td>");
 			sb.append("</tr>");
