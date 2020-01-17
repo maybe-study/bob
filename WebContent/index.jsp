@@ -80,6 +80,7 @@ margin:10px 0px;
    font-size:20px;
    cursor: pointer;
  }
+
 </style>
 </head>
 <body>
@@ -152,6 +153,7 @@ margin:10px 0px;
 		
 		</div>
 		<div class="container" id="main">
+		<div id="slide">
 		  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 		    <!-- Indicators -->
 		    <ol class="carousel-indicators">
@@ -185,6 +187,7 @@ margin:10px 0px;
 		      <span class="glyphicon glyphicon-chevron-right"></span>
 		      <span class="sr-only">Next</span>
 		    </a>
+		  </div>
 		  </div>
 		</div>
 		<!--
