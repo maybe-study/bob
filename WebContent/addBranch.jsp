@@ -191,17 +191,11 @@ h1 {
 		<div id="map" style="width: 100%; height: 350px; top: 500px;"></div>
 </div>
 	</form>
-
-
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04cfe5f1eb29416b59e4313a6acea9b8&libraries=services"></script>
-	<script>
-
-	</script>
 </body>
 
 
-<script>
+<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04cfe5f1eb29416b59e4313a6acea9b8&libraries=services">
 	function checkForm() {
 		var branchId = document.getElementById("id");
 		var branchName = document.getElementById("name");
@@ -284,11 +278,11 @@ h1 {
 							guideTextBox.style.display = 'none';
 						}
 
-						var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-					    mapOption = {
-					        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-					        level: 3 // 지도의 확대 레벨
-					    };
+					var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+				    mapOption = {
+				        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				        level: 3 // 지도의 확대 레벨
+				    };
 
 					// 지도를 생성합니다
 					var map = new kakao.maps.Map(mapContainer, mapOption);
