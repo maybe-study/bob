@@ -82,10 +82,10 @@ footer {
 				<br>
 
 				<hr>
-				<h2>살려줘...</h2>
+				<h2>semi-project</h2>
 
 				<h5>
-					<span class="label label-success">2020년 1월 8일 살려줘....</span>
+					<span class="label label-success">2020년1월16일 마무리</span>
 				</h5>
 				<br>
 
